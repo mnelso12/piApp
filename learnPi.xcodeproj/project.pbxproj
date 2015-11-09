@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4002801BF108F800AC543B /* digitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40027F1BF108F800AC543B /* digitButton.m */; };
+		5A4002821BF1129500AC543B /* colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4002811BF1129500AC543B /* colors.m */; };
 		5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA5E1BEAA42C00004D7F /* main.m */; };
 		5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA611BEAA42D00004D7F /* AppDelegate.m */; };
 		5ABDAA651BEAA42D00004D7F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA641BEAA42D00004D7F /* ViewController.m */; };
@@ -14,6 +16,10 @@
 		5ABDAA6A1BEAA42E00004D7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ABDAA691BEAA42E00004D7F /* Images.xcassets */; };
 		5ABDAA6D1BEAA42E00004D7F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABDAA6B1BEAA42E00004D7F /* LaunchScreen.xib */; };
 		5ABDAA791BEAA42E00004D7F /* learnPiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA781BEAA42E00004D7F /* learnPiTests.m */; };
+		5ABDAA841BEAAC7900004D7F /* practiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA831BEAAC7900004D7F /* practiceVC.m */; };
+		5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA861BEAAEB700004D7F /* playVC.m */; };
+		5ABDAA8A1BEAAEC600004D7F /* learnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA891BEAAEC600004D7F /* learnVC.m */; };
+		5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA8C1BEAAED200004D7F /* settingsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A40027E1BF108F800AC543B /* digitButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digitButton.h; sourceTree = "<group>"; };
+		5A40027F1BF108F800AC543B /* digitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = digitButton.m; sourceTree = "<group>"; };
+		5A4002811BF1129500AC543B /* colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colors.m; sourceTree = "<group>"; };
+		5A4002831BF1130100AC543B /* colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colors.h; sourceTree = "<group>"; };
 		5ABDAA591BEAA42C00004D7F /* learnPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABDAA5D1BEAA42C00004D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ABDAA5E1BEAA42C00004D7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +50,14 @@
 		5ABDAA721BEAA42E00004D7F /* learnPiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = learnPiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABDAA771BEAA42E00004D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ABDAA781BEAA42E00004D7F /* learnPiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = learnPiTests.m; sourceTree = "<group>"; };
+		5ABDAA821BEAAC7900004D7F /* practiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = practiceVC.h; path = ../practiceVC.h; sourceTree = "<group>"; };
+		5ABDAA831BEAAC7900004D7F /* practiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = practiceVC.m; path = ../practiceVC.m; sourceTree = "<group>"; };
+		5ABDAA851BEAAEB700004D7F /* playVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playVC.h; sourceTree = "<group>"; };
+		5ABDAA861BEAAEB700004D7F /* playVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playVC.m; sourceTree = "<group>"; };
+		5ABDAA881BEAAEC600004D7F /* learnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnVC.h; sourceTree = "<group>"; };
+		5ABDAA891BEAAEC600004D7F /* learnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnVC.m; sourceTree = "<group>"; };
+		5ABDAA8B1BEAAED200004D7F /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
+		5ABDAA8C1BEAAED200004D7F /* settingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +103,18 @@
 				5ABDAA611BEAA42D00004D7F /* AppDelegate.m */,
 				5ABDAA631BEAA42D00004D7F /* ViewController.h */,
 				5ABDAA641BEAA42D00004D7F /* ViewController.m */,
+				5ABDAA851BEAAEB700004D7F /* playVC.h */,
+				5ABDAA861BEAAEB700004D7F /* playVC.m */,
+				5ABDAA821BEAAC7900004D7F /* practiceVC.h */,
+				5ABDAA831BEAAC7900004D7F /* practiceVC.m */,
+				5ABDAA881BEAAEC600004D7F /* learnVC.h */,
+				5ABDAA891BEAAEC600004D7F /* learnVC.m */,
+				5ABDAA8B1BEAAED200004D7F /* settingsVC.h */,
+				5ABDAA8C1BEAAED200004D7F /* settingsVC.m */,
+				5A40027E1BF108F800AC543B /* digitButton.h */,
+				5A4002811BF1129500AC543B /* colors.m */,
+				5A4002831BF1130100AC543B /* colors.h */,
+				5A40027F1BF108F800AC543B /* digitButton.m */,
 				5ABDAA661BEAA42D00004D7F /* Main.storyboard */,
 				5ABDAA691BEAA42E00004D7F /* Images.xcassets */,
 				5ABDAA6B1BEAA42E00004D7F /* LaunchScreen.xib */,
@@ -221,7 +251,13 @@
 			files = (
 				5ABDAA651BEAA42D00004D7F /* ViewController.m in Sources */,
 				5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */,
+				5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */,
 				5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */,
+				5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */,
+				5A4002801BF108F800AC543B /* digitButton.m in Sources */,
+				5A4002821BF1129500AC543B /* colors.m in Sources */,
+				5ABDAA841BEAAC7900004D7F /* practiceVC.m in Sources */,
+				5ABDAA8A1BEAAEC600004D7F /* learnVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +454,7 @@
 				5ABDAA7E1BEAA42E00004D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5ABDAA7F1BEAA42E00004D7F /* Build configuration list for PBXNativeTarget "learnPiTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +463,7 @@
 				5ABDAA811BEAA42E00004D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
