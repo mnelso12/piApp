@@ -22,11 +22,11 @@ NSString *piRealString;
 colors *colorInst;
 */
 
-NSString *pi2 = @"";
+//NSString *pi2 = @"";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    /*
     self.colorInst = [[colors alloc] init];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -43,8 +43,9 @@ NSString *pi2 = @"";
     
     piReal *piInst = [[piReal alloc] init];
     self.piRealString = piInst.piString;
+     */
 }
-
+/*
 - (void)initializePiLabel
 {
     self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(30,50,self.screenWidth-60,70)];
@@ -654,5 +655,5 @@ NSString *pi2 = @"";
         [self updatePiLabel];
     }
 }
-
+*/
 @end
