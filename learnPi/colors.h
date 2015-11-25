@@ -18,14 +18,14 @@
 - (UIColor *)oneColor;
 - (UIColor *)twoColor;
 - (UIColor *)threeColor;
-/*
 - (UIColor *)fourColor;
 - (UIColor *)fiveColor;
 - (UIColor *)sixColor;
 - (UIColor *)sevenColor;
 - (UIColor *)eightColor;
 - (UIColor *)nineColor;
- */
+- (UIColor *)dotColor;
+- (UIColor *)playBackgroundColor;
 
 - (NSString *)themeFont;
 

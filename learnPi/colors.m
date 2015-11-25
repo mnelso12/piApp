@@ -36,35 +36,56 @@
 
 -(UIColor*)oneColor
 {
-    return [UIColor colorWithRed:11.0f/255.0f
-                           green:19.0f/255.0f
-                            blue:82.0f/255.0f
-                           alpha:.75f];
+    return [UIColor whiteColor];
 }
 
 -(UIColor*)twoColor
 {
-    return [UIColor colorWithRed:11.0f/255.0f
-                           green:19.0f/255.0f
-                            blue:82.0f/255.0f
-                           alpha:.75f];
+    return [UIColor blueColor];
 }
 
 -(UIColor*)threeColor
 {
-    return [UIColor colorWithRed:11.0f/255.0f
-                           green:19.0f/255.0f
-                            blue:82.0f/255.0f
-                           alpha:.75f];
+    return [UIColor yellowColor];
 }
-
+-(UIColor*)fourColor
+{
+    return [UIColor redColor];
+}
+-(UIColor*)fiveColor
+{
+    return [UIColor greenColor];
+}
+-(UIColor*)sixColor
+{
+    return [UIColor greenColor];
+}
+-(UIColor*)sevenColor
+{
+    return [UIColor purpleColor];
+}
+-(UIColor*)eightColor
+{
+    return [UIColor blueColor];
+}
+-(UIColor*)nineColor
+{
+    return [UIColor brownColor];
+}
+-(UIColor*)dotColor
+{
+    return [UIColor darkGrayColor];
+}
+-(UIColor*)playBackgroundColor
+{
+    return [UIColor blackColor];
+}
 
 
 -(NSString *)themeFont
 {
-    NSString *fontName = @"Superclarendon-Regular";
+    NSString *fontName = @"Verdana";
     //HiraMinProN-W6, Georgia-Bold
     return fontName;
 }
-
-@end
+ @end

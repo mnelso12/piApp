@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface learnVC : UIViewController
-
+@property (strong, nonatomic) IBOutlet UILabel *piLabel;
+@property (strong, nonatomic) IBOutlet NSNumber *groupNum;
 @end

@@ -7,14 +7,157 @@
 //
 
 #import "learnVC.h"
+#import "piReal.h"
+#import "colors.h"
 
 @implementation learnVC
+
+CGFloat screenWidth2;
+CGFloat screenHeight2;
+NSMutableString *myPi;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    piReal *piInst = [[piReal alloc] init];
+    myPi = piInst.piMutString;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth2 = screenRect.size.width;
+    screenHeight2 = screenRect.size.height;
+    
     self.view.backgroundColor = [UIColor purpleColor];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self loadPiLabel];
+    [self addSpaces];
+    [self updatePiLabel];
+}
+
+- (void)loadPiLabel
+{
+    self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, screenWidth2-40, screenHeight2-40)];
+    self.piLabel.text = @"pi!!!";
+    self.piLabel.font = [UIFont fontWithName:@"Verdana" size:20];
+    self.piLabel.backgroundColor = [UIColor whiteColor];
+    self.piLabel.textAlignment = NSTextAlignmentCenter;
+    self.piLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.piLabel.layer.cornerRadius = 10.0f;
+    self.piLabel.layer.masksToBounds = YES;
+    self.piLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.piLabel.numberOfLines = 0;
+
+    [self.view addSubview:self.piLabel];
+}
+
+- (void)addSpaces
+{
+    int count = 0;
+    while (count < 10000)
+    {
+        if ((count%11) == 0) // replace 11 with (groupNum+1) in future
+        {
+            [myPi insertString:@" " atIndex:count];
+        }
+        count++;
+    }
+}
+
+- (void)updatePiLabel
+{
+    self.piLabel.text = myPi;
+    [self updatePiColors];
+    [self.view addSubview:self.piLabel];
+}
+
+- (void) updatePiColors
+{
+    colors *colorInst = [[colors alloc] init];
+    
+    NSMutableAttributedString *text =
+    [[NSMutableAttributedString alloc]
+     initWithAttributedString: self.piLabel.attributedText];
+    
+    int count = 0;
+    while(count < (int)[myPi length])
+    {
+        NSString *tempStr = [myPi substringWithRange:NSMakeRange(count, 1)];
+        if ([tempStr isEqualToString:@"0"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.zeroColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"1"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.oneColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"2"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.twoColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"3"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.threeColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"4"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.fourColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"5"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.fiveColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"6"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.sixColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"7"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.sevenColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"8"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.eightColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"9"])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.nineColor
+                         range:NSMakeRange(count,1)];
+        }
+        else if ([tempStr isEqualToString:@"."])
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:colorInst.dotColor
+                         range:NSMakeRange(count,1)];
+        }
+        else
+        {
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:[UIColor blackColor]
+                         range:NSMakeRange(count,1)];
+        }
+        count++;
+    }
+    
+    [self.piLabel setAttributedText: text];
+    
 }
 
 @end

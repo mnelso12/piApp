@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A4002801BF108F800AC543B /* digitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40027F1BF108F800AC543B /* digitButton.m */; };
 		5A4002821BF1129500AC543B /* colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4002811BF1129500AC543B /* colors.m */; };
+		5A6F7CDF1BF18C0A00337524 /* piReal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F7CDE1BF18C0A00337524 /* piReal.m */; };
 		5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA5E1BEAA42C00004D7F /* main.m */; };
 		5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA611BEAA42D00004D7F /* AppDelegate.m */; };
 		5ABDAA651BEAA42D00004D7F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA641BEAA42D00004D7F /* ViewController.m */; };
@@ -37,6 +38,8 @@
 		5A40027F1BF108F800AC543B /* digitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = digitButton.m; sourceTree = "<group>"; };
 		5A4002811BF1129500AC543B /* colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colors.m; sourceTree = "<group>"; };
 		5A4002831BF1130100AC543B /* colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colors.h; sourceTree = "<group>"; };
+		5A6F7CDE1BF18C0A00337524 /* piReal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = piReal.m; path = ../piReal.m; sourceTree = "<group>"; };
+		5A6F7CE01BF18C5000337524 /* piReal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = piReal.h; path = ../piReal.h; sourceTree = "<group>"; };
 		5ABDAA591BEAA42C00004D7F /* learnPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ABDAA5D1BEAA42C00004D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ABDAA5E1BEAA42C00004D7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				5A4002811BF1129500AC543B /* colors.m */,
 				5A4002831BF1130100AC543B /* colors.h */,
 				5A40027F1BF108F800AC543B /* digitButton.m */,
+				5A6F7CE01BF18C5000337524 /* piReal.h */,
+				5A6F7CDE1BF18C0A00337524 /* piReal.m */,
 				5ABDAA661BEAA42D00004D7F /* Main.storyboard */,
 				5ABDAA691BEAA42E00004D7F /* Images.xcassets */,
 				5ABDAA6B1BEAA42E00004D7F /* LaunchScreen.xib */,
@@ -253,6 +258,7 @@
 				5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */,
 				5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */,
 				5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */,
+				5A6F7CDF1BF18C0A00337524 /* piReal.m in Sources */,
 				5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */,
 				5A4002801BF108F800AC543B /* digitButton.m in Sources */,
 				5A4002821BF1129500AC543B /* colors.m in Sources */,
