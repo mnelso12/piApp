@@ -28,7 +28,7 @@ NSMutableString *myPi;
     screenWidth2 = screenRect.size.width;
     screenHeight2 = screenRect.size.height;
     
-    //self.view.backgroundColor = colorInst.playBackgroundColor;
+    self.view.backgroundColor = colorInst.playBackgroundColor;
     
     self.textView.text = @"lalalal";
     
@@ -40,6 +40,7 @@ NSMutableString *myPi;
 
 - (void)loadScroller
 {
+    colors *colorInst = [[colors alloc] init];
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     /*
@@ -54,6 +55,7 @@ NSMutableString *myPi;
     [self.view addSubview:self.textView];
     [self.view addSubview:self.piLabel];
      */
+    self.textView.backgroundColor = colorInst.playBackgroundColor;
     [self.view addSubview:self.textView];
 }
 
