@@ -11,4 +11,5 @@
 @interface learnVC : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *piLabel;
 @property (strong, nonatomic) IBOutlet NSNumber *groupNum;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 @end

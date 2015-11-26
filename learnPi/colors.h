@@ -26,6 +26,7 @@
 - (UIColor *)nineColor;
 - (UIColor *)dotColor;
 - (UIColor *)playBackgroundColor;
+- (UIColor *)numBackgroundColor;
 
 - (NSString *)themeFont;
 

@@ -80,6 +80,11 @@
 {
     return [UIColor blackColor];
 }
+-(UIColor*)numBackgroundColor
+{
+    return [UIColor darkGrayColor];
+}
+
 
 
 -(NSString *)themeFont

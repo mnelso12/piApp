@@ -19,6 +19,8 @@ NSMutableString *myPi;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    colors *colorInst = [[colors alloc] init];
+    
     piReal *piInst = [[piReal alloc] init];
     myPi = piInst.piMutString;
     
@@ -26,19 +28,44 @@ NSMutableString *myPi;
     screenWidth2 = screenRect.size.width;
     screenHeight2 = screenRect.size.height;
     
-    self.view.backgroundColor = [UIColor purpleColor];
+    //self.view.backgroundColor = colorInst.playBackgroundColor;
+    
+    self.textView.text = @"lalalal";
     
     [self loadPiLabel];
+    [self loadScroller];
     [self addSpaces];
     [self updatePiLabel];
 }
 
+- (void)loadScroller
+{
+    
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
+    /*
+    self.textView.font = [UIFont fontWithName:@"Verdana" size:20];
+    //self.textView.text = myPi;
+    self.textView.textAlignment = NSTextAlignmentCenter;
+    //self.textView.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.textView.layer.cornerRadius = 10.0f;
+    self.textView.layer.masksToBounds = YES;
+    //self.textView.lineBreakMode = NSLineBreakByWordWrapping;
+    //self.textView.numberOfLines = 0;
+    [self.view addSubview:self.textView];
+    [self.view addSubview:self.piLabel];
+     */
+    [self.view addSubview:self.textView];
+}
+
 - (void)loadPiLabel
 {
-    self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, screenWidth2-40, screenHeight2-40)];
+    
+    colors *colorInst = [[colors alloc] init];
+
+    //self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     self.piLabel.text = @"pi!!!";
     self.piLabel.font = [UIFont fontWithName:@"Verdana" size:20];
-    self.piLabel.backgroundColor = [UIColor whiteColor];
+    //self.piLabel.backgroundColor = colorInst.playBackgroundColor;
     self.piLabel.textAlignment = NSTextAlignmentCenter;
     self.piLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.piLabel.layer.cornerRadius = 10.0f;
@@ -46,7 +73,10 @@ NSMutableString *myPi;
     self.piLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.piLabel.numberOfLines = 0;
 
-    [self.view addSubview:self.piLabel];
+    //[self.textView addSubview:self.piLabel];
+    //[self.view addSubview:self.textView];
+    //[self.view addSubview:self.piLabel];
+    
 }
 
 - (void)addSpaces
@@ -54,7 +84,7 @@ NSMutableString *myPi;
     int count = 0;
     while (count < 10000)
     {
-        if ((count%11) == 0) // replace 11 with (groupNum+1) in future
+        if ((count%8) == 0) // replace 8 with (groupNum+1) in future
         {
             [myPi insertString:@" " atIndex:count];
         }
@@ -67,15 +97,21 @@ NSMutableString *myPi;
     self.piLabel.text = myPi;
     [self updatePiColors];
     [self.view addSubview:self.piLabel];
+    
+    /*
+    self.textView.text = myPi;
+    [self updatePiColors];
+    [self.view addSubview:self.textView];
+     */
 }
 
 - (void) updatePiColors
 {
-    colors *colorInst = [[colors alloc] init];
-    
     NSMutableAttributedString *text =
     [[NSMutableAttributedString alloc]
      initWithAttributedString: self.piLabel.attributedText];
+    
+    colors *colorInst = [[colors alloc] init];
     
     int count = 0;
     while(count < (int)[myPi length])
@@ -147,8 +183,12 @@ NSMutableString *myPi;
                          value:colorInst.dotColor
                          range:NSMakeRange(count,1)];
         }
+        else if ([tempStr isEqualToString:@" "])
+        {
+        }
         else
         {
+            NSLog(@"gross using default text colors for %@", tempStr);
             [text addAttribute:NSForegroundColorAttributeName
                          value:[UIColor blackColor]
                          range:NSMakeRange(count,1)];
@@ -156,8 +196,8 @@ NSMutableString *myPi;
         count++;
     }
     
-    [self.piLabel setAttributedText: text];
-    
+    //[self.piLabel setAttributedText: text];
+    [self.textView setAttributedText: text];
 }
 
 @end

@@ -22,6 +22,7 @@ colors *colorInst;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pi = @"";
     
     colorInst = [[colors alloc] init];
     
