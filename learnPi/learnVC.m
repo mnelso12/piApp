@@ -43,8 +43,9 @@ NSMutableString *myPi;
     colors *colorInst = [[colors alloc] init];
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
-    /*
+    
     self.textView.font = [UIFont fontWithName:@"Verdana" size:20];
+    /*
     //self.textView.text = myPi;
     self.textView.textAlignment = NSTextAlignmentCenter;
     //self.textView.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -85,7 +86,7 @@ NSMutableString *myPi;
 - (void)addSpaces
 {
     int count = 0;
-    int groupNum = 7;
+    int groupNum = 8;
     while (count < (10000+(10000/groupNum)))
     {
         if ((count%(groupNum+1)) == 0) // replace 8 with (groupNum+1) in future
