@@ -56,6 +56,7 @@ NSMutableString *myPi;
     [self.view addSubview:self.piLabel];
      */
     self.textView.backgroundColor = colorInst.playBackgroundColor;
+    self.textView.editable = NO;
     [self.view addSubview:self.textView];
 }
 
@@ -84,9 +85,10 @@ NSMutableString *myPi;
 - (void)addSpaces
 {
     int count = 0;
-    while (count < 10000)
+    int groupNum = 7;
+    while (count < (10000+(10000/groupNum)))
     {
-        if ((count%8) == 0) // replace 8 with (groupNum+1) in future
+        if ((count%(groupNum+1)) == 0) // replace 8 with (groupNum+1) in future
         {
             [myPi insertString:@" " atIndex:count];
         }

@@ -26,18 +26,18 @@
 }
 
 - (IBAction)playButtonPress:(id)sender {
-    NSLog(@"play pressed");
+    //NSLog(@"play pressed");
 }
 
 - (IBAction)practiceButtonPress:(id)sender {
-    NSLog(@"practice pressed");
+    //NSLog(@"practice pressed");
 }
 
 - (IBAction)learnButtonPress:(id)sender {
-    NSLog(@"learn pressed");
+    //NSLog(@"learn pressed");
 }
 
 - (IBAction)settingsButtonPress:(id)sender {
-    NSLog(@"settings pressed");
+    //NSLog(@"settings pressed");
 }
 @end
