@@ -7,11 +7,14 @@
 //
 
 #import "settingsVC.h"
+#import "colors.h"
 
 @implementation settingsVC
 
 CGFloat screenWidth3;
 CGFloat screenHeight3;
+NSArray *arr;
+NSMutableArray *colorArr;
 
 UITableView *tableView;
 
@@ -22,7 +25,13 @@ UITableView *tableView;
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3/2, 0, screenWidth3, screenHeight3)];
+    colors *colorInst = [[colors alloc] init];
+    
+    arr = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];
+    colorArr = [[NSMutableArray alloc] initWithObjects:colorInst.zeroColor, colorInst.oneColor, colorInst.twoColor, colorInst.threeColor, colorInst.fourColor, colorInst.fiveColor, colorInst.sixColor, colorInst.sevenColor, colorInst.eightColor, colorInst.nineColor, colorInst.dotColor, nil];
+
+    
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*2/3, 0, screenWidth3/3, screenHeight3)];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     
@@ -34,11 +43,13 @@ UITableView *tableView;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 11;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    colors *colorInst = [[colors alloc] init];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
     if (cell == nil) {
         
@@ -50,14 +61,22 @@ UITableView *tableView;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
     }
-    NSArray *arr = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
     cell.textLabel.text = [arr objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:@"Verdana" size:40];
+    cell.textLabel.textColor = [colorArr objectAtIndex:indexPath.row];
+    cell.backgroundColor = colorInst.playBackgroundColor;
+    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+    
+    cell.textLabel.highlightedTextColor = colorInst.playBackgroundColor;
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [colorArr objectAtIndex:indexPath.row];
+    cell.selectedBackgroundView = backgroundView;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
