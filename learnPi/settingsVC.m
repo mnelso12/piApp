@@ -31,12 +31,14 @@ UITableView *tableView;
     colorArr = [[NSMutableArray alloc] initWithObjects:colorInst.zeroColor, colorInst.oneColor, colorInst.twoColor, colorInst.threeColor, colorInst.fourColor, colorInst.fiveColor, colorInst.sixColor, colorInst.sevenColor, colorInst.eightColor, colorInst.nineColor, colorInst.dotColor, nil];
 
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*2/3, 0, screenWidth3/3, screenHeight3)];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*4/5, 0, screenWidth3/5, screenHeight3)];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.backgroundColor = [UIColor blackColor];
     
     [self.view addSubview:tableView];
-    //self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view, typically from a nib.
     
 }
@@ -62,10 +64,10 @@ UITableView *tableView;
         
     }
     cell.textLabel.text = [arr objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont fontWithName:@"Verdana" size:40];
+    cell.textLabel.font = [UIFont fontWithName:@"Verdana" size:60];
     cell.textLabel.textColor = [colorArr objectAtIndex:indexPath.row];
     cell.backgroundColor = colorInst.playBackgroundColor;
-    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter; // why doesn't this work????
     
     cell.textLabel.highlightedTextColor = colorInst.playBackgroundColor;
     UIView *backgroundView = [[UIView alloc] init];
@@ -76,7 +78,7 @@ UITableView *tableView;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

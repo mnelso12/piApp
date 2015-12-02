@@ -28,9 +28,9 @@
 
 -(UIColor*)zeroColor
 {
-    return [UIColor colorWithRed:11.0f/255.0f
-                           green:19.0f/255.0f
-                            blue:82.0f/255.0f
+    return [UIColor colorWithRed:10.0f/255.0f
+                           green:0.0f/255.0f
+                            blue:209.0f/255.0f
                            alpha:.75f];
 }
 
@@ -54,7 +54,10 @@
 }
 -(UIColor*)fiveColor
 {
-    return [UIColor greenColor];
+    return [UIColor colorWithRed:17.0f/255.0f
+                           green:122.0f/255.0f
+                            blue:11.0f/255.0f
+                           alpha:.75f];
 }
 -(UIColor*)sixColor
 {
@@ -62,16 +65,26 @@
 }
 -(UIColor*)sevenColor
 {
-    return [UIColor purpleColor];
+    return [UIColor colorWithRed:255.0f/255.0f
+                           green:60.0f/255.0f
+                            blue:181.0f/255.0f
+                           alpha:.75f];
 }
 -(UIColor*)eightColor
 {
-    return [UIColor blueColor];
+    return  [UIColor colorWithRed:10.0f/255.0f
+                                   green:0.0f/255.0f
+                                    blue:209.0f/255.0f
+                                   alpha:.75f];
 }
 -(UIColor*)nineColor
 {
-    return [UIColor brownColor];
+    return [UIColor colorWithRed:72.0f/255.0f
+                           green:93.0f/255.0f
+                            blue:78.0f/255.0f
+                           alpha:.75f];
 }
+
 -(UIColor*)dotColor
 {
     return [UIColor darkGrayColor];

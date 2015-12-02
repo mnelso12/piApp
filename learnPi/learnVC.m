@@ -30,8 +30,6 @@ NSMutableString *myPi;
     
     self.view.backgroundColor = colorInst.playBackgroundColor;
     
-    self.textView.text = @"lalalal";
-    
     [self loadPiLabel];
     [self loadScroller];
     [self addSpaces];
@@ -61,9 +59,21 @@ NSMutableString *myPi;
     [self.view addSubview:self.textView];
 }
 
+- (int)numCharsPerLine // this doesn't work
+{
+    UITextView *tempView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, 20)]; // same as self.textView, except height is only one line
+    UILabel *tempLabel = [[UILabel alloc] init];
+    tempLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    tempLabel.text = @"1029381092831092830192380110293810293810928301928309182039810918309182039812313192835048792834710293801298301928301892";
+    tempLabel.textColor = [UIColor clearColor]; // just for seeing how many char per line
+    [tempView addSubview:tempLabel];
+    [self.view addSubview:tempView];
+     NSLog(@"\n\n\n count %lu \n\n\n",(unsigned long)[tempLabel.text length]);
+    return 0; // fix this
+}
+
 - (void)loadPiLabel
 {
-    
     colors *colorInst = [[colors alloc] init];
 
     //self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
