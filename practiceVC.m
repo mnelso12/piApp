@@ -19,6 +19,7 @@ CGFloat screenWidth;
 CGFloat screenHeight;
 NSString *piRealString;
 colors *colorInst;
+NSString *highScore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +33,14 @@ colors *colorInst;
     
     currentDigit = 0; // do I need this?
     
+    // should never be nil, start with it equalling the default high score
+    highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
+    if (highScore == (id)[NSNull null])
+    {
+        NSLog(@"SHOULD NEVER BE IN HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        highScore = @"0";
+    }
+    
     [self loadScoreLabels];
     [self loadKeypad];
     [self initializePiLabel];
@@ -40,6 +49,7 @@ colors *colorInst;
     
     piReal *piInst = [[piReal alloc] init];
     piRealString = piInst.piString;
+    
 }
 
 - (void)initializePiLabel
@@ -78,7 +88,7 @@ colors *colorInst;
     // high score
     self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,120+(screenWidth/10-50),200,50)];
     self.highScoreLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
-    self.highScoreLabel.text = @"High Score: 382"; // fix this
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
     self.highScoreLabel.layer.cornerRadius = 10.0f;
     self.highScoreLabel.textColor = [UIColor whiteColor];
     //self.highScoreLabel.backgroundColor = [UIColor grayColor];
@@ -128,7 +138,7 @@ colors *colorInst;
     {
         radius = 40;
     }
-    else if (screenWidth == 736.0) // is iPhone 6+
+    else if (screenWidth == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
     {
         radius = 45; // test this
     }

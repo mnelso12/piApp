@@ -21,8 +21,9 @@
     
     // if high score is null, set to 0
     NSString *highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
-    if (highScore == nil)
+    if ([highScore isEqualToString:nil])
     {
+        NSLog(@"high score is nil, making it 0");
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"HighScore"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
