@@ -18,6 +18,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor greenColor];
+    
+    // if high score is null, set to 0
+    NSString *highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
+    if (highScore == nil)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"HighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
