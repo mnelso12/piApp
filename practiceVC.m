@@ -23,6 +23,10 @@ NSString *highScore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"came from %@ button", self.prevVC);
+    [self setTitle:self.prevVC];
+    
     pi = @"";
     
     colorInst = [[colors alloc] init];

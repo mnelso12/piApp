@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *piLabel;
 @property (strong, nonatomic) IBOutlet UILabel *strikesLabel;
 
+@property (strong, nonatomic) IBOutlet NSString *prevVC;
+
 @property (strong, nonatomic) IBOutlet UILabel *zeroLabel;
 @property (strong, nonatomic) IBOutlet UILabel *oneLabel;
 @property (strong, nonatomic) IBOutlet UILabel *twoLabel;

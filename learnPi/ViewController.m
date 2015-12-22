@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "practiceVC.h"
 
 @interface ViewController ()
 
@@ -49,4 +50,20 @@
 - (IBAction)settingsButtonPress:(id)sender {
     //NSLog(@"settings pressed");
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"toPractice"])
+    {
+        practiceVC *p = [segue destinationViewController];
+        p.prevVC = @"Practice";
+    }
+    else if ([[segue identifier] isEqualToString:@"toPlay"])
+    {
+        practiceVC *p = [segue destinationViewController];
+        p.prevVC = @"Play";
+    }
+}
+
 @end

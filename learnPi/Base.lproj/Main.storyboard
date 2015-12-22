@@ -35,7 +35,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BUW-F3-WEn"/>
-                                    <segue destination="lBK-2K-xuZ" kind="show" id="V6y-hS-dZm"/>
+                                    <segue destination="rDL-AJ-NRP" kind="custom" identifier="toPlay" id="7Ar-RF-kIo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD3-6f-SsD">
@@ -75,7 +75,6 @@
                     <connections>
                         <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="hBa-xV-epe"/>
                         <outlet property="learnButtonPress" destination="Aye-E6-ytC" id="VIf-xY-yB3"/>
-                        <outlet property="playButtonPress" destination="wE7-V5-rgC" id="Sfp-uQ-W1x"/>
                         <outlet property="practiceButtonPress" destination="tD3-6f-SsD" id="rIr-I7-6CW"/>
                         <outlet property="settingsButtonPress" destination="iZi-7a-oEZ" id="enM-0o-zNL"/>
                     </connections>
@@ -221,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYC-eG-qZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="1065"/>
+            <point key="canvasLocation" x="282" y="970"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TGk-wh-ZKO">
@@ -242,5 +241,8 @@
             <point key="canvasLocation" x="282" y="170"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Ar-RF-kIo"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.050198964159999998" green="0.056512629719999999" blue="0.33530618690000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
