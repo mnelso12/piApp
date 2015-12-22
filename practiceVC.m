@@ -106,6 +106,15 @@ NSString *highScore;
     self.currentDigitLabel.layer.masksToBounds = YES;
     self.currentDigitLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.currentDigitLabel];
+    
+    // strikes (for play only)
+    self.strikesLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-100,120+(screenWidth/10-50),200,50)];
+    self.strikesLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.strikesLabel.text = [NSString stringWithFormat:@"XXX"];
+    self.strikesLabel.textColor = [UIColor redColor];
+    self.strikesLabel.layer.masksToBounds = YES;
+    self.strikesLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.strikesLabel];
 }
 
 - (bool)isDigitCorrect:(NSString *)input

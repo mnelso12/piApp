@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *highScoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentDigitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *piLabel;
+@property (strong, nonatomic) IBOutlet UILabel *strikesLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *zeroLabel;
 @property (strong, nonatomic) IBOutlet UILabel *oneLabel;
