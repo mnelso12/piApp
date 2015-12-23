@@ -41,6 +41,42 @@ UITableView *tableView;
     self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self colorPicker];
+}
+
+- (void)colorPicker
+{
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,200)];
+    int num = 100;
+    for (int count=0; count<(num); count++)
+    {
+        UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(count*(200/num), 0, (200)/num, 200)];
+        
+        UIColor *thisColor = [[UIColor alloc] initWithRed:120/255.0f green:((255/num)*count)/255.0f blue:0/255.0f alpha:1.0f];
+        NSLog(@"count = %f", 50.0f*count);
+        temp.backgroundColor = thisColor;
+        /*
+        if (count == 0)
+        {
+            temp.backgroundColor = [UIColor redColor];
+        }
+        else if (count == 1)
+        {
+            temp.backgroundColor = [UIColor yellowColor];
+        }
+        else if (count == 2)
+        {
+            temp.backgroundColor = [UIColor greenColor];
+        }
+        else if (count == 3)
+        {
+            temp.backgroundColor = [UIColor blueColor];
+        }
+         */
+        //[v addSubview:temp];
+        [self.view addSubview:temp];
+    }
+    //[self.view addSubview:v];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
