@@ -47,24 +47,26 @@ UITableView *tableView;
 
 - (void)colorPicker
 {
-    int num = 100;
-    for (int count=0; count<(num); count++)
+    int num = 25;
+    for (int count=0; count<num; count++)
     {
-        
-        UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(count*(200/num), 0, (200)/num, 200)];
-        
-        // color picker stuff
-        UITapGestureRecognizer *singleFingerTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self
+        for (int j=0; j<num; j++)
+        {
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(count*(200/num), (j*(200/num)), 200/num, 200/num)];
+            
+            UITapGestureRecognizer *singleFingerTap =
+            [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];
-        [temp addGestureRecognizer:singleFingerTap];
+            [temp addGestureRecognizer:singleFingerTap];
         
-        temp.tag = count;
-        NSLog(@"temp tag = %i", temp.tag);
-        UIColor *thisColor = [[UIColor alloc] initWithRed:120/255.0f green:((255/num)*count)/255.0f blue:0/255.0f alpha:1.0f];
-        temp.backgroundColor = thisColor;
+            temp.tag = count;
+            NSLog(@"temp tag = %i", temp.tag);
+            //UIColor *thisColor = [[UIColor alloc] initWithRed:((255/num)*j)/255.0f green:((255/num)*count)/255.0f blue:0/255.0f alpha:1.0f];
+            UIColor *thisColor = [[UIColor alloc] initWithHue:((360/num)*count)/360.0f saturation:1 brightness:1.-(.01*(100/num)*j) alpha:1];
+            temp.backgroundColor = thisColor;
         
-        [self.view addSubview:temp];
+            [self.view addSubview:temp];
+        }
     }
 }
 
