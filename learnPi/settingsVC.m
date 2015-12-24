@@ -17,6 +17,10 @@ NSArray *arr;
 NSMutableArray *colorArr;
 UIView *selectedColorView;
 int num = 40; // for color picker, the bigger the slower/smoother the color picker boxes
+int width = 160; // height and width of the rainbow square for color picker
+CGFloat hue, brightness, saturation;
+
+
 
 UITableView *tableView;
 
@@ -27,7 +31,7 @@ UITableView *tableView;
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
     
-    selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)];
+    selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
     
     colors *colorInst = [[colors alloc] init];
     
@@ -45,7 +49,6 @@ UITableView *tableView;
     self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
     [self colorPicker];
 }
 
@@ -56,21 +59,18 @@ UITableView *tableView;
     {
         for (int j=0; j<num; j++)
         {
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(count*(200/num), (j*(200/num)), 200/num, 200/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(280+count*(width/num), 30+(j*(width/num)), width/num, width/num)];
             
-            UITapGestureRecognizer *singleFingerTap =
-            [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(handleSingleTap:)];
+            UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(handleSingleTap:)];
             [temp addGestureRecognizer:singleFingerTap];
-        
-            tag++;
             temp.tag = tag;
-             
-            //UIColor *thisColor = [[UIColor alloc] initWithRed:((255/num)*j)/255.0f green:((255/num)*count)/255.0f blue:0/255.0f alpha:1.0f];
+            
             UIColor *thisColor = [[UIColor alloc] initWithHue:((360/num)*count)/360.0f saturation:1. brightness:(.01*(100/num)*j) alpha:1];
             temp.backgroundColor = thisColor;
         
             [self.view addSubview:temp];
+            tag++;
         }
     }
 }
@@ -78,17 +78,26 @@ UITableView *tableView;
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
     int tag = recognizer.view.tag;
-    int temp;
-    NSLog(@"one pressed = %i", tag);
     
-    int count,j;
-    
-    CGFloat hue, brightness;
     brightness = tag%num;
     hue = tag/num;
+    NSLog(@"hue:%f, brightness:%f", hue, brightness);
     
     selectedColorView.backgroundColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:1. brightness:(.01*(100/num)*brightness) alpha:1.];
     [self.view addSubview:selectedColorView];
+    [self grayScale];
+}
+
+- (void)grayScale
+{
+    for (int i=0; i<num; i++)
+    {
+        NSLog(@"width:%i, num:%i, hue:%f, brightness:%f", width, num, hue, brightness);
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(100+i*(width/num), 100, width/num, width/num)];
+        UIColor *thisColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:(.01*(100/num)*i) brightness:(.01*(100/num)*brightness) alpha:1.];
+        v.backgroundColor = thisColor;
+        [self.view addSubview:v];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
