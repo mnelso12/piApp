@@ -17,7 +17,7 @@ NSArray *arr;
 NSMutableArray *colorArr;
 UIView *selectedColorView;
 int num = 40; // for color picker, the bigger the slower/smoother the color picker boxes
-int width = 160; // height and width of the rainbow square for color picker
+int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
 
 
@@ -59,7 +59,7 @@ UITableView *tableView;
     {
         for (int j=0; j<num; j++)
         {
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(280+count*(width/num), 30+(j*(width/num)), width/num, width/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(200+count*(width/num), 30+(j*(width/num)), width/num, width/num)];
             
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                               action:@selector(handleSingleTap:)];
@@ -81,7 +81,6 @@ UITableView *tableView;
     
     brightness = tag%num;
     hue = tag/num;
-    NSLog(@"hue:%f, brightness:%f", hue, brightness);
     
     selectedColorView.backgroundColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:1. brightness:(.01*(100/num)*brightness) alpha:1.];
     [self.view addSubview:selectedColorView];
@@ -92,9 +91,9 @@ UITableView *tableView;
 {
     for (int i=0; i<num; i++)
     {
-        NSLog(@"width:%i, num:%i, hue:%f, brightness:%f", width, num, hue, brightness);
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(100+i*(width/num), 100, width/num, width/num)];
-        UIColor *thisColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:(.01*(100/num)*i) brightness:(.01*(100/num)*brightness) alpha:1.];
+        NSLog(@"%f", 1./num);
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(200+i*(width/num), 280, width/num, width/num+25)];
+        UIColor *thisColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:(1./num*i) brightness:(.01*(100/num)*brightness) alpha:1.];
         v.backgroundColor = thisColor;
         [self.view addSubview:v];
     }
