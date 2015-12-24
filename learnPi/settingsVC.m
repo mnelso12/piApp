@@ -15,6 +15,8 @@ CGFloat screenWidth3;
 CGFloat screenHeight3;
 NSArray *arr;
 NSMutableArray *colorArr;
+UIView *selectedColorView;
+int num = 40; // for color picker, the bigger the slower/smoother the color picker boxes
 
 UITableView *tableView;
 
@@ -24,6 +26,8 @@ UITableView *tableView;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
+    
+    selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)];
     
     colors *colorInst = [[colors alloc] init];
     
@@ -47,7 +51,7 @@ UITableView *tableView;
 
 - (void)colorPicker
 {
-    int num = 25;
+    int tag = 0;
     for (int count=0; count<num; count++)
     {
         for (int j=0; j<num; j++)
@@ -59,10 +63,11 @@ UITableView *tableView;
                                                 action:@selector(handleSingleTap:)];
             [temp addGestureRecognizer:singleFingerTap];
         
-            temp.tag = count;
-            NSLog(@"temp tag = %i", temp.tag);
+            tag++;
+            temp.tag = tag;
+             
             //UIColor *thisColor = [[UIColor alloc] initWithRed:((255/num)*j)/255.0f green:((255/num)*count)/255.0f blue:0/255.0f alpha:1.0f];
-            UIColor *thisColor = [[UIColor alloc] initWithHue:((360/num)*count)/360.0f saturation:1 brightness:1.-(.01*(100/num)*j) alpha:1];
+            UIColor *thisColor = [[UIColor alloc] initWithHue:((360/num)*count)/360.0f saturation:1. brightness:(.01*(100/num)*j) alpha:1];
             temp.backgroundColor = thisColor;
         
             [self.view addSubview:temp];
@@ -72,8 +77,18 @@ UITableView *tableView;
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
-    int onePressed = recognizer.view.tag;
-    NSLog(@"one pressed = %i", onePressed);
+    int tag = recognizer.view.tag;
+    int temp;
+    NSLog(@"one pressed = %i", tag);
+    
+    int count,j;
+    
+    CGFloat hue, brightness;
+    brightness = tag%num;
+    hue = tag/num;
+    
+    selectedColorView.backgroundColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:1. brightness:(.01*(100/num)*brightness) alpha:1.];
+    [self.view addSubview:selectedColorView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
