@@ -16,6 +16,7 @@ CGFloat screenHeight3;
 NSArray *arr;
 NSMutableArray *colorArr;
 UIView *selectedColorView;
+
 int num = 40; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
@@ -62,7 +63,8 @@ UITableView *tableView;
             UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(200+count*(width/num), 30+(j*(width/num)), width/num, width/num)];
             
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                              action:@selector(handleSingleTap:)];
+                                                                      action:@selector(handleSingleTap:)];
+
             [temp addGestureRecognizer:singleFingerTap];
             temp.tag = tag;
             
@@ -79,23 +81,41 @@ UITableView *tableView;
 {
     int tag = recognizer.view.tag;
     
-    brightness = tag%num;
-    hue = tag/num;
+    if (tag < num*num) // selected a color in the rainbow square
+    {
+        brightness = tag%num;
+        hue = tag/num;
     
-    selectedColorView.backgroundColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:1. brightness:(.01*(100/num)*brightness) alpha:1.];
-    [self.view addSubview:selectedColorView];
-    [self grayScale];
+        selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:1. brightness:(1./num)*brightness alpha:1.];
+        [self.view addSubview:selectedColorView];
+        
+        // now do the gray scale accordingly
+        [self grayScale];
+    }
+    else if (tag < (num*num)+num) // selected a color in the saturation line
+    {
+        saturation = (tag-num*num);
+        selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
+        [self.view addSubview:selectedColorView];
+    }
 }
 
 - (void)grayScale
 {
+    int tag = num*num; // start where the rainbow box left off
     for (int i=0; i<num; i++)
     {
-        NSLog(@"%f", 1./num);
         UIView *v = [[UIView alloc] initWithFrame:CGRectMake(200+i*(width/num), 280, width/num, width/num+25)];
-        UIColor *thisColor = [UIColor colorWithHue:((360/num)*hue)/360.0f saturation:(1./num*i) brightness:(.01*(100/num)*brightness) alpha:1.];
+        UIColor *thisColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*i brightness:(1./num)*brightness alpha:1.];
         v.backgroundColor = thisColor;
+        
+        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(handleSingleTap:)];
+        [v addGestureRecognizer:singleFingerTap];
+        v.tag = tag;
+        
         [self.view addSubview:v];
+        tag++;
     }
 }
 
