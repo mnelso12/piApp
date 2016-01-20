@@ -17,7 +17,7 @@ NSArray *arr;
 NSMutableArray *colorArr;
 UIView *selectedColorView;
 
-int num = 40; // for color picker, the bigger the slower/smoother the color picker boxes
+int num = 27; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
 
@@ -50,7 +50,11 @@ UITableView *tableView;
     self.view.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view, typically from a nib.
     
+    // these are here so the grayscale starts out as red
+    hue = 39.;
+    brightness = 39.;
     [self colorPicker];
+    [self grayScale];
 }
 
 - (void)colorPicker
@@ -85,6 +89,7 @@ UITableView *tableView;
     {
         brightness = tag%num;
         hue = tag/num;
+        NSLog(@"brightness: %f, hue: %f", brightness, hue);
     
         selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:1. brightness:(1./num)*brightness alpha:1.];
         [self.view addSubview:selectedColorView];
@@ -159,6 +164,7 @@ UITableView *tableView;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //UIColor *selectedColor = [[UIColor alloc] initWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
     
 }
 

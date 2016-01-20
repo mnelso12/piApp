@@ -28,7 +28,26 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"HighScore"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-}
+
+    // make navigation bar transparent
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
+    // make navigation items a better color and font
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName]];
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    
+        NSShadow* shadow = [NSShadow new];
+    shadow.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    shadow.shadowColor = [UIColor clearColor];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName: [UIColor clearColor],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:20.0f],
+                                                            NSShadowAttributeName: shadow
+                                                            }];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

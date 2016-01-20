@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7B88AE5D-0E68-426D-B4B8-8327656A2B91</string>
 	<key>IDESourceControlProjectName</key>
-	<string>learnPi</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>68F7B55745075E177431562C2F3644063D3E924D</key>
 		<string>https://github.com/mnelso12/piApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>learnPi.xcodeproj</string>
+	<string>learnPi.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>68F7B55745075E177431562C2F3644063D3E924D</key>
