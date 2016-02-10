@@ -14,11 +14,16 @@
 @property (strong, nonatomic) IBOutlet UIButton *learnButtonPress;
 @property (strong, nonatomic) IBOutlet UIButton *settingsButtonPress;
 
+@property (strong, nonatomic) IBOutlet UILabel *learnPiLabel;
+@property (strong, nonatomic) IBOutlet UILabel *practiceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *playLabel;
+@property (strong, nonatomic) IBOutlet UILabel *settingsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *highScoreLabel;
+
 - (IBAction)playButtonPress:(id)sender;
 - (IBAction)practiceButtonPress:(id)sender;
 - (IBAction)learnButtonPress:(id)sender;
 - (IBAction)settingsButtonPress:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *highScoreLabel;
 
 @end
 

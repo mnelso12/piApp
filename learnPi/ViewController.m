@@ -20,6 +20,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor greenColor];
     
+    CGFloat screenWidth;
+    CGFloat screenHeight;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth = screenRect.size.width;
+    screenHeight = screenRect.size.height;
+    
     // if high score is null, set to 0
     NSString *highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
     if ([highScore isEqualToString:nil])
@@ -40,14 +46,23 @@
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName]];
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
-        NSShadow* shadow = [NSShadow new];
+    NSShadow* shadow = [NSShadow new];
     shadow.shadowOffset = CGSizeMake(0.0f, 1.0f);
     shadow.shadowColor = [UIColor clearColor];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSForegroundColorAttributeName: [UIColor clearColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:20.0f],
                                                             NSShadowAttributeName: shadow
-                                                            }];}
+                                                            }];
+
+    
+    // handle labels and stuff
+    self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
+    
+    [self.view addSubview:self.learnPiLabel];
+    [self.view addSubview:self.highScoreLabel];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

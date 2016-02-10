@@ -22,12 +22,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn Pi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M94-Xu-Aux">
-                                <rect key="frame" x="266" y="99" width="69" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-V5-rgC">
                                 <rect key="frame" x="76" y="216" width="30" height="30"/>
                                 <state key="normal" title="Play">
@@ -68,15 +62,25 @@
                                     <segue destination="9eb-Ws-Oe2" kind="show" id="IGF-pd-8Yk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn Pi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M94-Xu-Aux">
+                                <rect key="frame" x="202" y="97" width="182" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="wDw-YV-WJg"/>
                     <connections>
-                        <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="hBa-xV-epe"/>
+                        <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="bEb-Vq-U0A"/>
                         <outlet property="learnButtonPress" destination="Aye-E6-ytC" id="VIf-xY-yB3"/>
+                        <outlet property="learnPiLabel" destination="M94-Xu-Aux" id="rZm-jc-G7s"/>
+                        <outlet property="playLabel" destination="Aye-E6-ytC" id="JTA-gC-B6f"/>
                         <outlet property="practiceButtonPress" destination="tD3-6f-SsD" id="rIr-I7-6CW"/>
+                        <outlet property="practiceLabel" destination="tD3-6f-SsD" id="3Jz-zy-kS7"/>
                         <outlet property="settingsButtonPress" destination="iZi-7a-oEZ" id="enM-0o-zNL"/>
+                        <outlet property="settingsLabel" destination="iZi-7a-oEZ" id="yhY-tX-19D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
