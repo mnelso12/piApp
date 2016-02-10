@@ -16,6 +16,8 @@ CGFloat screenHeight3;
 NSArray *arr;
 NSMutableArray *colorArr;
 UIView *selectedColorView;
+UILabel *selectedNumLabel;
+NSString *selectedNum;
 
 int num = 27; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
@@ -28,11 +30,22 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    saturation = 26; // so selected num label color isnt gray to begin with
+    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
     
     selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
+    
+    
+    // initiate number label
+    selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, 100, 100)]; // find better UI spot for this label
+    selectedNumLabel.text = @"";
+    selectedNumLabel.textColor = [UIColor whiteColor];
+    selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:100];
+    [self.view addSubview:selectedNumLabel];
+    
     
     colors *colorInst = [[colors alloc] init];
     
@@ -89,10 +102,12 @@ UITableView *tableView;
     {
         brightness = tag%num;
         hue = tag/num;
-        NSLog(@"brightness: %f, hue: %f", brightness, hue);
+        
+        saturation = 26; // resets selected saturation to that pictured in the rainbow square
+        //NSLog(@"brightness: %f, hue: %f", brightness, hue);
     
-        selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:1. brightness:(1./num)*brightness alpha:1.];
-        [self.view addSubview:selectedColorView];
+        //selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:1. brightness:(1./num)*brightness alpha:1.];
+        //[self.view addSubview:selectedColorView];
         
         // now do the gray scale accordingly
         [self grayScale];
@@ -100,9 +115,19 @@ UITableView *tableView;
     else if (tag < (num*num)+num) // selected a color in the saturation line
     {
         saturation = (tag-num*num);
-        selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
-        [self.view addSubview:selectedColorView];
+        //selectedColorView.backgroundColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
+        //[self.view addSubview:selectedColorView];
     }
+    
+    [self updateSelectedNumLabel];
+}
+
+- (void)updateSelectedNumLabel
+{
+    NSLog(@"brightness: %f, hue: %f, saturation: %f", brightness, hue, saturation);
+    selectedNumLabel.text = selectedNum;
+    selectedNumLabel.textColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
+    [self.view addSubview:selectedNumLabel];
 }
 
 - (void)grayScale
@@ -164,6 +189,9 @@ UITableView *tableView;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedNum = [NSString stringWithFormat:@"%li", (long)indexPath.row];
+    [self updateSelectedNumLabel];
+    
     //UIColor *selectedColor = [[UIColor alloc] initWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
     
 }
