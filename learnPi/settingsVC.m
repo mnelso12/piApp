@@ -101,8 +101,8 @@ UITableView *tableView;
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"dotR"] floatValue] green:[[colorsDict objectForKey:@"dotG"] floatValue] blue:[[colorsDict objectForKey:@"dotB"] floatValue] alpha:1.0f],
                 nil];
         
-    NSLog(@"printing colors arr: %@", [colorArr description]);
-    NSLog(@"colors dict: %@", [colorsDict description]);
+    //NSLog(@"printing colors arr: %@", [colorArr description]);
+    //NSLog(@"colors dict: %@", [colorsDict description]);
 
     
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*4/5, 0, screenWidth3/5, screenHeight3)];
@@ -180,7 +180,7 @@ UITableView *tableView;
 
 - (void)updateSelectedNumLabel
 {
-    NSLog(@"brightness: %f, hue: %f, saturation: %f", brightness, hue, saturation);
+    //NSLog(@"brightness: %f, hue: %f, saturation: %f", brightness, hue, saturation);
     selectedNumLabel.text = selectedNum;
     selectedNumLabel.textColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
     [self.view addSubview:selectedNumLabel];
@@ -257,9 +257,9 @@ UITableView *tableView;
 
 - (IBAction)updateColorsButtonPress:(id)sender // for saving all colors to defaults
 {
-    // save colorsDict to defaults
-    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorDict"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    // save colorsDict to defaults ? now in saveColorButton
+    NSLog(@"this button does nothing");
+    
 }
 
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
@@ -328,6 +328,11 @@ UITableView *tableView;
     }
 
     [colorsDict setObject:colorR forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"R"]];
+    [colorsDict setObject:colorG forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"G"]];
+    [colorsDict setObject:colorB forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"B"]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorsDict"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     // reload table with new colors
     [tableView reloadData];
