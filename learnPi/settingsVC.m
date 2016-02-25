@@ -33,19 +33,19 @@ UITableView *tableView;
     
     // get colorsDict from defaults here //////////////////////////////////
     
-    
+    // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
     colorsDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                  @"zeroR", @"150.0f/255.0f", @"zeroB", @"200.0f/255.0f", @"zeroG", @"255.0f/255.0f",
-                  @"oneR", @"150/255.", @"oneB", @"220/255.", @"oneG", @"55/255.",
-                  @"twoR", @"150/255.", @"twoB", @"5/255.", @"twoG", @"155/255.",
-                  @"threeR", @"150/255.", @"threeB", @"200/255.", @"threeG", @"255/255.",
-                  @"fourR", @"50/255.", @"fourB", @"200/255.", @"fourG", @"255/255.",
-                  @"fiveR", @"150/255.", @"fiveB", @"2/255.", @"fiveG", @"155/255.",
-                  @"sixR", @"250/255.", @"sixB", @"20/255.", @"sixG", @"55/255.",
-                  @"sevenR", @"150/255.", @"sevenB", @"200/255.", @"sevenG", @"155/255.",
-                  @"eightR", @"150/255.", @"eightB", @"210/255.", @"eightG", @"55/255.",
-                  @"nineR", @"50/255.", @"nineB", @"20/255.", @"nineG", @"55/255.",
-                  @"dotR", @"150/255.", @"dotB", @"100/255.", @"dotG", @"55/255.",
+                  @".1234", @"zeroR", @".213", @"zeroB", @".982", @"zeroG",
+                  @".14", @"oneR", @".99", @"oneB", @".6", @"oneG",
+                  @".5", @"twoR", @".2", @"twoB", @".4", @"twoG",
+                  @"0.", @"threeR", @".1", @"threeB", @".4", @"threeG",
+                  @"0.", @"fourR", @".9", @"fourB", @".312", @"fourG",
+                  @".12", @"fiveR", @".9", @"fiveB", @".23", @"fiveG",
+                  @".2", @"sixR", @".4", @"sixB", @".1", @"sixG",
+                  @".1", @"sevenR", @".1", @"sevenB", @".4", @"sevenG",
+                  @".8", @"eightR", @".1", @"eightB", @".4", @"eightG",
+                  @".2917", @"nineR", @".123", @"nineB", @".13", @"nineG",
+                  @".324", @"dotR", @".2398", @"dotB", @".13", @"dotG",
                   nil];
     
     ////////////////////////////////////
