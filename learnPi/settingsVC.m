@@ -81,11 +81,9 @@ UITableView *tableView;
     selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:120];
     [self.view addSubview:selectedNumLabel];
     
-    
-    colors *colorInst = [[colors alloc] init];
-    
     arr = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];
-    //colorArr = [[NSMutableArray alloc] initWithObjects:colorInst.zeroColor, colorInst.oneColor, colorInst.twoColor, colorInst.threeColor, colorInst.fourColor, colorInst.fiveColor, colorInst.sixColor, colorInst.sevenColor, colorInst.eightColor, colorInst.nineColor, colorInst.dotColor, nil];
+
+    // only if first time
     colorArr = [[NSMutableArray alloc] initWithObjects:
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"zeroR"] floatValue] green:[[colorsDict objectForKey:@"zeroG"] floatValue] blue:[[colorsDict objectForKey:@"zeroB"] floatValue] alpha:1.0f],
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"oneR"] floatValue] green:[[colorsDict objectForKey:@"oneG"] floatValue] blue:[[colorsDict objectForKey:@"oneB"] floatValue] alpha:1.0f],
@@ -245,7 +243,8 @@ UITableView *tableView;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedNum = [NSString stringWithFormat:@"%li", (long)indexPath.row];
+    //selectedNum = [NSString stringWithFormat:@"%li", (long)indexPath.row];
+    selectedNum = [NSString stringWithFormat:@"%@", [arr objectAtIndex:indexPath.row]];
     [self updateSelectedNumLabel];
     
     //UIColor *selectedColor = [[UIColor alloc] initWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
@@ -259,9 +258,8 @@ UITableView *tableView;
 }
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
-    NSLog(@"update color button pressed");
+    NSLog(@"selected num = %@", selectedNum);
     [colorArr replaceObjectAtIndex:[arr indexOfObject:selectedNum] withObject:[UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.]];
     [tableView reloadData];
-    
 }
 @end
