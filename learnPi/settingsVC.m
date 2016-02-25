@@ -253,12 +253,15 @@ UITableView *tableView;
 }
 
 
-- (IBAction)updateColorsButtonPress:(id)sender
+- (IBAction)updateColorsButtonPress:(id)sender // for saving all colors to defaults
 {
     NSLog(@"save colors button pressed");
 }
-- (IBAction)saveColorButtonPress:(id)sender
+- (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
     NSLog(@"update color button pressed");
+    [colorArr replaceObjectAtIndex:[arr indexOfObject:selectedNum] withObject:[UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.]];
+    [tableView reloadData];
+    
 }
 @end
