@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Madelyn Nelson. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "settingsVC.h"
 #import "colors.h"
 
 @implementation settingsVC
+
+NSMutableDictionary *colorsDict;
 
 CGFloat screenWidth3;
 CGFloat screenHeight3;
@@ -23,14 +26,42 @@ int num = 27; // for color picker, the bigger the slower/smoother the color pick
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
 
-
-
 UITableView *tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // get colorsDict from defaults here //////////////////////////////////
+    
+    
+    colorsDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                  @"zeroR", @"150.0f/255.0f", @"zeroB", @"200.0f/255.0f", @"zeroG", @"255.0f/255.0f",
+                  @"oneR", @"150/255.", @"oneB", @"220/255.", @"oneG", @"55/255.",
+                  @"twoR", @"150/255.", @"twoB", @"5/255.", @"twoG", @"155/255.",
+                  @"threeR", @"150/255.", @"threeB", @"200/255.", @"threeG", @"255/255.",
+                  @"fourR", @"50/255.", @"fourB", @"200/255.", @"fourG", @"255/255.",
+                  @"fiveR", @"150/255.", @"fiveB", @"2/255.", @"fiveG", @"155/255.",
+                  @"sixR", @"250/255.", @"sixB", @"20/255.", @"sixG", @"55/255.",
+                  @"sevenR", @"150/255.", @"sevenB", @"200/255.", @"sevenG", @"155/255.",
+                  @"eightR", @"150/255.", @"eightB", @"210/255.", @"eightG", @"55/255.",
+                  @"nineR", @"50/255.", @"nineB", @"20/255.", @"nineG", @"55/255.",
+                  @"dotR", @"150/255.", @"dotB", @"100/255.", @"dotG", @"55/255.",
+                  nil];
+    
+    ////////////////////////////////////
+    
+    
+    
     saturation = 26; // so selected num label color isnt gray to begin with
+    
+    
+    // colors update button stuff, doesnt work yet
+    //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
+    self.updateColorsButton.titleLabel.textColor = [UIColor whiteColor];
+    self.updateColorsButton.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:self.updateColorsButton];
+    
+    
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth3 = screenRect.size.width;
@@ -43,14 +74,30 @@ UITableView *tableView;
     selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, 100, 100)]; // find better UI spot for this label
     selectedNumLabel.text = @"";
     selectedNumLabel.textColor = [UIColor whiteColor];
-    selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:100];
+    selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:120];
     [self.view addSubview:selectedNumLabel];
     
     
     colors *colorInst = [[colors alloc] init];
     
     arr = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];
-    colorArr = [[NSMutableArray alloc] initWithObjects:colorInst.zeroColor, colorInst.oneColor, colorInst.twoColor, colorInst.threeColor, colorInst.fourColor, colorInst.fiveColor, colorInst.sixColor, colorInst.sevenColor, colorInst.eightColor, colorInst.nineColor, colorInst.dotColor, nil];
+    //colorArr = [[NSMutableArray alloc] initWithObjects:colorInst.zeroColor, colorInst.oneColor, colorInst.twoColor, colorInst.threeColor, colorInst.fourColor, colorInst.fiveColor, colorInst.sixColor, colorInst.sevenColor, colorInst.eightColor, colorInst.nineColor, colorInst.dotColor, nil];
+    colorArr = [[NSMutableArray alloc] initWithObjects:
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"zeroR"] floatValue] green:[[colorsDict objectForKey:@"zeroG"] floatValue] blue:[[colorsDict objectForKey:@"zeroB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"oneR"] floatValue] green:[[colorsDict objectForKey:@"oneG"] floatValue] blue:[[colorsDict objectForKey:@"oneB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"twoR"] floatValue] green:[[colorsDict objectForKey:@"twoG"] floatValue] blue:[[colorsDict objectForKey:@"twoB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"threeR"] floatValue] green:[[colorsDict objectForKey:@"threeG"] floatValue] blue:[[colorsDict objectForKey:@"threeB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"fourR"] floatValue] green:[[colorsDict objectForKey:@"fourG"] floatValue] blue:[[colorsDict objectForKey:@"fourB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"fiveR"] floatValue] green:[[colorsDict objectForKey:@"fiveG"] floatValue] blue:[[colorsDict objectForKey:@"fiveB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"sixR"] floatValue] green:[[colorsDict objectForKey:@"sixG"] floatValue] blue:[[colorsDict objectForKey:@"sixB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"sevenR"] floatValue] green:[[colorsDict objectForKey:@"sevenG"] floatValue] blue:[[colorsDict objectForKey:@"sevenB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"eightR"] floatValue] green:[[colorsDict objectForKey:@"eightG"] floatValue] blue:[[colorsDict objectForKey:@"eightB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"nineR"] floatValue] green:[[colorsDict objectForKey:@"nineG"] floatValue] blue:[[colorsDict objectForKey:@"nineB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict objectForKey:@"dotR"] floatValue] green:[[colorsDict objectForKey:@"dotG"] floatValue] blue:[[colorsDict objectForKey:@"dotB"] floatValue] alpha:1.0f],
+                nil];
+
+    NSLog(@"printing colors arr: %@", [colorArr description]);
+    NSLog(@"colors dict: %@", [colorsDict description]);
 
     
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*4/5, 0, screenWidth3/5, screenHeight3)];
@@ -96,6 +143,10 @@ UITableView *tableView;
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
+    //UIView *view = recognizer.view;
+    
+    //NSLog(@"tag: %lu", view.tag);
+    
     int tag = recognizer.view.tag;
     
     if (tag < num*num) // selected a color in the rainbow square
@@ -140,6 +191,7 @@ UITableView *tableView;
         v.backgroundColor = thisColor;
         
         UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                
                                                                                           action:@selector(handleSingleTap:)];
         [v addGestureRecognizer:singleFingerTap];
         v.tag = tag;
@@ -196,4 +248,9 @@ UITableView *tableView;
     
 }
 
+
+- (IBAction)updateColorsButtonPress:(id)sender {
+    
+    NSLog(@"hi");
+}
 @end

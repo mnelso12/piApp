@@ -10,4 +10,7 @@
 
 @interface settingsVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UIButton *updateColorsButton;
+- (IBAction)updateColorsButtonPress:(id)sender;
+
 @end
