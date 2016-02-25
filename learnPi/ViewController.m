@@ -61,12 +61,13 @@ NSMutableString *myPi2;
 
     
     // handle labels and stuff
-    self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
+    //self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    //self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 200, 100, 100)];
     
     [self loadBackgroundPi];
-    [self.view addSubview:self.learnPiLabel];
-    [self.view addSubview:self.highScoreLabel];
+    [self makeButtonsPretty];
+    //[self.view addSubview:self.learnPiLabel];
+    //[self.view addSubview:self.highScoreLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +75,23 @@ NSMutableString *myPi2;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)
+- (void)makeButtonsPretty
+{
+    UIColor *buttonBackgroundColor = [UIColor blackColor];
+    self.learnPiLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+    self.practiceLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+    self.playLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+    self.settingsLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+    self.highScoreLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+
+    //[self.view addSubview:self.learnPiLabel];
+    //[self.view addSubview:self.highScoreLabel];
+    //[self.view addSubview:self.settingsLabel];
+    //[self.view addSubview:self.practiceLabel];
+    //[self.view addSubview:self.playLabel];
+
+
+}
 
 - (void)loadBackgroundPi
 {
