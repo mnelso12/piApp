@@ -31,10 +31,15 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // get colorsDict from defaults here //////////////////////////////////
-    
-    // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
-    colorsDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+    // if colorsDict is in user defaults then use that copy
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
+    {
+        colorsDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"];
+    }
+    else // if colorsDict isn't in defaults (first time in app), then use this one instead
+    {
+        // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
+        colorsDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                   @".1234", @"zeroR", @".213", @"zeroB", @".982", @"zeroG",
                   @".14", @"oneR", @".99", @"oneB", @".6", @"oneG",
                   @".5", @"twoR", @".2", @"twoB", @".4", @"twoG",
@@ -47,8 +52,7 @@ UITableView *tableView;
                   @".2917", @"nineR", @".123", @"nineB", @".13", @"nineG",
                   @".324", @"dotR", @".2398", @"dotB", @".13", @"dotG",
                   nil];
-    
-    ////////////////////////////////////
+    }
     
     
     
@@ -254,11 +258,13 @@ UITableView *tableView;
 
 - (IBAction)updateColorsButtonPress:(id)sender // for saving all colors to defaults
 {
-    NSLog(@"save colors button pressed");
+    // save colorDict to defaults
+    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorsDict"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
-    NSLog(@"selected num = %@", selectedNum);
     [colorArr replaceObjectAtIndex:[arr indexOfObject:selectedNum] withObject:[UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.]];
     [tableView reloadData];
 }
