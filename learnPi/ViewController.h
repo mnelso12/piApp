@@ -16,7 +16,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *learnPiLabel;
 @property (strong, nonatomic) IBOutlet UILabel *practiceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *playLabel;
+@property (strong, nonatomic) IBOutlet UIButton *learnLabel;
+@property (strong, nonatomic) IBOutlet UIButton *playLabel;
 @property (strong, nonatomic) IBOutlet UILabel *settingsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *highScoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *piDigitsLabel;

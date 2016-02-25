@@ -10,6 +10,7 @@
 #import "practiceVC.h"
 #import "piRealShort.h"
 #import "colors.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 
@@ -77,19 +78,41 @@ NSMutableString *myPi2;
 
 - (void)makeButtonsPretty
 {
-    UIColor *buttonBackgroundColor = [UIColor blackColor];
+    UIColor *buttonBackgroundColor = [UIColor blackColor]; // this can be changed to default background color
     self.learnPiLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
+    self.learnLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
     self.practiceLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
     self.playLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
     self.settingsLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
     self.highScoreLabel.backgroundColor = [buttonBackgroundColor colorWithAlphaComponent:.8f];
 
-    //[self.view addSubview:self.learnPiLabel];
-    //[self.view addSubview:self.highScoreLabel];
-    //[self.view addSubview:self.settingsLabel];
-    //[self.view addSubview:self.practiceLabel];
-    //[self.view addSubview:self.playLabel];
+    self.learnPiLabel.layer.masksToBounds = YES;
+    self.learnLabel.layer.masksToBounds = YES;
+    self.settingsLabel.layer.masksToBounds = YES;
+    self.highScoreLabel.layer.masksToBounds = YES;
+    self.practiceLabel.layer.masksToBounds = YES;
+    self.playLabel.layer.masksToBounds = YES;
+    
+     self.learnPiLabel.layer.cornerRadius = 8;
+     self.learnLabel.layer.cornerRadius = 8;
+     self.practiceLabel.layer.cornerRadius = 8;
+     self.playLabel.layer.cornerRadius = 8;
+     self.settingsLabel.layer.cornerRadius = 8;
+     self.highScoreLabel.layer.cornerRadius = 8;
+    
+    //self.learnPiLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    self.learnLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    //self.highScoreLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    self.practiceLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    self.playLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    self.settingsLabel.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
 
+    //self.learnPiLabel.layer.borderWidth = 1.0;
+    self.learnLabel.layer.borderWidth = 1.0;
+    self.playLabel.layer.borderWidth = 1.0;
+    self.practiceLabel.layer.borderWidth = 1.0;
+    self.settingsLabel.layer.borderWidth = 1.0;
+    //self.highScoreLabel.layer.borderWidth = 1.0;
 
 }
 

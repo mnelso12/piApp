@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-mm-xoK">
-                                <rect key="frame" x="33" y="155" width="306" height="50"/>
+                                <rect key="frame" x="16" y="143" width="317" height="72"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-V5-rgC">
-                                <rect key="frame" x="72" y="238" width="190" height="63"/>
+                                <rect key="frame" x="125" y="251" width="99" height="50"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD3-6f-SsD">
-                                <rect key="frame" x="427" y="186" width="152" height="32"/>
+                                <rect key="frame" x="435" y="158" width="160" height="59"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <state key="normal" title="Practice">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,8 +46,20 @@
                                     <segue destination="rDL-AJ-NRP" kind="show" identifier="toPractice" id="g56-dD-d5n"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-E6-ytC">
+                                <rect key="frame" x="442" y="68" width="146" height="59"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
+                                <state key="normal" title="Learn">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="learnButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOD-FM-GUa"/>
+                                    <segue destination="2WO-JF-0Wv" kind="show" id="gCE-p4-EmJ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-7a-oEZ">
-                                <rect key="frame" x="427" y="272" width="167" height="39"/>
+                                <rect key="frame" x="428" y="246" width="175" height="60"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,23 +77,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-te-q4a">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="401"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-E6-ytC">
-                                <rect key="frame" x="430" y="88" width="160" height="58"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <state key="normal" title="Learn">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="learnButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOD-FM-GUa"/>
-                                    <segue destination="2WO-JF-0Wv" kind="show" id="gCE-p4-EmJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -91,9 +91,11 @@
                     <connections>
                         <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="bEb-Vq-U0A"/>
                         <outlet property="learnButtonPress" destination="Aye-E6-ytC" id="VIf-xY-yB3"/>
+                        <outlet property="learnLabel" destination="Aye-E6-ytC" id="Hed-WF-kT9"/>
                         <outlet property="learnPiLabel" destination="M94-Xu-Aux" id="rZm-jc-G7s"/>
                         <outlet property="piDigitsLabel" destination="nmn-te-q4a" id="5rq-be-N8q"/>
-                        <outlet property="playLabel" destination="Aye-E6-ytC" id="JTA-gC-B6f"/>
+                        <outlet property="playButtonPress" destination="wE7-V5-rgC" id="9Bu-D9-ufM"/>
+                        <outlet property="playLabel" destination="wE7-V5-rgC" id="m97-RI-uwT"/>
                         <outlet property="practiceButtonPress" destination="tD3-6f-SsD" id="rIr-I7-6CW"/>
                         <outlet property="practiceLabel" destination="tD3-6f-SsD" id="3Jz-zy-kS7"/>
                         <outlet property="settingsButtonPress" destination="iZi-7a-oEZ" id="enM-0o-zNL"/>
