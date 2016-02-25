@@ -21,6 +21,7 @@
 		5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA861BEAAEB700004D7F /* playVC.m */; };
 		5ABDAA8A1BEAAEC600004D7F /* learnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA891BEAAEC600004D7F /* learnVC.m */; };
 		5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA8C1BEAAED200004D7F /* settingsVC.m */; };
+		5AD39EEF1C7FAF4E00495E11 /* piRealShort.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD39EEE1C7FAF4E00495E11 /* piRealShort.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		5ABDAA891BEAAEC600004D7F /* learnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnVC.m; sourceTree = "<group>"; };
 		5ABDAA8B1BEAAED200004D7F /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
 		5ABDAA8C1BEAAED200004D7F /* settingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsVC.m; sourceTree = "<group>"; };
+		5AD39EED1C7FAF4E00495E11 /* piRealShort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = piRealShort.h; sourceTree = "<group>"; };
+		5AD39EEE1C7FAF4E00495E11 /* piRealShort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = piRealShort.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				5A4002811BF1129500AC543B /* colors.m */,
 				5A4002831BF1130100AC543B /* colors.h */,
 				5A40027F1BF108F800AC543B /* digitButton.m */,
+				5AD39EED1C7FAF4E00495E11 /* piRealShort.h */,
+				5AD39EEE1C7FAF4E00495E11 /* piRealShort.m */,
 				5A6F7CE01BF18C5000337524 /* piReal.h */,
 				5A6F7CDE1BF18C0A00337524 /* piReal.m */,
 				5ABDAA661BEAA42D00004D7F /* Main.storyboard */,
@@ -259,6 +264,7 @@
 				5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */,
 				5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */,
 				5A6F7CDF1BF18C0A00337524 /* piReal.m in Sources */,
+				5AD39EEF1C7FAF4E00495E11 /* piRealShort.m in Sources */,
 				5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */,
 				5A4002801BF108F800AC543B /* digitButton.m in Sources */,
 				5A4002821BF1129500AC543B /* colors.m in Sources */,
