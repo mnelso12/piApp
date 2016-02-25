@@ -16,8 +16,8 @@ NSMutableDictionary *colorsDict;
 
 CGFloat screenWidth3;
 CGFloat screenHeight3;
-NSArray *arr;
-NSMutableArray *colorArr;
+NSArray *arr; // array of numbers
+NSMutableArray *colorArr; // colors of each number
 UIView *selectedColorView;
 UILabel *selectedNumLabel;
 NSString *selectedNum;
@@ -60,6 +60,10 @@ UITableView *tableView;
     self.updateColorsButton.titleLabel.textColor = [UIColor whiteColor];
     self.updateColorsButton.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.updateColorsButton];
+    
+    self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
+    self.saveColorButton.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:self.saveColorButton];
     
     
     
@@ -249,8 +253,12 @@ UITableView *tableView;
 }
 
 
-- (IBAction)updateColorsButtonPress:(id)sender {
-    
-    NSLog(@"hi");
+- (IBAction)updateColorsButtonPress:(id)sender
+{
+    NSLog(@"save colors button pressed");
+}
+- (IBAction)saveColorButtonPress:(id)sender
+{
+    NSLog(@"update color button pressed");
 }
 @end

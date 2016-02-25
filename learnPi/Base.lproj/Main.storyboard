@@ -108,12 +108,22 @@
                                     <action selector="updateColorsButtonPress:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="nPg-PW-1Xg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-CI-VTg">
+                                <rect key="frame" x="47" y="271" width="92" height="30"/>
+                                <state key="normal" title="Update Color">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveColorButtonPress:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="HOl-re-OzL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="saveColorButton" destination="bqJ-CI-VTg" id="o7c-a8-CLA"/>
                         <outlet property="updateColorsButton" destination="jDy-Bo-cMX" id="k7x-TM-ZR5"/>
                     </connections>
                 </viewController>
