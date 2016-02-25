@@ -61,9 +61,6 @@ UITableView *tableView;
     
     // colors update button stuff, doesnt work yet
     //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
-    self.updateColorsButton.titleLabel.textColor = [UIColor whiteColor];
-    self.updateColorsButton.backgroundColor = [UIColor yellowColor];
-    [self.view addSubview:self.updateColorsButton];
     
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
     self.saveColorButton.backgroundColor = [UIColor orangeColor];
@@ -254,13 +251,6 @@ UITableView *tableView;
     
 }
 
-
-- (IBAction)updateColorsButtonPress:(id)sender // for saving all colors to defaults
-{
-    // save colorsDict to defaults ? now in saveColorButton
-    NSLog(@"this button does nothing");
-    
-}
 
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
