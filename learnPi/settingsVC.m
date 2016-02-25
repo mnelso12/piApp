@@ -87,7 +87,6 @@ UITableView *tableView;
     
     arr = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];
 
-    // only if first time
     colorArr = [[NSMutableArray alloc] initWithObjects:
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"zeroR"] floatValue] green:[[colorsDict objectForKey:@"zeroG"] floatValue] blue:[[colorsDict objectForKey:@"zeroB"] floatValue] alpha:1.0f],
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"oneR"] floatValue] green:[[colorsDict objectForKey:@"oneG"] floatValue] blue:[[colorsDict objectForKey:@"oneB"] floatValue] alpha:1.0f],
@@ -101,7 +100,7 @@ UITableView *tableView;
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"nineR"] floatValue] green:[[colorsDict objectForKey:@"nineG"] floatValue] blue:[[colorsDict objectForKey:@"nineB"] floatValue] alpha:1.0f],
                 [UIColor colorWithRed:[[colorsDict objectForKey:@"dotR"] floatValue] green:[[colorsDict objectForKey:@"dotG"] floatValue] blue:[[colorsDict objectForKey:@"dotB"] floatValue] alpha:1.0f],
                 nil];
-
+        
     NSLog(@"printing colors arr: %@", [colorArr description]);
     NSLog(@"colors dict: %@", [colorsDict description]);
 
@@ -258,14 +257,79 @@ UITableView *tableView;
 
 - (IBAction)updateColorsButtonPress:(id)sender // for saving all colors to defaults
 {
-    // save colorDict to defaults
-    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorsDict"];
+    // save colorsDict to defaults
+    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorDict"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
+    // update color array
     [colorArr replaceObjectAtIndex:[arr indexOfObject:selectedNum] withObject:[UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.]];
+
+    // update color dict
+    UIColor *colorToChange = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.];
+    CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha =0.0;
+    [colorToChange getRed:&red green:&green blue:&blue alpha:&alpha];
+    NSString *colorR = [NSString stringWithFormat:@"%f",red];
+    NSString *colorG = [NSString stringWithFormat:@"%f",green];
+    NSString *colorB = [NSString stringWithFormat:@"%f",blue];
+    
+    // find key in colorsDictfor this selectednum
+    //NSLog(@"selected num = %@", selectedNum);
+    NSString *wordVersionOfSelectedNum;
+    if ([selectedNum isEqualToString:@"0"])
+    {
+        wordVersionOfSelectedNum = @"zero";
+    }
+    else if ([selectedNum isEqualToString:@"1"])
+    {
+        wordVersionOfSelectedNum = @"one";
+    }
+    else if ([selectedNum isEqualToString:@"2"])
+    {
+        wordVersionOfSelectedNum = @"two";
+    }
+    else if ([selectedNum isEqualToString:@"3"])
+    {
+        wordVersionOfSelectedNum = @"three";
+    }
+    else if ([selectedNum isEqualToString:@"4"])
+    {
+        wordVersionOfSelectedNum = @"four";
+    }
+    else if ([selectedNum isEqualToString:@"5"])
+    {
+        wordVersionOfSelectedNum = @"five";
+    }
+    else if ([selectedNum isEqualToString:@"6"])
+    {
+        wordVersionOfSelectedNum = @"six";
+    }
+    else if ([selectedNum isEqualToString:@"7"])
+    {
+        wordVersionOfSelectedNum = @"seven";
+    }
+    else if ([selectedNum isEqualToString:@"8"])
+    {
+        wordVersionOfSelectedNum = @"eight";
+    }
+    else if ([selectedNum isEqualToString:@"9"])
+    {
+        wordVersionOfSelectedNum = @"nine";
+    }
+    else if ([selectedNum isEqualToString:@"."])
+    {
+        wordVersionOfSelectedNum = @"dot";
+    }
+    else
+    {
+        NSLog(@"error here!");
+    }
+
+    [colorsDict setObject:colorR forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"R"]];
+    
+    // reload table with new colors
     [tableView reloadData];
 }
 @end
