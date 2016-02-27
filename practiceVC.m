@@ -226,7 +226,7 @@ NSArray *arr2;
     colors *colorInst = [[colors alloc] init];
     CGFloat radius;
     
-    NSLog(@"screen width = %f", screenWidth);
+    //NSLog(@"screen width = %f", screenWidth);
     if (screenWidth < 568.0) // is iPhone 4 or less
     {
         radius = 30; // test this
