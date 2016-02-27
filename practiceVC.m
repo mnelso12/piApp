@@ -10,6 +10,7 @@
 #import <CoreText/CoreText.h>
 #import "piReal.h"
 #import "colors.h"
+#import "ViewController.h"
 
 @implementation practiceVC
 
@@ -98,8 +99,12 @@ BOOL isPlay;
     if (self.isMovingFromParentViewController || self.isBeingDismissed) {
         if (isPlay)
         {
+            // update high score
             [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            // make home vc reflect this new high score
+            [self.parentViewController viewDidLoad];
         }
     }
 }

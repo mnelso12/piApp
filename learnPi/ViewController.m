@@ -18,6 +18,7 @@
 
 @implementation ViewController
 
+@synthesize highScoreLabel;
 NSMutableString *myPi2;
 
 - (void)viewDidLoad {

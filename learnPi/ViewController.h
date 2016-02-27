@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+{
+    UILabel *highScoreLabel;
+}
 @property (strong, nonatomic) IBOutlet UIButton *playButtonPress;
 @property (strong, nonatomic) IBOutlet UIButton *practiceButtonPress;
 @property (strong, nonatomic) IBOutlet UIButton *learnButtonPress;
