@@ -22,6 +22,8 @@ NSMutableArray *CGcolorArr3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"in learn VC");
+    
     colors *colorInst = [[colors alloc] init];
     
     // start with colors from defaults
@@ -126,8 +128,6 @@ NSMutableArray *CGcolorArr3;
 
 - (void)loadPiLabel
 {
-    colors *colorInst = [[colors alloc] init];
-
     //self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     self.piLabel.text = @"pi!!!";
     self.piLabel.font = [UIFont fontWithName:@"Verdana" size:20];
@@ -178,8 +178,6 @@ NSMutableArray *CGcolorArr3;
     [[NSMutableAttributedString alloc]
      initWithAttributedString: self.piLabel.attributedText];
     
-    colors *colorInst = [[colors alloc] init];
-    
     int count = 0;
     while(count < (int)[myPi length])
     {
@@ -204,7 +202,7 @@ NSMutableArray *CGcolorArr3;
         }
         else if ([tempStr isEqualToString:@"3"])
         {
-            NSLog(@"count = %i", count);
+            //NSLog(@"count = %i", count);
             [text addAttribute:NSForegroundColorAttributeName
                          value:[colorArr3 objectAtIndex:3]
                          range:NSMakeRange(count,1)];

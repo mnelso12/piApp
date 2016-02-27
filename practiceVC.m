@@ -31,6 +31,8 @@ NSArray *arr2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     NSLog(@"in practice VC");
+    
     // start with colors, coordinate with defaults
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
     {
@@ -468,9 +470,7 @@ NSArray *arr2;
 }
 
 - (void) updatePiColors
-{
-    colors *colorInst = [[colors alloc] init];
-    
+{    
     NSMutableAttributedString *text =
     [[NSMutableAttributedString alloc]
      initWithAttributedString: self.piLabel.attributedText];

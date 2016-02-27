@@ -13,7 +13,6 @@
 @implementation settingsVC
 
 NSMutableDictionary *colorsDict;
-
 CGFloat screenWidth3;
 CGFloat screenHeight3;
 NSArray *arr; // array of numbers
@@ -31,10 +30,14 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     NSLog(@"in settings VC");
+    
     // if colorsDict is in user defaults then use that copy
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
     {
-        colorsDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"];
+        NSDictionary *tempColorsDict2 = [[NSDictionary alloc] init];
+        tempColorsDict2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"];
+        colorsDict = [tempColorsDict2 mutableCopy];
     }
     else // if colorsDict isn't in defaults (first time in app), then use this one instead
     {
@@ -317,11 +320,15 @@ UITableView *tableView;
         NSLog(@"error here!");
     }
 
+    
     [colorsDict setObject:colorR forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"R"]];
     [colorsDict setObject:colorG forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"G"]];
     [colorsDict setObject:colorB forKey:[NSString stringWithFormat:@"%@%@",wordVersionOfSelectedNum, @"B"]];
     
-    [[NSUserDefaults standardUserDefaults] setObject:colorsDict forKey:@"ColorsDict"];
+    // because defaults can only store non-mutable types
+    NSDictionary *tempColorsDict = [NSDictionary dictionaryWithDictionary:colorsDict];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:tempColorsDict forKey:@"ColorsDict"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // reload table with new colors
