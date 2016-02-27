@@ -11,6 +11,7 @@
 #import "piReal.h"
 #import "colors.h"
 #import "ViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation practiceVC
 
@@ -22,9 +23,58 @@ NSString *piRealString;
 colors *colorInst;
 NSString *highScore;
 BOOL isPlay;
+NSMutableDictionary *colorsDict2;
+NSMutableArray *colorArr2;
+NSMutableArray *CGcolorArr2;
+NSArray *arr2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // start with colors, coordinate with defaults
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
+    {
+        colorsDict2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"];
+    }
+    else // if colorsDict isn't in defaults (first time in app), then use this one instead
+    {
+        // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
+        colorsDict2 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                      @".1234", @"zeroR", @".213", @"zeroB", @".982", @"zeroG",
+                      @".14", @"oneR", @".99", @"oneB", @".6", @"oneG",
+                      @".5", @"twoR", @".2", @"twoB", @".4", @"twoG",
+                      @"0.", @"threeR", @".1", @"threeB", @".4", @"threeG",
+                      @"0.", @"fourR", @".9", @"fourB", @".312", @"fourG",
+                      @".12", @"fiveR", @".9", @"fiveB", @".23", @"fiveG",
+                      @".2", @"sixR", @".4", @"sixB", @".1", @"sixG",
+                      @".1", @"sevenR", @".1", @"sevenB", @".4", @"sevenG",
+                      @".8", @"eightR", @".1", @"eightB", @".4", @"eightG",
+                      @".2917", @"nineR", @".123", @"nineB", @".13", @"nineG",
+                      @".324", @"dotR", @".2398", @"dotB", @".13", @"dotG",
+                      nil];
+    }
+
+    arr2 = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];
+    
+    colorArr2 = [[NSMutableArray alloc] initWithObjects:
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"zeroR"] floatValue] green:[[colorsDict2 objectForKey:@"zeroG"] floatValue] blue:[[colorsDict2 objectForKey:@"zeroB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"oneR"] floatValue] green:[[colorsDict2 objectForKey:@"oneG"] floatValue] blue:[[colorsDict2 objectForKey:@"oneB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"twoR"] floatValue] green:[[colorsDict2 objectForKey:@"twoG"] floatValue] blue:[[colorsDict2 objectForKey:@"twoB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"threeR"] floatValue] green:[[colorsDict2 objectForKey:@"threeG"] floatValue] blue:[[colorsDict2 objectForKey:@"threeB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"fourR"] floatValue] green:[[colorsDict2 objectForKey:@"fourG"] floatValue] blue:[[colorsDict2 objectForKey:@"fourB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"fiveR"] floatValue] green:[[colorsDict2 objectForKey:@"fiveG"] floatValue] blue:[[colorsDict2 objectForKey:@"fiveB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"sixR"] floatValue] green:[[colorsDict2 objectForKey:@"sixG"] floatValue] blue:[[colorsDict2 objectForKey:@"sixB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"sevenR"] floatValue] green:[[colorsDict2 objectForKey:@"sevenG"] floatValue] blue:[[colorsDict2 objectForKey:@"sevenB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"eightR"] floatValue] green:[[colorsDict2 objectForKey:@"eightG"] floatValue] blue:[[colorsDict2 objectForKey:@"eightB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"nineR"] floatValue] green:[[colorsDict2 objectForKey:@"nineG"] floatValue] blue:[[colorsDict2 objectForKey:@"nineB"] floatValue] alpha:1.0f],
+                [UIColor colorWithRed:[[colorsDict2 objectForKey:@"dotR"] floatValue] green:[[colorsDict2 objectForKey:@"dotG"] floatValue] blue:[[colorsDict2 objectForKey:@"dotB"] floatValue] alpha:1.0f],
+                nil];
+    
+    CGcolorArr2 = [[NSMutableArray alloc] init];
+    for (UIColor *color in colorArr2)
+    {
+        [CGcolorArr2 addObject:(id)color.CGColor];
+    }
     
     // remember what button (practice or play) sent it here
     NSLog(@"came from %@ button", self.prevVC);
@@ -147,6 +197,7 @@ BOOL isPlay;
     self.currentDigitLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.currentDigitLabel];
     
+    /*
     // strikes (for play only)
     self.strikesLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-100,120+(screenWidth/10-50),200,50)];
     self.strikesLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
@@ -155,6 +206,7 @@ BOOL isPlay;
     self.strikesLabel.layer.masksToBounds = YES;
     self.strikesLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.strikesLabel];
+     */
 }
 
 - (bool)isDigitCorrect:(NSString *)input
@@ -244,7 +296,7 @@ BOOL isPlay;
     // upper row
     // 0 button
     self.zeroView = [[UIView alloc] initWithFrame:CGRectMake(.5*upperSpace+radius+upperSpace, upperHeight, diameter, diameter)];
-    self.zeroView.layer.borderColor = colorInst.zeroColor.CGColor;
+    self.zeroView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:0]);
     self.zeroView.layer.borderWidth = 2.0f;
     self.zeroView.layer.cornerRadius = radius;
     [self.zeroView addGestureRecognizer:singleFingerTapZero];
@@ -252,13 +304,13 @@ BOOL isPlay;
     self.zeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.zeroLabel.text = @"0";
     self.zeroLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.zeroLabel.textColor = colorInst.zeroColor;
+    self.zeroLabel.textColor = [colorArr2 objectAtIndex:0];
     self.zeroLabel.textAlignment = NSTextAlignmentCenter;
     [self.zeroView addSubview:self.zeroLabel];
     
     // 1 button
     self.oneView = [[UIView alloc] initWithFrame:CGRectMake(.5*upperSpace+radius+2*upperSpace+diameter, upperHeight, diameter, diameter)];
-    self.oneView.layer.borderColor = colorInst.oneColor.CGColor;
+    self.oneView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:1]);
     self.oneView.layer.borderWidth = 2.0f;
     self.oneView.layer.cornerRadius = radius;
     [self.oneView addGestureRecognizer:singleFingerTapOne];
@@ -266,14 +318,14 @@ BOOL isPlay;
     self.oneLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.oneLabel.text = @"1";
     self.oneLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.oneLabel.textColor = colorInst.oneColor;
+    self.oneLabel.textColor = [colorArr2 objectAtIndex:1];
     self.oneLabel.textAlignment = NSTextAlignmentCenter;
     [self.oneView addSubview:self.oneLabel];
 
     
     // 2 button
     self.twoView = [[UIView alloc] initWithFrame:CGRectMake(.5*upperSpace+radius+3*upperSpace+2*diameter, upperHeight, diameter, diameter)];
-    self.twoView.layer.borderColor = colorInst.twoColor.CGColor;
+    self.twoView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:2]);
     self.twoView.layer.borderWidth = 2.0f;
     self.twoView.layer.cornerRadius = radius;
     [self.twoView addGestureRecognizer:singleFingerTapTwo];
@@ -281,13 +333,13 @@ BOOL isPlay;
     self.twoLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.twoLabel.text = @"2";
     self.twoLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.twoLabel.textColor = colorInst.twoColor;
+    self.twoLabel.textColor = [colorArr2 objectAtIndex:2];
     self.twoLabel.textAlignment = NSTextAlignmentCenter;
     [self.twoView addSubview:self.twoLabel];
     
     // 3 button
     self.threeView = [[UIView alloc] initWithFrame:CGRectMake(.5*upperSpace+radius+4*upperSpace+3*diameter, upperHeight, diameter, diameter)];
-    self.threeView.layer.borderColor = colorInst.threeColor.CGColor;
+    self.threeView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:3]);
     self.threeView.layer.borderWidth = 2.0f;
     self.threeView.layer.cornerRadius = radius;
     [self.threeView addGestureRecognizer:singleFingerTapThree];
@@ -295,13 +347,13 @@ BOOL isPlay;
     self.threeLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.threeLabel.text = @"3";
     self.threeLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.threeLabel.textColor = colorInst.threeColor;
+    self.threeLabel.textColor = [colorArr2 objectAtIndex:3];
     self.threeLabel.textAlignment = NSTextAlignmentCenter;
     [self.threeView addSubview:self.threeLabel];
     
     // 4 button
     self.fourView = [[UIView alloc] initWithFrame:CGRectMake(.5*upperSpace+radius+5*upperSpace+4*diameter, upperHeight, diameter, diameter)];
-    self.fourView.layer.borderColor = colorInst.fourColor.CGColor;
+    self.fourView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:4]);
     self.fourView.layer.borderWidth = 2.0f;
     self.fourView.layer.cornerRadius = radius;
     [self.fourView addGestureRecognizer:singleFingerTapFour];
@@ -309,7 +361,7 @@ BOOL isPlay;
     self.fourLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.fourLabel.text = @"4";
     self.fourLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.fourLabel.textColor = colorInst.fourColor;
+    self.fourLabel.textColor = [colorArr2 objectAtIndex:4];
     self.fourLabel.textAlignment = NSTextAlignmentCenter;
     [self.fourView addSubview:self.fourLabel];
     
@@ -317,7 +369,7 @@ BOOL isPlay;
     
     // 5 button
     self.fiveView = [[UIView alloc] initWithFrame:CGRectMake(lowerSpace, lowerHeight, diameter, diameter)];
-    self.fiveView.layer.borderColor = colorInst.fiveColor.CGColor;
+    self.fiveView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:5]);
     self.fiveView.layer.borderWidth = 2.0f;
     self.fiveView.layer.cornerRadius = radius;
     [self.fiveView addGestureRecognizer:singleFingerTapFive];
@@ -325,13 +377,13 @@ BOOL isPlay;
     self.fiveLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.fiveLabel.text = @"5";
     self.fiveLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.fiveLabel.textColor = colorInst.fiveColor;
+    self.fiveLabel.textColor = [colorArr2 objectAtIndex:5];
     self.fiveLabel.textAlignment = NSTextAlignmentCenter;
     [self.fiveView addSubview:self.fiveLabel];
     
     // 6 button
     self.sixView = [[UIView alloc] initWithFrame:CGRectMake(2*lowerSpace+1*diameter, lowerHeight, diameter, diameter)];
-    self.sixView.layer.borderColor = colorInst.sixColor.CGColor;
+    self.sixView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:6]);
     self.sixView.layer.borderWidth = 2.0f;
     self.sixView.layer.cornerRadius = radius;
     [self.sixView addGestureRecognizer:singleFingerTapSix];
@@ -339,13 +391,13 @@ BOOL isPlay;
     self.sixLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.sixLabel.text = @"6";
     self.sixLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.sixLabel.textColor = colorInst.sixColor;
+    self.sixLabel.textColor = [colorArr2 objectAtIndex:6];
     self.sixLabel.textAlignment = NSTextAlignmentCenter;
     [self.sixView addSubview:self.sixLabel];
     
     // 7 button
     self.sevenView = [[UIView alloc] initWithFrame:CGRectMake(3*lowerSpace+2*diameter, lowerHeight, diameter, diameter)];
-    self.sevenView.layer.borderColor = colorInst.sevenColor.CGColor;
+    self.sevenView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:7]);
     self.sevenView.layer.borderWidth = 2.0f;
     self.sevenView.layer.cornerRadius = radius;
     [self.sevenView addGestureRecognizer:singleFingerTapSeven];
@@ -353,13 +405,13 @@ BOOL isPlay;
     self.sevenLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.sevenLabel.text = @"7";
     self.sevenLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.sevenLabel.textColor = colorInst.sevenColor;
+    self.sevenLabel.textColor = [colorArr2 objectAtIndex:7];
     self.sevenLabel.textAlignment = NSTextAlignmentCenter;
     [self.sevenView addSubview:self.sevenLabel];
     
     // 8 button
     self.eightView = [[UIView alloc] initWithFrame:CGRectMake(4*lowerSpace+3*diameter, lowerHeight, diameter, diameter)];
-    self.eightView.layer.borderColor = colorInst.eightColor.CGColor;
+    self.eightView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:8]);
     self.eightView.layer.borderWidth = 2.0f;
     self.eightView.layer.cornerRadius = radius;
     [self.eightView addGestureRecognizer:singleFingerTapEight];
@@ -367,13 +419,13 @@ BOOL isPlay;
     self.eightLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.eightLabel.text = @"8";
     self.eightLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.eightLabel.textColor = colorInst.eightColor;
+    self.eightLabel.textColor = [colorArr2 objectAtIndex:8];
     self.eightLabel.textAlignment = NSTextAlignmentCenter;
     [self.eightView addSubview:self.eightLabel];
     
     // 9 button
     self.nineView = [[UIView alloc] initWithFrame:CGRectMake(5*lowerSpace+4*diameter, lowerHeight, diameter, diameter)];
-    self.nineView.layer.borderColor = colorInst.nineColor.CGColor;
+    self.nineView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:9]);
     self.nineView.layer.borderWidth = 2.0f;
     self.nineView.layer.cornerRadius = radius;
     [self.nineView addGestureRecognizer:singleFingerTapNine];
@@ -381,13 +433,13 @@ BOOL isPlay;
     self.nineLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.nineLabel.text = @"9";
     self.nineLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.nineLabel.textColor = colorInst.nineColor;
+    self.nineLabel.textColor = [colorArr2 objectAtIndex:9];
     self.nineLabel.textAlignment = NSTextAlignmentCenter;
     [self.nineView addSubview:self.nineLabel];
     
     // . button
     self.dotView = [[UIView alloc] initWithFrame:CGRectMake(6*lowerSpace+5*diameter, lowerHeight, diameter, diameter)];
-    self.dotView.layer.borderColor = colorInst.dotColor.CGColor;
+    self.dotView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:10]);
     self.dotView.layer.borderWidth = 2.0f;
     self.dotView.layer.cornerRadius = radius;
     [self.dotView addGestureRecognizer:singleFingerTapDot];
@@ -395,7 +447,7 @@ BOOL isPlay;
     self.dotLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.dotLabel.text = @".";
     self.dotLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.dotLabel.textColor = colorInst.dotColor;
+    self.dotLabel.textColor = [colorArr2 objectAtIndex:10];
     self.dotLabel.textAlignment = NSTextAlignmentCenter;
     [self.dotView addSubview:self.dotLabel];
    
@@ -430,68 +482,68 @@ BOOL isPlay;
         if ([tempStr isEqualToString:@"0"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.zeroColor
+                         value:[colorArr2 objectAtIndex:0]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"1"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.oneColor
+                         value:[colorArr2 objectAtIndex:1]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"2"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.twoColor
+                         value:[colorArr2 objectAtIndex:2]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"3"])
         {
             NSLog(@"count = %i", count);
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.threeColor
+                         value:[colorArr2 objectAtIndex:3]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"4"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.fourColor
+                         value:[colorArr2 objectAtIndex:4]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"5"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.fiveColor
+                         value:[colorArr2 objectAtIndex:5]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"6"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.sixColor
+                         value:[colorArr2 objectAtIndex:6]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"7"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.sevenColor
+                         value:[colorArr2 objectAtIndex:7]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"8"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.eightColor
+                         value:[colorArr2 objectAtIndex:8]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"9"])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.nineColor
+                         value:[colorArr2 objectAtIndex:9]
                          range:NSMakeRange(count,1)];
         }
         else if ([tempStr isEqualToString:@"."])
         {
             [text addAttribute:NSForegroundColorAttributeName
-                         value:colorInst.dotColor
+                         value:[colorArr2 objectAtIndex:10]
                          range:NSMakeRange(count,1)];
         }
         else
@@ -510,48 +562,48 @@ BOOL isPlay;
 - (void)recolorViews
 {
     self.zeroView.backgroundColor = [UIColor clearColor];
-    self.zeroView.layer.borderColor = colorInst.zeroColor.CGColor;
-    self.zeroLabel.textColor = colorInst.zeroColor;
+    self.zeroView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:0]);
+    self.zeroLabel.textColor = [colorArr2 objectAtIndex:0];
     
     self.oneView.backgroundColor = [UIColor clearColor];
-    self.oneView.layer.borderColor = colorInst.oneColor.CGColor;
-    self.oneLabel.textColor = colorInst.oneColor;
+    self.oneView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:1]);
+    self.oneLabel.textColor = [colorArr2 objectAtIndex:1];
     
     self.twoView.backgroundColor = [UIColor clearColor];
-    self.twoView.layer.borderColor = colorInst.twoColor.CGColor;
-    self.twoLabel.textColor = colorInst.twoColor;
+    self.twoView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:2]);
+    self.twoLabel.textColor = [colorArr2 objectAtIndex:2];
     
     self.threeView.backgroundColor = [UIColor clearColor];
-    self.threeView.layer.borderColor = colorInst.threeColor.CGColor;
-    self.threeLabel.textColor = colorInst.threeColor;
+    self.threeView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:3]);
+    self.threeLabel.textColor = [colorArr2 objectAtIndex:3];
     
     self.fourView.backgroundColor = [UIColor clearColor];
-    self.fourView.layer.borderColor = colorInst.fourColor.CGColor;
-    self.fourLabel.textColor = colorInst.fourColor;
+    self.fourView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:4]);
+    self.fourLabel.textColor = [colorArr2 objectAtIndex:4];
     
     self.fiveView.backgroundColor = [UIColor clearColor];
-    self.fiveView.layer.borderColor = colorInst.fiveColor.CGColor;
-    self.fiveLabel.textColor = colorInst.fiveColor;
+    self.fiveView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:5]);
+    self.fiveLabel.textColor = [colorArr2 objectAtIndex:5];
     
     self.sixView.backgroundColor = [UIColor clearColor];
-    self.sixView.layer.borderColor = colorInst.sixColor.CGColor;
-    self.sixLabel.textColor = colorInst.sixColor;
+    self.sixView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:6]);
+    self.sixLabel.textColor = [colorArr2 objectAtIndex:6];
     
     self.sevenView.backgroundColor = [UIColor clearColor];
-    self.sevenView.layer.borderColor = colorInst.sevenColor.CGColor;
-    self.sevenLabel.textColor = colorInst.sevenColor;
+    self.sevenView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:7]);
+    self.sevenLabel.textColor = [colorArr2 objectAtIndex:7];
     
     self.eightView.backgroundColor = [UIColor clearColor];
-    self.eightView.layer.borderColor = colorInst.eightColor.CGColor;
-    self.eightLabel.textColor = colorInst.eightColor;
+    self.eightView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:8]);
+    self.eightLabel.textColor = [colorArr2 objectAtIndex:8];
     
     self.nineView.backgroundColor = [UIColor clearColor];
-    self.nineView.layer.borderColor = colorInst.nineColor.CGColor;
-    self.nineLabel.textColor = colorInst.nineColor;
+    self.nineView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:9]);
+    self.nineLabel.textColor = [colorArr2 objectAtIndex:9];
     
     self.dotView.backgroundColor = [UIColor clearColor];
-    self.dotView.layer.borderColor = colorInst.dotColor.CGColor;
-    self.dotLabel.textColor = colorInst.dotColor;
+    self.dotView.layer.borderColor = (__bridge CGColorRef)([CGcolorArr2 objectAtIndex:10]);
+    self.dotLabel.textColor = [colorArr2 objectAtIndex:10];
 
     
 }
@@ -559,7 +611,7 @@ BOOL isPlay;
 -(void) handleSingleTapZero:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.zeroView.backgroundColor = colorInst.zeroColor;
+    self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
     self.zeroLabel.textColor = colorInst.playBackgroundColor;
     self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"0"])
@@ -573,7 +625,7 @@ BOOL isPlay;
 -(void) handleSingleTapOne:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.oneView.backgroundColor = colorInst.oneColor;
+    self.oneView.backgroundColor = [colorArr2 objectAtIndex:1];
     self.oneLabel.textColor = colorInst.playBackgroundColor; // use black or white????????
     self.oneView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"1"])
@@ -587,7 +639,7 @@ BOOL isPlay;
 -(void) handleSingleTapTwo:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.twoView.backgroundColor = colorInst.twoColor;
+    self.twoView.backgroundColor = [colorArr2 objectAtIndex:2];
     self.twoLabel.textColor = colorInst.playBackgroundColor;
     self.twoView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"2"])
@@ -601,7 +653,7 @@ BOOL isPlay;
 -(void) handleSingleTapThree:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.threeView.backgroundColor = colorInst.threeColor;
+    self.threeView.backgroundColor = [colorArr2 objectAtIndex:3];
     self.threeLabel.textColor = colorInst.playBackgroundColor;
     self.threeView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"3"])
@@ -615,7 +667,7 @@ BOOL isPlay;
 -(void) handleSingleTapFour:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.fourView.backgroundColor = colorInst.fourColor;
+    self.fourView.backgroundColor = [colorArr2 objectAtIndex:4];
     self.fourLabel.textColor = colorInst.playBackgroundColor;
     self.fourView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"4"])
@@ -629,7 +681,7 @@ BOOL isPlay;
 -(void) handleSingleTapFive:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.fiveView.backgroundColor = colorInst.fiveColor;
+    self.fiveView.backgroundColor = [colorArr2 objectAtIndex:5];
     self.fiveLabel.textColor = colorInst.playBackgroundColor;
     self.fiveView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"5"])
@@ -643,7 +695,7 @@ BOOL isPlay;
 -(void) handleSingleTapSix:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.sixView.backgroundColor = colorInst.sixColor;
+    self.sixView.backgroundColor = [colorArr2 objectAtIndex:6];
     self.sixLabel.textColor = colorInst.playBackgroundColor;
     self.sixView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"6"])
@@ -657,7 +709,7 @@ BOOL isPlay;
 -(void) handleSingleTapSeven:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.sevenView.backgroundColor = colorInst.sevenColor;
+    self.sevenView.backgroundColor = [colorArr2 objectAtIndex:7];
     self.sevenLabel.textColor = colorInst.playBackgroundColor;
     self.sevenView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"7"])
@@ -671,7 +723,7 @@ BOOL isPlay;
 -(void) handleSingleTapEight:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.eightView.backgroundColor = colorInst.eightColor;
+    self.eightView.backgroundColor = [colorArr2 objectAtIndex:8];
     self.eightLabel.textColor = colorInst.playBackgroundColor;
     self.eightView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"8"])
@@ -685,7 +737,7 @@ BOOL isPlay;
 -(void) handleSingleTapNine:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.nineView.backgroundColor = colorInst.nineColor;
+    self.nineView.backgroundColor = [colorArr2 objectAtIndex:9];
     self.nineLabel.textColor = colorInst.playBackgroundColor;
     self.nineView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"9"])
@@ -699,7 +751,7 @@ BOOL isPlay;
 -(void) handleSingleTapDot:(UITapGestureRecognizer *)gr
 {
     [self recolorViews];
-    self.dotView.backgroundColor = colorInst.dotColor;
+    self.dotView.backgroundColor = [colorArr2 objectAtIndex:10];
     self.dotLabel.textColor = colorInst.playBackgroundColor;
     self.dotView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"."])
