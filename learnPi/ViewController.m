@@ -33,12 +33,15 @@ NSMutableString *myPi2;
     
     // if high score is null, set to 0
     NSString *highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
-    if ([highScore isEqualToString:nil])
+    if (highScore == nil)
     {
-        NSLog(@"high score is nil, making it 0");
+        NSLog(@"here instead");
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"HighScore"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        highScore = @"0";
+        
     }
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
 
     // make navigation bar transparent
     self.navigationController.navigationBar.translucent = YES;

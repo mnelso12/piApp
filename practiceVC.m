@@ -20,12 +20,23 @@ CGFloat screenHeight;
 NSString *piRealString;
 colors *colorInst;
 NSString *highScore;
+BOOL isPlay;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // remember what button (practice or play) sent it here
     NSLog(@"came from %@ button", self.prevVC);
     [self setTitle:self.prevVC];
+    if ([self.prevVC isEqualToString:@"Play"])
+    {
+        isPlay = true;
+    }
+    else
+    {
+        isPlay = false;
+    }
+    
     
     pi = @"";
     
@@ -39,7 +50,7 @@ NSString *highScore;
     
     // should never be nil, start with it equalling the default high score
     highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
-    if (highScore == (id)[NSNull null])
+    if (highScore == nil)
     {
         NSLog(@"SHOULD NEVER BE IN HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         highScore = @"0";
@@ -71,6 +82,7 @@ NSString *highScore;
 {
     self.piLabel.text = pi;
     [self updateCurrentDigit];
+    [self updateHighScore];
     [self updatePiColors];
 }
 
@@ -80,9 +92,28 @@ NSString *highScore;
     self.currentDigitLabel.text = [NSString stringWithFormat:@"%@%d", @"Current Digit: ", currentDigit];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+        if (isPlay)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
+}
+
 - (void)updateHighScore
 {
-    // fill this in
+    NSLog(@"current = %i, high score = %@, isPlay = %i", currentDigit, highScore, isPlay);
+    if ((currentDigit > [highScore intValue]) && (isPlay))
+    {
+        highScore = [NSString stringWithFormat:@"%i",currentDigit];
+        NSLog(@"updating high score now");
+    }
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
+    NSLog(@"new high score: %@", highScore);
 }
 
 - (void)loadScoreLabels
