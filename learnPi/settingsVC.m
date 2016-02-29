@@ -129,6 +129,18 @@ UITableView *tableView;
     brightness = 39.;
     [self colorPicker];
     [self grayScale];
+    
+    
+    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    self.groupsTextField.inputAccessoryView = keyboardDoneButtonView;
+    self.groupsTextField.backgroundColor = [UIColor darkGrayColor];
+    self.groupsTextField.textColor = [UIColor whiteColor];
 }
 
 - (void)colorPicker
@@ -349,4 +361,49 @@ UITableView *tableView;
     // reload table with new colors
     [tableView reloadData];
 }
+
+- (IBAction)digitTextFieldEdited:(id)sender
+{ // do i need this?
+    self.groupsTextField = (UITextField*)sender;
+}
+
+- (IBAction)editingDidEndOnExit:(id)sender
+{
+    // NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
+    [sender resignFirstResponder];
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    NSLog(@"called should end editing");
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (IBAction)doneClicked:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    
+    //NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
+    /*
+    if ([self isGotoDigitPossible:self.digitTextField.text])
+    {
+        NSLog(@"can goto here");
+        [self gotoDigit:[self.digitTextField.text intValue]];
+    }
+    else
+    {
+        NSLog(@"cant goto that ridiculous number");
+    }
+     */
+    
+    [self.view endEditing:YES];
+}
+
+
 @end
