@@ -66,7 +66,7 @@ UITableView *tableView;
     //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
     
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
-    self.saveColorButton.backgroundColor = [UIColor orangeColor];
+    self.saveColorButton.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.saveColorButton];
     
     
@@ -258,6 +258,12 @@ UITableView *tableView;
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
     // update color array
+    NSLog(@"no number selected yet");
+    if (selectedNum == nil)
+    {
+        return;
+    }
+    
     [colorArr replaceObjectAtIndex:[arr indexOfObject:selectedNum] withObject:[UIColor colorWithHue:(1./num)*hue saturation:(1./num)*saturation brightness:(1./num)*brightness alpha:1.]];
 
     // update color dict
