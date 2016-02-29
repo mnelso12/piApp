@@ -76,7 +76,9 @@ NSMutableArray *CGcolorArr3;
     
     
     piReal *piInst = [[piReal alloc] init];
-    myPi = piInst.piMutString;
+    NSString *piMutableString = piInst.piMutString;
+    piMutableString = [NSString stringWithFormat:@"%@%@",@"3.",piMutableString]; // because the piReal starts at 1415926...
+    myPi = piMutableString.mutableCopy;
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth2 = screenRect.size.width;
