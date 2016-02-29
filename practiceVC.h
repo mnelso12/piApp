@@ -45,4 +45,8 @@
 @property (strong, nonatomic) IBOutlet UIView *nineView;
 @property (strong, nonatomic) IBOutlet UIView *dotView;
 
+@property (strong, nonatomic) UIColor *back1;
+@property (strong, nonatomic) UIColor *back2;
+@property (strong, nonatomic) UIColor *back3;
+
 @end

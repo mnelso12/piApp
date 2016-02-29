@@ -196,7 +196,9 @@
                         <outlet property="back1Button" destination="8UD-2w-M0c" id="fin-Cr-8tn"/>
                         <outlet property="back2Button" destination="Glm-Yr-XHq" id="JLJ-s6-Msj"/>
                         <outlet property="back3Button" destination="L2n-5c-LM1" id="CuG-zy-TD8"/>
+                        <outlet property="backgroundLabel" destination="WgR-xC-Wnb" id="aEI-lJ-565"/>
                         <outlet property="groupsTextField" destination="GeL-AZ-7Ld" id="OyE-Oe-qag"/>
+                        <outlet property="learnInGroupsLabel" destination="X5c-AA-fiJ" id="oPW-kI-1Xc"/>
                         <outlet property="saveColorButton" destination="bqJ-CI-VTg" id="o7c-a8-CLA"/>
                     </connections>
                 </viewController>

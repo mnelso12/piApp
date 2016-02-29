@@ -28,11 +28,34 @@ NSMutableArray *colorArr2;
 NSMutableArray *CGcolorArr2;
 NSArray *arr2;
 NSMutableArray *selectedNums;
+//UIColor *back1;
+//UIColor *back2;
+//UIColor *back3;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
      NSLog(@"in practice VC");
+    
+    
+    self.back1 = [[UIColor alloc] init];
+    self.back2 = [[UIColor alloc] init];
+    self.back3 = [[UIColor alloc] init];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"])
+    {
+        NSLog(@"something wrong with background color in user defaults");
+    }
+    else
+    {
+        NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"];
+        self.back1 = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor2"];
+        self.back2 = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor3"];
+        self.back3 = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    }
+    
     
     // start with colors, coordinate with defaults
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
@@ -114,7 +137,7 @@ NSMutableArray *selectedNums;
     [self loadKeypad];
     [self initializePiLabel];
     
-    self.view.backgroundColor = colorInst.playBackgroundColor;
+    self.view.backgroundColor = self.back2;
     
     piReal *piInst = [[piReal alloc] init];
     piRealString = piInst.piString;
@@ -129,8 +152,8 @@ NSMutableArray *selectedNums;
                                                                   action:@selector(doneClicked:)];
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
     self.digitTextField.inputAccessoryView = keyboardDoneButtonView;
-    self.digitTextField.backgroundColor = [UIColor darkGrayColor];
-    self.digitTextField.textColor = [UIColor whiteColor];
+    self.digitTextField.backgroundColor = self.back1;
+    self.digitTextField.textColor = self.back3;
     
 }
 
@@ -138,7 +161,7 @@ NSMutableArray *selectedNums;
 {
     self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(30,50,screenWidth-60,70)];
     self.piLabel.font = [UIFont fontWithName:@"Verdana" size:60];
-    self.piLabel.backgroundColor = [UIColor grayColor];
+    self.piLabel.backgroundColor = self.back1;
     self.piLabel.lineBreakMode = NSLineBreakByTruncatingHead;
     self.piLabel.layer.cornerRadius = 10.0f;
     self.piLabel.layer.masksToBounds = YES;
@@ -199,8 +222,7 @@ NSMutableArray *selectedNums;
     self.highScoreLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
     self.highScoreLabel.layer.cornerRadius = 10.0f;
-    self.highScoreLabel.textColor = [UIColor whiteColor];
-    //self.highScoreLabel.backgroundColor = [UIColor grayColor];
+    self.highScoreLabel.textColor = self.back3;
     self.highScoreLabel.layer.masksToBounds = YES;
     self.highScoreLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.highScoreLabel];
@@ -211,13 +233,13 @@ NSMutableArray *selectedNums;
     self.currentDigitLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.currentDigitLabel.text = @"Current Digit: 0";
     self.currentDigitLabel.layer.cornerRadius = 10.0f;
-    self.currentDigitLabel.textColor = [UIColor whiteColor];
-    //self.currentDigitLabel.backgroundColor = [UIColor grayColor];
+    self.currentDigitLabel.textColor = self.back3;
     self.currentDigitLabel.layer.masksToBounds = YES;
     self.currentDigitLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.currentDigitLabel];
     
     // goto digit label & text field
+    self.gotoDigitLabel.textColor = self.back3;
     
     
     /*
@@ -650,14 +672,14 @@ NSMutableArray *selectedNums;
     }
 
     self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
-    self.zeroLabel.textColor = colorInst.playBackgroundColor;
-    self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.zeroLabel.textColor = self.back2;
+    self.zeroView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"0"])
     {
         [self recolorViews];
         self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
-        self.zeroLabel.textColor = colorInst.playBackgroundColor;
-        self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.zeroLabel.textColor = self.back2;
+        self.zeroView.layer.borderColor = self.back2.CGColor;
         NSLog(@"0 is correct");
         pi = [pi stringByAppendingString:@"0"];
         [self updatePiLabel];
@@ -673,14 +695,14 @@ NSMutableArray *selectedNums;
     }
 
     self.oneView.backgroundColor = [colorArr2 objectAtIndex:1];
-    self.oneLabel.textColor = colorInst.playBackgroundColor; // use black or white????????
-    self.oneView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.oneLabel.textColor = self.back2;
+    self.oneView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"1"])
     {
         [self recolorViews];
         self.oneView.backgroundColor = [colorArr2 objectAtIndex:1];
-        self.oneLabel.textColor = colorInst.playBackgroundColor; // use black or white????????
-        self.oneView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.oneLabel.textColor = self.back2;
+        self.oneView.layer.borderColor = self.back2.CGColor;
         NSLog(@"1 is correct");
         pi = [pi stringByAppendingString:@"1"];
         [self updatePiLabel];
@@ -695,14 +717,14 @@ NSMutableArray *selectedNums;
     }
 
     self.twoView.backgroundColor = [colorArr2 objectAtIndex:2];
-    self.twoLabel.textColor = colorInst.playBackgroundColor;
-    self.twoView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.twoLabel.textColor = self.back2;
+    self.twoView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"2"])
     {
         [self recolorViews];
         self.twoView.backgroundColor = [colorArr2 objectAtIndex:2];
-        self.twoLabel.textColor = colorInst.playBackgroundColor;
-        self.twoView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.twoLabel.textColor = self.back2;
+        self.twoView.layer.borderColor = self.back2.CGColor;
         NSLog(@"2 is correct");
     pi = [pi stringByAppendingString:@"2"];
     [self updatePiLabel];
@@ -717,14 +739,14 @@ NSMutableArray *selectedNums;
     }
 
     self.threeView.backgroundColor = [colorArr2 objectAtIndex:3];
-    self.threeLabel.textColor = colorInst.playBackgroundColor;
-    self.threeView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.threeLabel.textColor = self.back2;
+    self.threeView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"3"])
     {
         [self recolorViews];
         self.threeView.backgroundColor = [colorArr2 objectAtIndex:3];
-        self.threeLabel.textColor = colorInst.playBackgroundColor;
-        self.threeView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.threeLabel.textColor = self.back2;
+        self.threeView.layer.borderColor = self.back2.CGColor;
 
         NSLog(@"3 is correct");
     pi = [pi stringByAppendingString:@"3"];
@@ -740,14 +762,14 @@ NSMutableArray *selectedNums;
     }
 
     self.fourView.backgroundColor = [colorArr2 objectAtIndex:4];
-    self.fourLabel.textColor = colorInst.playBackgroundColor;
-    self.fourView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.fourLabel.textColor = self.back2;
+    self.fourView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"4"])
     {
         [self recolorViews];
         self.fourView.backgroundColor = [colorArr2 objectAtIndex:4];
-        self.fourLabel.textColor = colorInst.playBackgroundColor;
-        self.fourView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.fourLabel.textColor = self.back2;
+        self.fourView.layer.borderColor = self.back2.CGColor;
         NSLog(@"4 is correct");
     pi = [pi stringByAppendingString:@"4"];
     [self updatePiLabel];
@@ -762,14 +784,14 @@ NSMutableArray *selectedNums;
     }
 
     self.fiveView.backgroundColor = [colorArr2 objectAtIndex:5];
-    self.fiveLabel.textColor = colorInst.playBackgroundColor;
-    self.fiveView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.fiveLabel.textColor = self.back2;
+    self.fiveView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"5"])
     {
         [self recolorViews];
         self.fiveView.backgroundColor = [colorArr2 objectAtIndex:5];
-        self.fiveLabel.textColor = colorInst.playBackgroundColor;
-        self.fiveView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.fiveLabel.textColor = self.back2;
+        self.fiveView.layer.borderColor = self.back2.CGColor;
         NSLog(@"5 is correct");
     pi = [pi stringByAppendingString:@"5"];
     [self updatePiLabel];
@@ -784,14 +806,14 @@ NSMutableArray *selectedNums;
     }
 
     self.sixView.backgroundColor = [colorArr2 objectAtIndex:6];
-    self.sixLabel.textColor = colorInst.playBackgroundColor;
-    self.sixView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.sixLabel.textColor = self.back2;
+    self.sixView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"6"])
     {
         [self recolorViews];
         self.sixView.backgroundColor = [colorArr2 objectAtIndex:6];
-        self.sixLabel.textColor = colorInst.playBackgroundColor;
-        self.sixView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.sixLabel.textColor = self.back2;
+        self.sixView.layer.borderColor = self.back2.CGColor;
         NSLog(@"6 is correct");
     pi = [pi stringByAppendingString:@"6"];
     [self updatePiLabel];
@@ -806,14 +828,14 @@ NSMutableArray *selectedNums;
     }
 
     self.sevenView.backgroundColor = [colorArr2 objectAtIndex:7];
-    self.sevenLabel.textColor = colorInst.playBackgroundColor;
-    self.sevenView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.sevenLabel.textColor = self.back2;
+    self.sevenView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"7"])
     {
         [self recolorViews];
         self.sevenView.backgroundColor = [colorArr2 objectAtIndex:7];
-        self.sevenLabel.textColor = colorInst.playBackgroundColor;
-        self.sevenView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.sevenLabel.textColor = self.back2;
+        self.sevenView.layer.borderColor = self.back2.CGColor;
         NSLog(@"7 is correct");
     pi = [pi stringByAppendingString:@"7"];
     [self updatePiLabel];
@@ -828,13 +850,14 @@ NSMutableArray *selectedNums;
     }
 
     self.eightView.backgroundColor = [colorArr2 objectAtIndex:8];
-    self.eightLabel.textColor = colorInst.playBackgroundColor;
-    self.eightView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.eightLabel.textColor = self.back2;
+    self.eightView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"8"])
     {
         [self recolorViews];
         self.eightView.backgroundColor = [colorArr2 objectAtIndex:8];
-        self.eightLabel.textColor = colorInst.playBackgroundColor;
+        self.eightLabel.textColor = self.back2;
+        self.eightView.layer.borderColor = self.back2.CGColor;
         NSLog(@"8 is correct");
     pi = [pi stringByAppendingString:@"8"];
     [self updatePiLabel];
@@ -849,14 +872,14 @@ NSMutableArray *selectedNums;
     }
 
     self.nineView.backgroundColor = [colorArr2 objectAtIndex:9];
-    self.nineLabel.textColor = colorInst.playBackgroundColor;
-    self.nineView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.nineLabel.textColor = self.back2;
+    self.nineView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"9"])
     {
         [self recolorViews];
         self.nineView.backgroundColor = [colorArr2 objectAtIndex:9];
-        self.nineLabel.textColor = colorInst.playBackgroundColor;
-        self.nineView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.nineLabel.textColor = self.back2;
+        self.nineView.layer.borderColor = self.back2.CGColor;
         NSLog(@"9 is correct");
     pi = [pi stringByAppendingString:@"9"];
     [self updatePiLabel];
@@ -870,14 +893,14 @@ NSMutableArray *selectedNums;
         [self recolorViews];
     }
     self.dotView.backgroundColor = [colorArr2 objectAtIndex:10];
-    self.dotLabel.textColor = colorInst.playBackgroundColor;
-    self.dotView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    self.dotLabel.textColor = self.back2;
+    self.dotView.layer.borderColor = self.back2.CGColor;
     if ([self isDigitCorrect:@"."])
     {
         [self recolorViews];
         self.dotView.backgroundColor = [colorArr2 objectAtIndex:10];
-        self.dotLabel.textColor = colorInst.playBackgroundColor;
-        self.dotView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        self.dotLabel.textColor = self.back2;
+        self.dotView.layer.borderColor = self.back2.CGColor;
         NSLog(@". is correct");
         pi = [pi stringByAppendingString:@"."];
         [self updatePiLabel];

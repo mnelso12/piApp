@@ -21,6 +21,10 @@ UIView *selectedColorView;
 UILabel *selectedNumLabel;
 NSString *selectedNum;
 
+UIColor *back1C;
+UIColor *back2C;
+UIColor *back3C;
+
 int num = 27; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
@@ -30,7 +34,25 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     NSLog(@"in settings VC");
+    
+    back1C = [[UIColor alloc] init];
+    back2C = [[UIColor alloc] init];
+    back3C = [[UIColor alloc] init];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"])
+    {
+        NSLog(@"something wrong with background color in user defaults");
+    }
+    else
+    {
+        NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"];
+        back1C = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor2"];
+        back2C = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor3"];
+        back3C = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    }
+
+    
     
     // assuming its not null because it was set in home VC
     self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
@@ -69,6 +91,7 @@ UITableView *tableView;
     // colors update button stuff, doesnt work yet
     //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
     
+    // colors hard-coded for this
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
     self.saveColorButton.titleLabel.text = @"Update Color";
     self.saveColorButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -126,8 +149,7 @@ UITableView *tableView;
     
     [self.view addSubview:tableView];
     
-    colors *colorInst = [[colors alloc] init];
-    self.view.backgroundColor = colorInst.playBackgroundColor;
+    self.view.backgroundColor = back2C;
     // Do any additional setup after loading the view, typically from a nib.
     
     // these are here so the grayscale starts out as red
@@ -145,14 +167,18 @@ UITableView *tableView;
                                                                   action:@selector(doneClicked:)];
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
     self.groupsTextField.inputAccessoryView = keyboardDoneButtonView;
-    self.groupsTextField.backgroundColor = [UIColor darkGrayColor];
-    self.groupsTextField.textColor = [UIColor whiteColor];
+    self.groupsTextField.backgroundColor = back1C;
+    self.groupsTextField.textColor = back3C;
     
    
-    // handle background button selection colors
+    // handle background button selection colors, hard-coded
     self.back1Button.backgroundColor = [UIColor blackColor];
     self.back2Button.backgroundColor = [UIColor darkGrayColor];
     self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    
+    // make words back3
+    self.learnInGroupsLabel.textColor = back3C;
+    self.backgroundLabel.textColor = back3C;
 }
 
 - (void)colorPicker
@@ -246,8 +272,7 @@ UITableView *tableView;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    colors *colorInst = [[colors alloc] init];
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
     if (cell == nil) {
         
@@ -262,10 +287,10 @@ UITableView *tableView;
     cell.textLabel.text = [arr objectAtIndex:indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:@"Verdana" size:60];
     cell.textLabel.textColor = [colorArr objectAtIndex:indexPath.row];
-    cell.backgroundColor = colorInst.playBackgroundColor;
+    cell.backgroundColor = back2C;
     cell.textLabel.textAlignment = NSTextAlignmentCenter; // why doesn't this work????
     
-    cell.textLabel.highlightedTextColor = colorInst.playBackgroundColor;
+    cell.textLabel.highlightedTextColor = back2C;
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [colorArr objectAtIndex:indexPath.row];
     cell.selectedBackgroundView = backgroundView;

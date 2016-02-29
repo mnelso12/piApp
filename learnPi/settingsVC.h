@@ -20,5 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *back2Button;
 @property (strong, nonatomic) IBOutlet UIButton *back3Button;
 
+@property (strong, nonatomic) IBOutlet UILabel *learnInGroupsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *backgroundLabel;
 
 @end
