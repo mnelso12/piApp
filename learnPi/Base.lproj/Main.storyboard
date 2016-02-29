@@ -152,8 +152,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-2w-M0c">
-                                <rect key="frame" x="33" y="306" width="30" height="30"/>
+                                <rect key="frame" x="25" y="306" width="38" height="30"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,22 +163,28 @@
                                     <action selector="back1Pressed:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="KhL-qJ-HFr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-Yr-XHq">
+                                <rect key="frame" x="62" y="306" width="38" height="30"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back2Pressed:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="Nfj-hs-PSk"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2n-5c-LM1">
-                                <rect key="frame" x="94" y="306" width="30" height="30"/>
+                                <rect key="frame" x="100" y="306" width="38" height="30"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="3">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="back3Pressed:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="xp7-3d-qeL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glm-Yr-XHq">
-                                <rect key="frame" x="64" y="306" width="30" height="30"/>
-                                <state key="normal" title="2">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back2Pressed:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="Nfj-hs-PSk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,6 +193,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="back1Button" destination="8UD-2w-M0c" id="fin-Cr-8tn"/>
+                        <outlet property="back2Button" destination="Glm-Yr-XHq" id="JLJ-s6-Msj"/>
+                        <outlet property="back3Button" destination="L2n-5c-LM1" id="CuG-zy-TD8"/>
                         <outlet property="groupsTextField" destination="GeL-AZ-7Ld" id="OyE-Oe-qag"/>
                         <outlet property="saveColorButton" destination="bqJ-CI-VTg" id="o7c-a8-CLA"/>
                     </connections>

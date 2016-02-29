@@ -147,6 +147,12 @@ UITableView *tableView;
     self.groupsTextField.inputAccessoryView = keyboardDoneButtonView;
     self.groupsTextField.backgroundColor = [UIColor darkGrayColor];
     self.groupsTextField.textColor = [UIColor whiteColor];
+    
+   
+    // handle background button selection colors
+    self.back1Button.backgroundColor = [UIColor blackColor];
+    self.back2Button.backgroundColor = [UIColor darkGrayColor];
+    self.back3Button.backgroundColor = [UIColor darkGrayColor];
 }
 
 - (void)colorPicker
@@ -157,7 +163,7 @@ UITableView *tableView;
         for (int j=0; j<num; j++)
         {
             UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
-            
+    
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handleSingleTap:)];
 
@@ -434,11 +440,34 @@ UITableView *tableView;
 
 
 - (IBAction)back1Pressed:(id)sender {
+    self.back1Button.backgroundColor = [UIColor blackColor];
+    self.back2Button.backgroundColor = [UIColor darkGrayColor];
+    self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    
+    //[self.back1Button setTitle:@"6" forState:UIControlStateNormal];
+    //[self.back1Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28.0]];
+    //[self.back1Button.titleLabel setTextColor:[UIColor whiteColor]];
+    
+    //self.back1Button.titleLabel.textColor = [UIColor whiteColor];
+    //self.back2Button.titleLabel.textColor = [UIColor whiteColor];
+    //self.back3Button.titleLabel.textColor = [UIColor whiteColor];
+    
+    //self.back1Button.titleLabel.textColor = [UIColor lightGrayColor];
+    //self.back2Button.titleLabel.textColor = [UIColor whiteColor];
+    //self.back3Button.titleLabel.textColor = [UIColor whiteColor];
 }
 
 - (IBAction)back2Pressed:(id)sender {
+    self.back2Button.backgroundColor = [UIColor blackColor];
+    self.back1Button.backgroundColor = [UIColor darkGrayColor];
+    self.back3Button.backgroundColor = [UIColor darkGrayColor];
 }
 
 - (IBAction)back3Pressed:(id)sender {
+    
+    self.back3Button.backgroundColor = [UIColor blackColor];
+    self.back2Button.backgroundColor = [UIColor darkGrayColor];
+    self.back1Button.backgroundColor = [UIColor darkGrayColor];
+
 }
 @end

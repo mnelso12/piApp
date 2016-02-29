@@ -16,6 +16,9 @@
 - (IBAction)back1Pressed:(id)sender;
 - (IBAction)back2Pressed:(id)sender;
 - (IBAction)back3Pressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *back1Button;
+@property (strong, nonatomic) IBOutlet UIButton *back2Button;
+@property (strong, nonatomic) IBOutlet UIButton *back3Button;
 
 
 @end
