@@ -18,11 +18,13 @@ NSMutableString *myPi;
 NSMutableDictionary *colorsDict3;
 NSMutableArray *colorArr3;
 NSMutableArray *CGcolorArr3;
+int learnInGroupsOf;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    learnInGroupsOf = [[[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"] intValue];
     
-    NSLog(@"in learn VC");
     
     colors *colorInst = [[colors alloc] init];
     
@@ -150,7 +152,7 @@ NSMutableArray *CGcolorArr3;
 - (void)addSpaces
 {
     int count = 0;
-    int groupNum = 8;
+    int groupNum = learnInGroupsOf;
     while (count < (10000+(10000/groupNum)))
     {
         if ((count%(groupNum+1)) == 0) // replace 8 with (groupNum+1) in future
