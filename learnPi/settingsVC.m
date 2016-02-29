@@ -312,6 +312,18 @@ UITableView *tableView;
     
 }
 
+- (void)recolorNewBackground
+{
+    self.groupsTextField.backgroundColor = back1C;
+    self.groupsTextField.textColor = back3C;
+    
+    // make words back3
+    self.learnInGroupsLabel.textColor = back3C;
+    self.backgroundLabel.textColor = back3C;
+    
+    self.view.backgroundColor = back2C;
+    [tableView reloadData]; // to reset colors
+}
 
 - (IBAction)saveColorButtonPress:(id)sender // for updating that one specific number/color in the table
 {
@@ -480,12 +492,38 @@ UITableView *tableView;
     //self.back1Button.titleLabel.textColor = [UIColor lightGrayColor];
     //self.back2Button.titleLabel.textColor = [UIColor whiteColor];
     //self.back3Button.titleLabel.textColor = [UIColor whiteColor];
+    
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor darkGrayColor]]; // back color 1 is pi entry color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor blackColor]]; // back color 2 is play background color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor2"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor whiteColor]]; // back color 3 is words color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    back1C = [UIColor darkGrayColor];
+    back2C = [UIColor blackColor];
+    back3C = [UIColor whiteColor];
+    [self recolorNewBackground];
 }
 
 - (IBAction)back2Pressed:(id)sender {
     self.back2Button.backgroundColor = [UIColor blackColor];
     self.back1Button.backgroundColor = [UIColor darkGrayColor];
     self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor lightGrayColor]]; // back color 1 is pi entry color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor darkGrayColor]]; // back color 2 is play background color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor2"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor whiteColor]]; // back color 3 is words color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    back1C = [UIColor lightGrayColor];
+    back2C = [UIColor darkGrayColor];
+    back3C = [UIColor whiteColor];
+    [self recolorNewBackground];
 }
 
 - (IBAction)back3Pressed:(id)sender {
@@ -494,5 +532,18 @@ UITableView *tableView;
     self.back2Button.backgroundColor = [UIColor darkGrayColor];
     self.back1Button.backgroundColor = [UIColor darkGrayColor];
 
+    
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor whiteColor]]; // back color 1 is pi entry color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor lightGrayColor]]; // back color 2 is play background color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor2"];
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor blackColor]]; // back color 3 is words color
+    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    back1C = [UIColor lightGrayColor];
+    back2C = [UIColor whiteColor];
+    back3C = [UIColor blackColor];
+    [self recolorNewBackground];
 }
 @end
