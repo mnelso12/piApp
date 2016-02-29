@@ -15,7 +15,7 @@
 
 @implementation practiceVC
 
-NSString *pi = @"";
+NSString *pi = @"3.";
 int currentDigit = 0;
 CGFloat screenWidth;
 CGFloat screenHeight;
@@ -92,7 +92,7 @@ NSMutableArray *selectedNums;
     }
     
     
-    pi = @"";
+    pi = @"3.";
     
     colorInst = [[colors alloc] init];
     
@@ -140,6 +140,8 @@ NSMutableArray *selectedNums;
     self.piLabel.lineBreakMode = NSLineBreakByTruncatingHead;
     self.piLabel.layer.cornerRadius = 10.0f;
     self.piLabel.layer.masksToBounds = YES;
+    self.piLabel.text = pi;
+    [self updatePiColors];
     [self.view addSubview:self.piLabel];
 }
 
@@ -886,7 +888,7 @@ NSMutableArray *selectedNums;
 
 - (IBAction)editingDidEndOnExit:(id)sender
 {
-    NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
+   // NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
     [sender resignFirstResponder];
 }
 
@@ -905,7 +907,59 @@ NSMutableArray *selectedNums;
 - (IBAction)doneClicked:(id)sender
 {
     NSLog(@"Done Clicked.");
+    
+    //NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
+    
+    if ([self isGotoDigitPossible:self.digitTextField.text])
+    {
+        NSLog(@"can goto here");
+        [self gotoDigit:[self.digitTextField.text intValue]];
+    }
+    else
+    {
+        NSLog(@"cant goto that ridiculous number");
+    }
+    
     [self.view endEditing:YES];
+}
+
+- (void)gotoDigit:(int)digit
+{
+    
+    NSString *tempStr = [[NSString alloc] init];
+    // reset pi so you start counting from 0 instead of the current digit
+    currentDigit = 1;
+    pi = @"3.";
+    [self updatePiLabel];
+    
+    // loop through pi until you get to the digit you wana go to
+    int i = 0;
+    for (i=0; i<digit; i++)
+    {
+        tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
+        NSLog(@"tempStr is %@", tempStr);
+        pi = [pi stringByAppendingString:tempStr];
+        [self updatePiLabel];
+    }
+    
+    [self recolorViews];
+}
+
+- (BOOL)isGotoDigitPossible:(NSString *)gotoDigit
+{
+    if ([gotoDigit isEqualToString:@""])
+    {
+        //return false; // should I make this reset it?
+    }
+    if (([gotoDigit intValue] >= 0) && ([gotoDigit intValue] < 10000))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    return false;
 }
 
 
