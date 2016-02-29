@@ -20,13 +20,15 @@ NSMutableArray *colorArr3;
 NSMutableArray *CGcolorArr3;
 int learnInGroupsOf;
 
+UIColor *back2L;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     learnInGroupsOf = [[[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"] intValue];
     
-    
-    colors *colorInst = [[colors alloc] init];
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor2"];
+    back2L = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     
     // start with colors from defaults
     // start with colors, coordinate with defaults
@@ -86,7 +88,7 @@ int learnInGroupsOf;
     screenWidth2 = screenRect.size.width;
     screenHeight2 = screenRect.size.height;
     
-    self.view.backgroundColor = colorInst.playBackgroundColor;
+    self.view.backgroundColor = back2L;
     
     [self loadPiLabel];
     [self loadScroller];
@@ -96,8 +98,6 @@ int learnInGroupsOf;
 
 - (void)loadScroller
 {
-    colors *colorInst = [[colors alloc] init];
-    
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     
     self.textView.font = [UIFont fontWithName:@"Verdana" size:32];
@@ -112,7 +112,7 @@ int learnInGroupsOf;
     [self.view addSubview:self.textView];
     [self.view addSubview:self.piLabel];
      */
-    self.textView.backgroundColor = colorInst.playBackgroundColor;
+    self.textView.backgroundColor = back2L;
     self.textView.editable = NO;
     [self.view addSubview:self.textView];
 }

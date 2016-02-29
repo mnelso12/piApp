@@ -41,11 +41,11 @@ NSMutableArray *CGcolorArr4;
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor redColor]]; // back color 1 is pi entry color
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor darkGrayColor]]; // back color 1 is pi entry color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
-    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor greenColor]]; // back color 2 is play background color
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor blackColor]]; // back color 2 is play background color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor2"];
-    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor purpleColor]]; // back color 3 is words color
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor whiteColor]]; // back color 3 is words color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
