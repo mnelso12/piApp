@@ -51,7 +51,31 @@ UITableView *tableView;
         colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor3"];
         back3C = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     }
-
+    if ([back2C isEqual:[UIColor blackColor]])
+    {
+        // is background button 1
+        self.back1Button.backgroundColor = [UIColor blackColor];
+        self.back2Button.backgroundColor = [UIColor darkGrayColor];
+        self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    }
+    else if ([back2C isEqual:[UIColor darkGrayColor]])
+    {
+        // is background button 2
+        self.back2Button.backgroundColor = [UIColor blackColor];
+        self.back1Button.backgroundColor = [UIColor darkGrayColor];
+        self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    }
+    else if ([back2C isEqual:[UIColor grayColor]])
+    {
+        // is background button 3
+        self.back3Button.backgroundColor = [UIColor blackColor];
+        self.back2Button.backgroundColor = [UIColor darkGrayColor];
+        self.back1Button.backgroundColor = [UIColor darkGrayColor];
+    }
+    else
+    {
+        NSLog(@"error, couldnt figure out current background color scheme to set button to");
+    }
     
     
     // assuming its not null because it was set in home VC
@@ -169,12 +193,6 @@ UITableView *tableView;
     self.groupsTextField.inputAccessoryView = keyboardDoneButtonView;
     self.groupsTextField.backgroundColor = back1C;
     self.groupsTextField.textColor = back3C;
-    
-   
-    // handle background button selection colors, hard-coded
-    self.back1Button.backgroundColor = [UIColor blackColor];
-    self.back2Button.backgroundColor = [UIColor darkGrayColor];
-    self.back3Button.backgroundColor = [UIColor darkGrayColor];
     
     // make words back3
     self.learnInGroupsLabel.textColor = back3C;
@@ -535,14 +553,14 @@ UITableView *tableView;
     
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor whiteColor]]; // back color 1 is pi entry color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
-    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor lightGrayColor]]; // back color 2 is play background color
+    colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor grayColor]]; // back color 2 is play background color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor2"];
     colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor blackColor]]; // back color 3 is words color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-    back1C = [UIColor lightGrayColor];
-    back2C = [UIColor whiteColor];
+    back2C = [UIColor grayColor];
+    back1C = [UIColor whiteColor];
     back3C = [UIColor blackColor];
     [self recolorNewBackground];
 }
