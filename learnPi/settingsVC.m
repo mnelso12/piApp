@@ -54,16 +54,16 @@ UITableView *tableView;
     if ([back2C isEqual:[UIColor blackColor]])
     {
         // is background button 1
-        self.back1Button.backgroundColor = [UIColor blackColor];
-        self.back2Button.backgroundColor = [UIColor darkGrayColor];
-        self.back3Button.backgroundColor = [UIColor darkGrayColor];
+        self.back1Button.backgroundColor = [UIColor darkGrayColor];
+        self.back2Button.backgroundColor = [UIColor grayColor];
+        self.back3Button.backgroundColor = [UIColor grayColor];
     }
     else if ([back2C isEqual:[UIColor darkGrayColor]])
     {
         // is background button 2
-        self.back2Button.backgroundColor = [UIColor blackColor];
-        self.back1Button.backgroundColor = [UIColor darkGrayColor];
-        self.back3Button.backgroundColor = [UIColor darkGrayColor];
+        self.back2Button.backgroundColor = [UIColor grayColor];
+        self.back1Button.backgroundColor = [UIColor lightGrayColor];
+        self.back3Button.backgroundColor = [UIColor lightGrayColor];
     }
     else if ([back2C isEqual:[UIColor grayColor]])
     {
@@ -495,21 +495,9 @@ UITableView *tableView;
 
 
 - (IBAction)back1Pressed:(id)sender {
-    self.back1Button.backgroundColor = [UIColor blackColor];
-    self.back2Button.backgroundColor = [UIColor darkGrayColor];
-    self.back3Button.backgroundColor = [UIColor darkGrayColor];
-    
-    //[self.back1Button setTitle:@"6" forState:UIControlStateNormal];
-    //[self.back1Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28.0]];
-    //[self.back1Button.titleLabel setTextColor:[UIColor whiteColor]];
-    
-    //self.back1Button.titleLabel.textColor = [UIColor whiteColor];
-    //self.back2Button.titleLabel.textColor = [UIColor whiteColor];
-    //self.back3Button.titleLabel.textColor = [UIColor whiteColor];
-    
-    //self.back1Button.titleLabel.textColor = [UIColor lightGrayColor];
-    //self.back2Button.titleLabel.textColor = [UIColor whiteColor];
-    //self.back3Button.titleLabel.textColor = [UIColor whiteColor];
+    self.back1Button.backgroundColor = [UIColor darkGrayColor];
+    self.back2Button.backgroundColor = [UIColor grayColor];
+    self.back3Button.backgroundColor = [UIColor grayColor];
     
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor darkGrayColor]]; // back color 1 is pi entry color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
@@ -526,9 +514,9 @@ UITableView *tableView;
 }
 
 - (IBAction)back2Pressed:(id)sender {
-    self.back2Button.backgroundColor = [UIColor blackColor];
-    self.back1Button.backgroundColor = [UIColor darkGrayColor];
-    self.back3Button.backgroundColor = [UIColor darkGrayColor];
+    self.back2Button.backgroundColor = [UIColor grayColor];
+    self.back1Button.backgroundColor = [UIColor lightGrayColor];
+    self.back3Button.backgroundColor = [UIColor lightGrayColor];
     
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor lightGrayColor]]; // back color 1 is pi entry color
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor1"];
