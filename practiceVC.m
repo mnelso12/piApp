@@ -27,6 +27,7 @@ NSMutableDictionary *colorsDict2;
 NSMutableArray *colorArr2;
 NSMutableArray *CGcolorArr2;
 NSArray *arr2;
+NSMutableArray *selectedNums;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -260,7 +261,7 @@ NSArray *arr2;
     CGFloat lowerSpace = (screenWidth-(6*diameter))/7;
     CGFloat upperSpace = lowerSpace;
     
-    // gross all these tap gestures, why did Apple make this so gross?!
+    // gross all these tap gestures, why did Apple make this so gross?! there seriously should be a better way to do this
     UITapGestureRecognizer *singleFingerTapOne =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTapOne:)];
@@ -610,6 +611,7 @@ NSArray *arr2;
 
 -(void) handleSingleTapZero:(UITapGestureRecognizer *)gr
 {
+    /*
     [self recolorViews];
     self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
     self.zeroLabel.textColor = colorInst.playBackgroundColor;
@@ -620,16 +622,45 @@ NSArray *arr2;
     pi = [pi stringByAppendingString:@"0"];
     [self updatePiLabel];
     }
+     */
+    
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
+    self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
+    self.zeroLabel.textColor = colorInst.playBackgroundColor;
+    self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+    if ([self isDigitCorrect:@"0"])
+    {
+        [self recolorViews];
+        self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
+        self.zeroLabel.textColor = colorInst.playBackgroundColor;
+        self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+        NSLog(@"0 is correct");
+        pi = [pi stringByAppendingString:@"0"];
+        [self updatePiLabel];
+    }
+
 }
 
 -(void) handleSingleTapOne:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.oneView.backgroundColor = [colorArr2 objectAtIndex:1];
     self.oneLabel.textColor = colorInst.playBackgroundColor; // use black or white????????
     self.oneView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"1"])
     {
+        [self recolorViews];
+        self.oneView.backgroundColor = [colorArr2 objectAtIndex:1];
+        self.oneLabel.textColor = colorInst.playBackgroundColor; // use black or white????????
+        self.oneView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"1 is correct");
         pi = [pi stringByAppendingString:@"1"];
         [self updatePiLabel];
@@ -638,12 +669,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapTwo:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.twoView.backgroundColor = [colorArr2 objectAtIndex:2];
     self.twoLabel.textColor = colorInst.playBackgroundColor;
     self.twoView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"2"])
     {
+        [self recolorViews];
+        self.twoView.backgroundColor = [colorArr2 objectAtIndex:2];
+        self.twoLabel.textColor = colorInst.playBackgroundColor;
+        self.twoView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"2 is correct");
     pi = [pi stringByAppendingString:@"2"];
     [self updatePiLabel];
@@ -652,12 +691,21 @@ NSArray *arr2;
 
 -(void) handleSingleTapThree:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.threeView.backgroundColor = [colorArr2 objectAtIndex:3];
     self.threeLabel.textColor = colorInst.playBackgroundColor;
     self.threeView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"3"])
     {
+        [self recolorViews];
+        self.threeView.backgroundColor = [colorArr2 objectAtIndex:3];
+        self.threeLabel.textColor = colorInst.playBackgroundColor;
+        self.threeView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
+
         NSLog(@"3 is correct");
     pi = [pi stringByAppendingString:@"3"];
     [self updatePiLabel];
@@ -666,12 +714,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapFour:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.fourView.backgroundColor = [colorArr2 objectAtIndex:4];
     self.fourLabel.textColor = colorInst.playBackgroundColor;
     self.fourView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"4"])
     {
+        [self recolorViews];
+        self.fourView.backgroundColor = [colorArr2 objectAtIndex:4];
+        self.fourLabel.textColor = colorInst.playBackgroundColor;
+        self.fourView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"4 is correct");
     pi = [pi stringByAppendingString:@"4"];
     [self updatePiLabel];
@@ -680,12 +736,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapFive:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.fiveView.backgroundColor = [colorArr2 objectAtIndex:5];
     self.fiveLabel.textColor = colorInst.playBackgroundColor;
     self.fiveView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"5"])
     {
+        [self recolorViews];
+        self.fiveView.backgroundColor = [colorArr2 objectAtIndex:5];
+        self.fiveLabel.textColor = colorInst.playBackgroundColor;
+        self.fiveView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"5 is correct");
     pi = [pi stringByAppendingString:@"5"];
     [self updatePiLabel];
@@ -694,12 +758,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapSix:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.sixView.backgroundColor = [colorArr2 objectAtIndex:6];
     self.sixLabel.textColor = colorInst.playBackgroundColor;
     self.sixView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"6"])
     {
+        [self recolorViews];
+        self.sixView.backgroundColor = [colorArr2 objectAtIndex:6];
+        self.sixLabel.textColor = colorInst.playBackgroundColor;
+        self.sixView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"6 is correct");
     pi = [pi stringByAppendingString:@"6"];
     [self updatePiLabel];
@@ -708,12 +780,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapSeven:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.sevenView.backgroundColor = [colorArr2 objectAtIndex:7];
     self.sevenLabel.textColor = colorInst.playBackgroundColor;
     self.sevenView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"7"])
     {
+        [self recolorViews];
+        self.sevenView.backgroundColor = [colorArr2 objectAtIndex:7];
+        self.sevenLabel.textColor = colorInst.playBackgroundColor;
+        self.sevenView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"7 is correct");
     pi = [pi stringByAppendingString:@"7"];
     [self updatePiLabel];
@@ -722,12 +802,19 @@ NSArray *arr2;
 
 -(void) handleSingleTapEight:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.eightView.backgroundColor = [colorArr2 objectAtIndex:8];
     self.eightLabel.textColor = colorInst.playBackgroundColor;
     self.eightView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"8"])
     {
+        [self recolorViews];
+        self.eightView.backgroundColor = [colorArr2 objectAtIndex:8];
+        self.eightLabel.textColor = colorInst.playBackgroundColor;
         NSLog(@"8 is correct");
     pi = [pi stringByAppendingString:@"8"];
     [self updatePiLabel];
@@ -736,12 +823,20 @@ NSArray *arr2;
 
 -(void) handleSingleTapNine:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
+
     self.nineView.backgroundColor = [colorArr2 objectAtIndex:9];
     self.nineLabel.textColor = colorInst.playBackgroundColor;
     self.nineView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"9"])
     {
+        [self recolorViews];
+        self.nineView.backgroundColor = [colorArr2 objectAtIndex:9];
+        self.nineLabel.textColor = colorInst.playBackgroundColor;
+        self.nineView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@"9 is correct");
     pi = [pi stringByAppendingString:@"9"];
     [self updatePiLabel];
@@ -750,16 +845,24 @@ NSArray *arr2;
 
 -(void) handleSingleTapDot:(UITapGestureRecognizer *)gr
 {
-    [self recolorViews];
+    if (isPlay)
+    {
+        [self recolorViews];
+    }
     self.dotView.backgroundColor = [colorArr2 objectAtIndex:10];
     self.dotLabel.textColor = colorInst.playBackgroundColor;
     self.dotView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
     if ([self isDigitCorrect:@"."])
     {
+        [self recolorViews];
+        self.dotView.backgroundColor = [colorArr2 objectAtIndex:10];
+        self.dotLabel.textColor = colorInst.playBackgroundColor;
+        self.dotView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
         NSLog(@". is correct");
-    pi = [pi stringByAppendingString:@"."];
-    [self updatePiLabel];
+        pi = [pi stringByAppendingString:@"."];
+        [self updatePiLabel];
     }
+
 }
 
 @end
