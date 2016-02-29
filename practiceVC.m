@@ -129,6 +129,8 @@ NSMutableArray *selectedNums;
                                                                   action:@selector(doneClicked:)];
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
     self.digitTextField.inputAccessoryView = keyboardDoneButtonView;
+    self.digitTextField.backgroundColor = [UIColor darkGrayColor];
+    self.digitTextField.textColor = [UIColor whiteColor];
     
 }
 
@@ -192,7 +194,8 @@ NSMutableArray *selectedNums;
     // should do this in terms of screen height and width
 
     // high score
-    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,120+(screenWidth/10-50),200,50)];
+    //self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,120+(screenWidth/10-50),200,50)];
+    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,120+(screenWidth/10-50),200,50)];
     self.highScoreLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
     self.highScoreLabel.layer.cornerRadius = 10.0f;
@@ -203,7 +206,8 @@ NSMutableArray *selectedNums;
     [self.view addSubview:self.highScoreLabel];
     
     // current digit
-    self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-50,120+(screenWidth/10-50),200,50)];
+    //self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-50,120+(screenWidth/10-50),200,50)];
+    self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-20,120+(screenWidth/10-50),200,50)];
     self.currentDigitLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.currentDigitLabel.text = @"Current Digit: 0";
     self.currentDigitLabel.layer.cornerRadius = 10.0f;
@@ -928,11 +932,11 @@ NSMutableArray *selectedNums;
     
     NSString *tempStr = [[NSString alloc] init];
     // reset pi so you start counting from 0 instead of the current digit
-    currentDigit = 1;
+    currentDigit = 0;
     pi = @"3.";
-    [self updatePiLabel];
     
     // loop through pi until you get to the digit you wana go to
+    // this could be fixed in the future / made super fast by only loading the 20 or so digits that lead up to the digit in question instead of all of the digits before it
     int i = 0;
     for (i=0; i<digit; i++)
     {
