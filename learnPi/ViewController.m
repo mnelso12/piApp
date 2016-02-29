@@ -104,18 +104,20 @@ NSMutableArray *CGcolorArr4;
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
     // make navigation items a better color and font
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName]];
-    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    //[self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName]];
+    //self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
     NSShadow* shadow = [NSShadow new];
     shadow.shadowOffset = CGSizeMake(0.0f, 1.0f);
     shadow.shadowColor = [UIColor clearColor];
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: [UIColor clearColor],
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:20.0f],
-                                                            NSShadowAttributeName: shadow
-                                                            }];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
 
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName: [UIFont fontWithName:@"Verdana" size:16],
+                                                           NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                                           NSShadowAttributeName: shadow,
+                                                           } forState:UIControlStateNormal];
     
     // handle labels and stuff
     //self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
