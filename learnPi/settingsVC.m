@@ -122,10 +122,12 @@ UITableView *tableView;
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.backgroundColor = [UIColor blackColor];
+    tableView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:tableView];
-    self.view.backgroundColor = [UIColor blackColor];
+    
+    colors *colorInst = [[colors alloc] init];
+    self.view.backgroundColor = colorInst.playBackgroundColor;
     // Do any additional setup after loading the view, typically from a nib.
     
     // these are here so the grayscale starts out as red
@@ -431,4 +433,12 @@ UITableView *tableView;
 
 
 
+- (IBAction)back1Pressed:(id)sender {
+}
+
+- (IBAction)back2Pressed:(id)sender {
+}
+
+- (IBAction)back3Pressed:(id)sender {
+}
 @end

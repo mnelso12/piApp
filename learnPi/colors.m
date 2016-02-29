@@ -91,7 +91,7 @@
 }
 -(UIColor*)playBackgroundColor
 {
-    return [UIColor blackColor];
+    return [UIColor orangeColor];
 }
 -(UIColor*)numBackgroundColor
 {

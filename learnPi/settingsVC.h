@@ -13,5 +13,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveColorButton;
 - (IBAction)saveColorButtonPress:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *groupsTextField;
+- (IBAction)back1Pressed:(id)sender;
+- (IBAction)back2Pressed:(id)sender;
+- (IBAction)back3Pressed:(id)sender;
+
 
 @end
