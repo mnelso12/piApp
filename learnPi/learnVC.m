@@ -98,7 +98,7 @@ NSMutableArray *CGcolorArr3;
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     
-    self.textView.font = [UIFont fontWithName:@"Verdana" size:20];
+    self.textView.font = [UIFont fontWithName:@"Verdana" size:32];
     /*
     //self.textView.text = myPi;
     self.textView.textAlignment = NSTextAlignmentCenter;
@@ -132,7 +132,7 @@ NSMutableArray *CGcolorArr3;
 {
     //self.piLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, screenWidth2-40, screenHeight2-40)];
     self.piLabel.text = @"pi!!!";
-    self.piLabel.font = [UIFont fontWithName:@"Verdana" size:20];
+    self.piLabel.font = [UIFont fontWithName:@"Verdana" size:25];
     //self.piLabel.backgroundColor = colorInst.playBackgroundColor;
     self.piLabel.textAlignment = NSTextAlignmentCenter;
     self.piLabel.lineBreakMode = NSLineBreakByTruncatingTail;
