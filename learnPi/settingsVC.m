@@ -32,6 +32,10 @@ UITableView *tableView;
     
      NSLog(@"in settings VC");
     
+    // assuming its not null because it was set in home VC
+    self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
+    
+    
     // if colorsDict is in user defaults then use that copy
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
     {
@@ -390,20 +394,41 @@ UITableView *tableView;
     NSLog(@"Done Clicked.");
     
     //NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
-    /*
-    if ([self isGotoDigitPossible:self.digitTextField.text])
+    
+    if ([self isGotoDigitPossible:self.groupsTextField.text])
     {
-        NSLog(@"can goto here");
-        [self gotoDigit:[self.digitTextField.text intValue]];
+        NSLog(@"can do this learning group");
+        [[NSUserDefaults standardUserDefaults] setObject:self.groupsTextField.text forKey:@"LearningGroups"];
     }
     else
     {
         NSLog(@"cant goto that ridiculous number");
+        
+        // put text field text back to original
+        self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
     }
-     */
     
     [self.view endEditing:YES];
 }
+
+- (BOOL)isGotoDigitPossible:(NSString *)gotoDigit
+{
+    if ([gotoDigit isEqualToString:@""])
+    {
+       
+        return false;
+    }
+    if (([gotoDigit intValue] >= 2) && ([gotoDigit intValue] < 30))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    return false;
+}
+
 
 
 @end

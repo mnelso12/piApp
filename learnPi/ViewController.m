@@ -29,6 +29,13 @@ NSMutableArray *CGcolorArr4;
     
      NSLog(@"in home VC");
     
+    // if first time, set default groups for learning to seven
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"LearningGroups"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     // start with colors
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
     {
