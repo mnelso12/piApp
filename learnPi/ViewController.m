@@ -201,8 +201,6 @@ NSMutableArray *CGcolorArr4;
     [[NSMutableAttributedString alloc]
      initWithAttributedString: self.piDigitsLabel.attributedText];
     
-    colors *colorInst = [[colors alloc] init];
-    
     int count = 0;
     while(count < (int)[myPi2 length])
     {

@@ -66,7 +66,16 @@ UITableView *tableView;
     //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
     
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
-    self.saveColorButton.backgroundColor = [UIColor blackColor];
+    self.saveColorButton.titleLabel.text = @"Update Color";
+    self.saveColorButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.saveColorButton.titleLabel.numberOfLines = 0;
+    self.saveColorButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.8f];
+    self.saveColorButton.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
+    self.saveColorButton.layer.cornerRadius = 8.f;
+    self.saveColorButton.layer.borderWidth = 1;
+    self.saveColorButton.layer.masksToBounds = YES;
+    self.saveColorButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
     [self.view addSubview:self.saveColorButton];
     
     
@@ -79,7 +88,7 @@ UITableView *tableView;
     
     
     // initiate number label
-    selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, 100, 100)]; // find better UI spot for this label
+    selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     selectedNumLabel.text = @"";
     selectedNumLabel.textColor = [UIColor whiteColor];
     selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:120];
@@ -105,7 +114,7 @@ UITableView *tableView;
     //NSLog(@"colors dict: %@", [colorsDict description]);
 
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3*4/5, 0, screenWidth3/5, screenHeight3)];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth3-80, 0, 80, screenHeight3)];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -129,7 +138,7 @@ UITableView *tableView;
     {
         for (int j=0; j<num; j++)
         {
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(200+count*(width/num), 30+(j*(width/num)), width/num, width/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
             
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handleSingleTap:)];
@@ -191,7 +200,7 @@ UITableView *tableView;
     int tag = num*num; // start where the rainbow box left off
     for (int i=0; i<num; i++)
     {
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(200+i*(width/num), 280, width/num, width/num+25)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(335+i*(width/num), 310, width/num, width/num+25)];
         UIColor *thisColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*i brightness:(1./num)*brightness alpha:1.];
         v.backgroundColor = thisColor;
         

@@ -119,8 +119,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-CI-VTg">
-                                <rect key="frame" x="47" y="271" width="92" height="30"/>
+                                <rect key="frame" x="178" y="229" width="138" height="114"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <state key="normal" title="Update Color">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -138,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aut-Xi-y4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="172"/>
+            <point key="canvasLocation" x="1969.5" y="171.5"/>
         </scene>
         <!--Play-->
         <scene sceneID="HKR-Gd-fRT">
