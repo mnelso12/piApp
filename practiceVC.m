@@ -119,6 +119,17 @@ NSMutableArray *selectedNums;
     piReal *piInst = [[piReal alloc] init];
     piRealString = piInst.piString;
     
+    
+    // below is new for keyboard
+    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    self.digitTextField.inputAccessoryView = keyboardDoneButtonView;
+    
 }
 
 - (void)initializePiLabel
@@ -199,6 +210,9 @@ NSMutableArray *selectedNums;
     self.currentDigitLabel.layer.masksToBounds = YES;
     self.currentDigitLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.currentDigitLabel];
+    
+    // goto digit label & text field
+    
     
     /*
     // strikes (for play only)
@@ -500,7 +514,7 @@ NSMutableArray *selectedNums;
         }
         else if ([tempStr isEqualToString:@"3"])
         {
-            NSLog(@"count = %i", count);
+            //NSLog(@"count = %i", count);
             [text addAttribute:NSForegroundColorAttributeName
                          value:[colorArr2 objectAtIndex:3]
                          range:NSMakeRange(count,1)];
@@ -864,5 +878,35 @@ NSMutableArray *selectedNums;
     }
 
 }
+
+- (IBAction)digitTextFieldEdited:(id)sender
+{ // do i need this?
+    self.digitTextField = (UITextField*)sender;
+}
+
+- (IBAction)editingDidEndOnExit:(id)sender
+{
+    NSLog(@"user going to digit %i", [self.digitTextField.text intValue]);
+    [sender resignFirstResponder];
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    NSLog(@"called should end editing");
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (IBAction)doneClicked:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    [self.view endEditing:YES];
+}
+
 
 @end

@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface practiceVC : UIViewController
+@interface practiceVC : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *highScoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentDigitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *piLabel;
 @property (strong, nonatomic) IBOutlet UILabel *strikesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *gotoDigitLabel;
+@property (strong, nonatomic) IBOutlet UITextField *digitTextField;
+- (IBAction)digitTextFieldEdited:(id)sender;
+
 
 @property (strong, nonatomic) IBOutlet NSString *prevVC;
 

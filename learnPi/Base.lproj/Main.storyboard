@@ -204,9 +204,20 @@
                         <viewControllerLayoutGuide type="bottom" id="dML-F0-Hbk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XPA-x2-xoY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BDE-CQ-vZ4">
+                                <rect key="frame" x="335" y="154" width="74" height="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="digitTextFieldEdited:" destination="rDL-AJ-NRP" eventType="editingDidEnd" id="DGd-QD-wRG"/>
+                                    <action selector="doneClicked:" destination="rDL-AJ-NRP" eventType="editingDidEnd" id="Q93-ai-ygJ"/>
+                                    <action selector="editingDidEndOnExit:" destination="rDL-AJ-NRP" eventType="editingDidEndOnExit" id="Zur-Yj-JIv"/>
+                                </connections>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Php-i7-bdx">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -234,6 +245,12 @@
                                     <rect key="frame" x="149" y="95" width="561" height="54"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Go to Digit:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brn-Tr-zfN">
+                                <rect key="frame" x="212" y="150" width="135" height="38"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -251,15 +268,19 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currentDigitLabel" destination="hG7-pt-2mn" id="kSx-FG-YSK"/>
+                        <outlet property="digitTextField" destination="BDE-CQ-vZ4" id="Sp4-r0-pGw"/>
+                        <outlet property="gotoDigitLabel" destination="brn-Tr-zfN" id="g48-a4-FIJ"/>
                         <outlet property="highScoreLabel" destination="Php-i7-bdx" id="Tcp-zz-1eb"/>
                         <outlet property="piLabel" destination="ihy-DM-oin" id="7Op-aq-V0L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYC-eG-qZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="970"/>
+            <point key="canvasLocation" x="281.5" y="969.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TGk-wh-ZKO">

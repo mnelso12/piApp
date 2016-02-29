@@ -225,7 +225,7 @@ NSMutableArray *CGcolorArr4;
         }
         else if ([tempStr isEqualToString:@"3"])
         {
-            NSLog(@"count = %i", count);
+            //NSLog(@"count = %i", count);
             [text addAttribute:NSForegroundColorAttributeName
                          value:[colorArr4 objectAtIndex:3]
                          range:NSMakeRange(count,1)];
