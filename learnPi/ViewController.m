@@ -27,7 +27,11 @@ NSMutableArray *CGcolorArr4;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     NSLog(@"in home VC");
+    CGRect screenR = [[UIScreen mainScreen] bounds];
+    CGFloat screenW = screenR.size.width;
+    CGFloat screenH = screenR.size.height;
+    self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH)];
+    [self.view addSubview:self.piDigitsLabel];
     
     // if first time, use default background colors
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"])
