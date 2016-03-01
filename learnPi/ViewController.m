@@ -11,6 +11,7 @@
 #import "piRealShort.h"
 #import "colors.h"
 #import <QuartzCore/QuartzCore.h>
+#import "learnVC.h"
 
 @interface ViewController ()
 
@@ -27,11 +28,80 @@ NSMutableArray *CGcolorArr4;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // make pi label fit screen
     CGRect screenR = [[UIScreen mainScreen] bounds];
     CGFloat screenW = screenR.size.width;
     CGFloat screenH = screenR.size.height;
     self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH)];
     [self.view addSubview:self.piDigitsLabel];
+    
+    // make labels pretty for all iPhone versions
+    if (screenW <= 480) // 4s or less
+    {
+        //self.learnLabel = [[UIButton alloc] initWithFrame:CGRectMake(screenW*2/3-50, 90, 100, 50)];
+        //self.practiceLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*2/3-50, 185, 100, 50)];
+        //self.settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*2/3-50, 280, 100, 50)];
+    }
+    else if (screenW <= 568) // 5
+    {
+        
+    }
+    else if (screenW <= 667) // 6
+    {
+        
+    }
+    else if (screenW <= 736) // 6+
+    {
+        
+    }
+    else // big device
+    {
+        
+    }
+
+    
+    self.learnLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-73, (screenH-180)/4, 146, 60)];
+    self.practiceLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-80, 60 + (screenH-180)/2, 160, 60)];
+    self.settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-87, (screenH - (60 + (screenH-180)/4)), 175, 60)];
+    self.playLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*1/4-50, (screenH - (60 + (screenH-180)/4)), 100, 60)];
+    
+    
+    [self.learnLabel setFont:[UIFont fontWithName:@"Verdana" size:32.0]];
+    [self.learnLabel setTextColor:[UIColor whiteColor]];
+    self.learnLabel.text = @"learn";
+    self.learnLabel.textColor = [UIColor whiteColor];
+    self.learnLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self.practiceLabel setFont:[UIFont fontWithName:@"Verdana" size:32.0]];
+    [self.practiceLabel setTextColor:[UIColor whiteColor]];
+    self.practiceLabel.text = @"practice";
+    self.practiceLabel.textColor = [UIColor whiteColor];
+    self.practiceLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self.settingsLabel setFont:[UIFont fontWithName:@"Verdana" size:32.0]];
+    [self.settingsLabel setTextColor:[UIColor whiteColor]];
+    self.settingsLabel.text = @"settings";
+    self.settingsLabel.textColor = [UIColor whiteColor];
+    self.settingsLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self.playLabel setFont:[UIFont fontWithName:@"Verdana" size:32.0]];
+    [self.playLabel setTextColor:[UIColor whiteColor]];
+    self.playLabel.text = @"play";
+    self.playLabel.textColor = [UIColor whiteColor];
+    self.playLabel.textAlignment = NSTextAlignmentCenter;
+
+    self.settingsLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClicked:)];
+    [tapGestureRecognizer setNumberOfTapsRequired:1];
+    [self.settingsLabel addGestureRecognizer:tapGestureRecognizer];
+    
+    self.settingsLabel.tag = 1;
+    
+    [self makeButtonsPretty];
+    [self.view addSubview:self.learnLabel];
+    [self.view addSubview:self.practiceLabel];
+    [self.view addSubview:self.settingsLabel];
+    [self.view addSubview:self.playLabel];
     
     // if first time, use default background colors
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"])
@@ -206,6 +276,19 @@ NSMutableArray *CGcolorArr4;
 
 }
 
+-(IBAction)labelClicked:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    NSInteger tag = tapGestureRecognizer.view.tag;
+    NSLog(@"pressed something");
+    
+    if (tag == 1) // pressed settings
+    {
+        NSLog(@"pressed settings");
+        [self performSegueWithIdentifier:@"settingsSegue" sender:self];
+    }
+    
+}
+
 - (void)loadBackgroundPi
 {
     piRealShort *piInst = [[piRealShort alloc] init];
@@ -318,19 +401,19 @@ NSMutableArray *CGcolorArr4;
 
 
 - (IBAction)playButtonPress:(id)sender {
-    //NSLog(@"play pressed");
+    NSLog(@"play pressed");
 }
 
 - (IBAction)practiceButtonPress:(id)sender {
-    //NSLog(@"practice pressed");
+    NSLog(@"practice pressed");
 }
 
 - (IBAction)learnButtonPress:(id)sender {
-    //NSLog(@"learn pressed");
+    NSLog(@"learn pressed");
 }
 
 - (IBAction)settingsButtonPress:(id)sender {
-    //NSLog(@"settings pressed");
+    NSLog(@"settings pressed");
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

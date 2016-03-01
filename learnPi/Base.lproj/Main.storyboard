@@ -22,53 +22,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-V5-rgC">
-                                <rect key="frame" x="125" y="251" width="99" height="50"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BUW-F3-WEn"/>
-                                    <segue destination="rDL-AJ-NRP" kind="custom" identifier="toPlay" id="7Ar-RF-kIo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD3-6f-SsD">
-                                <rect key="frame" x="435" y="158" width="160" height="59"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <state key="normal" title="Practice">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="practiceButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yib-J1-yg5"/>
-                                    <segue destination="rDL-AJ-NRP" kind="show" identifier="toPractice" id="g56-dD-d5n"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-E6-ytC">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-E6-ytC">
                                 <rect key="frame" x="442" y="68" width="146" height="59"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
                                 <state key="normal" title="Learn">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="learnButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOD-FM-GUa"/>
-                                    <segue destination="2WO-JF-0Wv" kind="show" id="gCE-p4-EmJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-7a-oEZ">
-                                <rect key="frame" x="428" y="246" width="175" height="60"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="settingsButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yFf-Z3-S0N"/>
-                                    <segue destination="9eb-Ws-Oe2" kind="show" id="IGF-pd-8Yk"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn Pi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M94-Xu-Aux">
                                 <rect key="frame" x="16" y="68" width="317" height="79"/>
@@ -77,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-te-q4a">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="401"/>
+                                <rect key="frame" x="-479" y="94" width="667" height="401"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,16 +50,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="bEb-Vq-U0A"/>
-                        <outlet property="learnButtonPress" destination="Aye-E6-ytC" id="VIf-xY-yB3"/>
-                        <outlet property="learnLabel" destination="Aye-E6-ytC" id="Hed-WF-kT9"/>
                         <outlet property="learnPiLabel" destination="M94-Xu-Aux" id="rZm-jc-G7s"/>
                         <outlet property="piDigitsLabel" destination="nmn-te-q4a" id="5rq-be-N8q"/>
-                        <outlet property="playButtonPress" destination="wE7-V5-rgC" id="9Bu-D9-ufM"/>
-                        <outlet property="playLabel" destination="wE7-V5-rgC" id="m97-RI-uwT"/>
-                        <outlet property="practiceButtonPress" destination="tD3-6f-SsD" id="rIr-I7-6CW"/>
-                        <outlet property="practiceLabel" destination="tD3-6f-SsD" id="3Jz-zy-kS7"/>
-                        <outlet property="settingsButtonPress" destination="iZi-7a-oEZ" id="enM-0o-zNL"/>
-                        <outlet property="settingsLabel" destination="iZi-7a-oEZ" id="yhY-tX-19D"/>
+                        <segue destination="9eb-Ws-Oe2" kind="show" identifier="learnSegue" id="Mv9-ZN-bMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,7 +186,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qaE-vm-Uei"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cBe-me-cdR">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-rc-nTC">
@@ -372,8 +325,5 @@
             <point key="canvasLocation" x="282" y="170"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="7Ar-RF-kIo"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.050198964159999998" green="0.056512629719999999" blue="0.33530618690000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
