@@ -90,12 +90,41 @@ NSMutableArray *CGcolorArr4;
     self.playLabel.textColor = [UIColor whiteColor];
     self.playLabel.textAlignment = NSTextAlignmentCenter;
 
-    self.settingsLabel.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClicked:)];
-    [tapGestureRecognizer setNumberOfTapsRequired:1];
-    [self.settingsLabel addGestureRecognizer:tapGestureRecognizer];
     
     self.settingsLabel.tag = 1;
+    self.practiceLabel.tag = 3;
+    self.playLabel.tag = 3;
+    self.learnLabel.tag = 2;
+    
+    self.settingsLabel.userInteractionEnabled = YES;
+    self.practiceLabel.userInteractionEnabled = YES;
+    self.playLabel.userInteractionEnabled = YES;
+    self.learnLabel.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGestureRecognizerLearn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(learnClicked:)];
+    tapGestureRecognizerLearn.delegate = self;
+    
+    UITapGestureRecognizer *tapGestureRecognizerSettings = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(settingsClicked:)];
+    tapGestureRecognizerSettings.delegate = self;
+    
+    UITapGestureRecognizer *tapGestureRecognizerPlay = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playClicked:)];
+    tapGestureRecognizerPlay.delegate = self;
+    
+    UITapGestureRecognizer *tapGestureRecognizerPractice = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(practiceClicked:)];
+    tapGestureRecognizerPractice.delegate = self;
+    
+
+    [tapGestureRecognizerSettings setNumberOfTapsRequired:1];
+    [tapGestureRecognizerLearn setNumberOfTapsRequired:1];
+    [tapGestureRecognizerPlay setNumberOfTapsRequired:1];
+    [tapGestureRecognizerPractice setNumberOfTapsRequired:1];
+    
+    [self.settingsLabel addGestureRecognizer:tapGestureRecognizerSettings];
+    [self.practiceLabel addGestureRecognizer:tapGestureRecognizerPractice];
+    [self.playLabel addGestureRecognizer:tapGestureRecognizerPlay];
+    [self.learnLabel addGestureRecognizer:tapGestureRecognizerLearn];
+    
+    
     
     [self makeButtonsPretty];
     [self.view addSubview:self.learnLabel];
@@ -276,18 +305,33 @@ NSMutableArray *CGcolorArr4;
 
 }
 
--(IBAction)labelClicked:(UITapGestureRecognizer*)tapGestureRecognizer
+-(IBAction)settingsClicked:(UITapGestureRecognizer*)tapGestureRecognizer
 {
-    NSInteger tag = tapGestureRecognizer.view.tag;
-    NSLog(@"pressed something");
-    
-    if (tag == 1) // pressed settings
-    {
-        NSLog(@"pressed settings");
-        [self performSegueWithIdentifier:@"settingsSegue" sender:self];
-    }
+    NSLog(@"pressed settings");
+    [self performSegueWithIdentifier:@"settingsSegue" sender:self];
     
 }
+
+-(IBAction)learnClicked:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    NSLog(@"pressed learn");
+    [self performSegueWithIdentifier:@"learnSegue" sender:self];
+}
+
+-(IBAction)playClicked:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    NSLog(@"pressed play");
+    [self performSegueWithIdentifier:@"toPractice" sender:self];
+}
+
+
+-(IBAction)practiceClicked:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    NSLog(@"pressed practice");
+    [self performSegueWithIdentifier:@"toPractice" sender:self];
+}
+
+
 
 - (void)loadBackgroundPi
 {
@@ -398,7 +442,7 @@ NSMutableArray *CGcolorArr4;
     
     [self.piDigitsLabel setAttributedText: text];
 }
-
+/*
 
 - (IBAction)playButtonPress:(id)sender {
     NSLog(@"play pressed");
@@ -415,7 +459,7 @@ NSMutableArray *CGcolorArr4;
 - (IBAction)settingsButtonPress:(id)sender {
     NSLog(@"settings pressed");
 }
-
+*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure your segue name in storyboard is the same as this line
