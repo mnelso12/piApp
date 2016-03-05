@@ -32,7 +32,7 @@ NSMutableArray *CGcolorArr4;
     CGRect screenR = [[UIScreen mainScreen] bounds];
     CGFloat screenW = screenR.size.width;
     CGFloat screenH = screenR.size.height;
-    self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH)];
+    self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH+100)];
     [self.view addSubview:self.piDigitsLabel];
     
     // make labels pretty for all iPhone versions
@@ -60,6 +60,34 @@ NSMutableArray *CGcolorArr4;
     }
 
     
+    // title and high score
+    self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 60, screenW/2, 70)];
+    self.learnPiLabel.text = @"Learn Pi";
+    [self.learnPiLabel setTextAlignment:NSTextAlignmentCenter];
+    self.learnPiLabel.textColor = [UIColor grayColor];
+    [self.learnPiLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:55]];
+    
+    
+    self.learnPiLabel.numberOfLines = 1;
+    //self.learnPiLabel.minimumFontSize = 8;
+    //self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
+    self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
+    
+    
+    //self.learnPiLabel.numberOfLines = 0;
+    //self.learnPiLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //CGSize maximumLabelSize = CGSizeMake(self.learnPiLabel.frame.size.width, CGFLOAT_MAX);
+    //CGSize expectSize = [self.learnPiLabel sizeThatFits:maximumLabelSize];
+    //self.learnPiLabel.frame = CGRectMake(self.learnPiLabel.frame.origin.x, self.learnPiLabel.frame.origin.y, expectSize.width, expectSize.height);
+    
+    [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
+    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, screenW/2, 60)];
+    self.highScoreLabel.textColor = [UIColor whiteColor];
+    [self.highScoreLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    
+    
+    
+    // the button-ish labels
     self.learnLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-73, (screenH-180)/4, 146, 60)];
     self.practiceLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-80, 60 + (screenH-180)/2, 160, 60)];
     self.settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-87, (screenH - (60 + (screenH-180)/4)), 175, 60)];
@@ -226,7 +254,9 @@ NSMutableArray *CGcolorArr4;
         
     }
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
-
+    [self.view addSubview:self.learnPiLabel];
+    [self.view addSubview:self.highScoreLabel];
+    
     // make navigation bar transparent
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
@@ -321,7 +351,7 @@ NSMutableArray *CGcolorArr4;
 -(IBAction)playClicked:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     NSLog(@"pressed play");
-    [self performSegueWithIdentifier:@"toPractice" sender:self];
+    [self performSegueWithIdentifier:@"toPlay" sender:self];
 }
 
 
@@ -442,26 +472,10 @@ NSMutableArray *CGcolorArr4;
     
     [self.piDigitsLabel setAttributedText: text];
 }
-/*
 
-- (IBAction)playButtonPress:(id)sender {
-    NSLog(@"play pressed");
-}
-
-- (IBAction)practiceButtonPress:(id)sender {
-    NSLog(@"practice pressed");
-}
-
-- (IBAction)learnButtonPress:(id)sender {
-    NSLog(@"learn pressed");
-}
-
-- (IBAction)settingsButtonPress:(id)sender {
-    NSLog(@"settings pressed");
-}
-*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"preparing for segue");
     // Make sure your segue name in storyboard is the same as this line
     if ([[segue identifier] isEqualToString:@"toPractice"])
     {

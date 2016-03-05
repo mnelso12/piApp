@@ -16,12 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-mm-xoK">
-                                <rect key="frame" x="16" y="143" width="317" height="72"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aye-E6-ytC">
                                 <rect key="frame" x="442" y="68" width="146" height="59"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
@@ -30,18 +24,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn Pi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M94-Xu-Aux">
-                                <rect key="frame" x="16" y="68" width="317" height="79"/>
-                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="62"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-te-q4a">
-                                <rect key="frame" x="-479" y="94" width="667" height="401"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -49,12 +31,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="highScoreLabel" destination="oCM-mm-xoK" id="bEb-Vq-U0A"/>
-                        <outlet property="learnPiLabel" destination="M94-Xu-Aux" id="rZm-jc-G7s"/>
-                        <outlet property="piDigitsLabel" destination="nmn-te-q4a" id="5rq-be-N8q"/>
                         <segue destination="9eb-Ws-Oe2" kind="show" identifier="settingsSegue" id="Mv9-ZN-bMV"/>
                         <segue destination="rDL-AJ-NRP" kind="show" identifier="toPractice" id="RwY-YO-o8r"/>
                         <segue destination="2WO-JF-0Wv" kind="show" identifier="learnSegue" id="56B-mA-4q2"/>
+                        <segue destination="rDL-AJ-NRP" kind="show" identifier="toPlay" id="YTa-Dt-6y2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -329,5 +309,8 @@
             <point key="canvasLocation" x="282" y="170"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YTa-Dt-6y2"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.050198964159999998" green="0.056512629719999999" blue="0.33530618690000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
