@@ -73,13 +73,6 @@ NSMutableArray *CGcolorArr4;
     //self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
     self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
     
-    
-    //self.learnPiLabel.numberOfLines = 0;
-    //self.learnPiLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    //CGSize maximumLabelSize = CGSizeMake(self.learnPiLabel.frame.size.width, CGFLOAT_MAX);
-    //CGSize expectSize = [self.learnPiLabel sizeThatFits:maximumLabelSize];
-    //self.learnPiLabel.frame = CGRectMake(self.learnPiLabel.frame.origin.x, self.learnPiLabel.frame.origin.y, expectSize.width, expectSize.height);
-    
     [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
     self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, screenW/2, 60)];
     self.highScoreLabel.textColor = [UIColor whiteColor];

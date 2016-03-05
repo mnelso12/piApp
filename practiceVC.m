@@ -28,9 +28,7 @@ NSMutableArray *colorArr2;
 NSMutableArray *CGcolorArr2;
 NSArray *arr2;
 NSMutableArray *selectedNums;
-//UIColor *back1;
-//UIColor *back2;
-//UIColor *back3;
+
 
 
 - (void)viewDidLoad {
@@ -133,6 +131,10 @@ NSMutableArray *selectedNums;
         highScore = @"0";
     }
     
+    if (!isPlay)
+    {
+        [self loadGotoDigit];
+    }
     [self loadScoreLabels];
     [self loadKeypad];
     [self initializePiLabel];
@@ -142,18 +144,36 @@ NSMutableArray *selectedNums;
     piReal *piInst = [[piReal alloc] init];
     piRealString = piInst.piString;
     
+}
+
+- (void)loadGotoDigit
+{
+    // go to label
+    self.gotoDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2 - 60,120+(screenWidth/10-50),150,50)];
+    self.gotoDigitLabel.text = @"go to:";
+    self.gotoDigitLabel.textColor = self.back3;
+    [self.gotoDigitLabel setFont:[UIFont fontWithName:@"Verdana" size:20]];
+    [self.view addSubview:self.gotoDigitLabel];
     
-    // below is new for keyboard
+    
+    // text field
+    self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+10,130+(screenWidth/10-50),50,32)];
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Enter"
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:self
                                                                   action:@selector(doneClicked:)];
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    [self.digitTextField setKeyboardType:UIKeyboardTypeNumberPad];
     self.digitTextField.inputAccessoryView = keyboardDoneButtonView;
     self.digitTextField.backgroundColor = self.back1;
     self.digitTextField.textColor = self.back3;
+    self.digitTextField.layer.cornerRadius = 8.0f;
+    self.digitTextField.textAlignment = NSTextAlignmentCenter;
+    [self.digitTextField setFont:[UIFont fontWithName:@"Verdana" size:20]];
+    [self.view addSubview:self.digitTextField];
+
     
 }
 
@@ -238,20 +258,6 @@ NSMutableArray *selectedNums;
     self.currentDigitLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.currentDigitLabel];
     
-    // goto digit label & text field
-    self.gotoDigitLabel.textColor = self.back3;
-    
-    
-    /*
-    // strikes (for play only)
-    self.strikesLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2-100,120+(screenWidth/10-50),200,50)];
-    self.strikesLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
-    self.strikesLabel.text = [NSString stringWithFormat:@"XXX"];
-    self.strikesLabel.textColor = [UIColor redColor];
-    self.strikesLabel.layer.masksToBounds = YES;
-    self.strikesLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.strikesLabel];
-     */
 }
 
 - (bool)isDigitCorrect:(NSString *)input
@@ -653,19 +659,6 @@ NSMutableArray *selectedNums;
 
 -(void) handleSingleTapZero:(UITapGestureRecognizer *)gr
 {
-    /*
-    [self recolorViews];
-    self.zeroView.backgroundColor = [colorArr2 objectAtIndex:0];
-    self.zeroLabel.textColor = colorInst.playBackgroundColor;
-    self.zeroView.layer.borderColor = colorInst.playBackgroundColor.CGColor;
-    if ([self isDigitCorrect:@"0"])
-    {
-        NSLog(@"0 is correct");
-    pi = [pi stringByAppendingString:@"0"];
-    [self updatePiLabel];
-    }
-     */
-    
     if (isPlay)
     {
         [self recolorViews];
@@ -959,7 +952,7 @@ NSMutableArray *selectedNums;
     pi = @"3.";
     
     // loop through pi until you get to the digit you wana go to
-    // this could be fixed in the future / made super fast by only loading the 20 or so digits that lead up to the digit in question instead of all of the digits before it
+    // TODO: this could be fixed in the future / made super fast by only loading the 20 or so digits that lead up to the digit in question instead of all of the digits before it
     int i = 0;
     for (i=0; i<digit; i++)
     {
@@ -976,15 +969,23 @@ NSMutableArray *selectedNums;
 {
     if ([gotoDigit isEqualToString:@""])
     {
-        //return false; // should I make this reset it?
+        //return false; // TODO: should I make this reset it??????????????
     }
-    if (([gotoDigit intValue] >= 0) && ([gotoDigit intValue] < 10000))
+    if ([gotoDigit intValue] <= 0)
     {
-        return true;
+        // TODO: output, is negative
+        NSLog(@"can't be negative or 0");
+        return false;
+    }
+    else if ([gotoDigit intValue] >= 10000)
+    {
+        NSLog(@"has to be smaller than that");
+        // TODO: output, is too big
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
     return false;
 }
