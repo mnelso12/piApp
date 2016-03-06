@@ -1033,11 +1033,11 @@ NSMutableArray *selectedNums;
 {
     if ([gotoDigit isEqualToString:@""])
     {
-        //return false; // TODO: should I make this reset it??????????????
+        return false; //should I make this reset it??????????????
     }
     if ([gotoDigit intValue] <= 0)
     {
-        // TODO: output, is negative
+        // output is zero
         NSLog(@"can't be negative or 0");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
                                                         message:@"Digit can't be zero."
@@ -1051,7 +1051,6 @@ NSMutableArray *selectedNums;
     else if ([gotoDigit intValue] >= 10000)
     {
         NSLog(@"has to be smaller than that");
-        // TODO: output, is too big
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
                                                         message:@"That's too big, the max is 9,999. Upgrade to premium for more digits."
                                                        delegate:self

@@ -24,8 +24,8 @@ UIColor *back1C;
 UIColor *back2C;
 UIColor *back3C;
 
-CGFloat sw;
-CGFloat sh;
+//CGFloat sw;
+//CGFloat sh;
 int num = 27; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
@@ -39,10 +39,7 @@ UITableView *tableView;
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
     
-    // TODO: get rid of sw because already have screenWidth3
-    sw = [[UIScreen mainScreen] bounds].size.width;
-    sh = [[UIScreen mainScreen] bounds].size.height;
-    if (sw < 568.0) // is iPhone 4 or less
+    if (screenWidth3 < 568.0) // is iPhone 4 or less
     {
         width = 170;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 37, 100, 100)]; // find better UI spot for this label
@@ -55,7 +52,7 @@ UITableView *tableView;
         self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
 
     }
-    else if (sw == 568.0) // is iPhone 5
+    else if (screenWidth3 == 568.0) // is iPhone 5
     {
         width = 200;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 55, 100, 100)]; // find better UI spot for this label
@@ -68,7 +65,7 @@ UITableView *tableView;
          self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
 
     }
-    else if (sw == 667.0) // is iPhone 6
+    else if (screenWidth3 == 667.0) // is iPhone 6
     {
        width = 250;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
@@ -80,7 +77,7 @@ UITableView *tableView;
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
         self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     }
-    else if (sw == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
+    else if (screenWidth3 == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
     {
         width = 270;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth3*.5-170+40, 90, 100, 100)]; // find better UI spot for this label
@@ -328,7 +325,7 @@ UITableView *tableView;
 {
     int offset = 0;
     int offset2 = 0;
-    if (sw < 568.0) // is iPhone 4 or less
+    if (screenWidth3< 568.0) // is iPhone 4 or less
     {
         offset = 10;
         offset2 = 14;
@@ -339,7 +336,7 @@ UITableView *tableView;
         for (int j=0; j<num; j++)
         {
             //UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+count*(width/num)-offset, 60+(j*(width/num))-offset2, width/num, width/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(screenWidth3*.5+count*(width/num)-offset, 60+(j*(width/num))-offset2, width/num, width/num)];
     
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handleSingleTap:)];
@@ -400,7 +397,7 @@ UITableView *tableView;
 {
     int offset = 0;
     int offset2 = 0;
-    if (sw < 568.0) // is iPhone 4 or less
+    if (screenWidth3 < 568.0) // is iPhone 4 or less
     {
         offset = 10;
         offset2 = 14;
@@ -409,7 +406,7 @@ UITableView *tableView;
     for (int i=0; i<num; i++)
     {
         //UIView *v = [[UIView alloc] initWithFrame:CGRectMake(335+i*(width/num), 310, width/num, width/num+25)];
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+i*(width/num)-offset, width+5+60-offset2, width/num, width/num+25)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(screenWidth3*.5+i*(width/num)-offset, width+5+60-offset2, width/num, width/num+25)];
         UIColor *thisColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*i brightness:(1./num)*brightness alpha:1.];
         v.backgroundColor = thisColor;
         
