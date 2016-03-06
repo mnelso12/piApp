@@ -996,12 +996,25 @@ NSMutableArray *selectedNums;
     {
         // TODO: output, is negative
         NSLog(@"can't be negative or 0");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
+                                                        message:@"Digit can't be zero."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Gotcha, my bad"
+                                              otherButtonTitles:nil];
+        [alert show];
+
         return false;
     }
     else if ([gotoDigit intValue] >= 10000)
     {
         NSLog(@"has to be smaller than that");
         // TODO: output, is too big
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
+                                                        message:@"That's too big, the max is 9,999. Upgrade to premium for more digits."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Gotcha, my bad"
+                                              otherButtonTitles:nil];
+        [alert show];
         return false;
     }
     else

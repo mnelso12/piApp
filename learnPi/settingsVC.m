@@ -237,11 +237,6 @@ UITableView *tableView;
     
     [self.view addSubview:self.saveColorButton];
     
-    
-    
-    //selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
-    
-    
     // initiate number label
     //selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     selectedNumLabel.text = @"";
@@ -613,7 +608,6 @@ UITableView *tableView;
     else
     {
         NSLog(@"cant goto that ridiculous number");
-        
         // put text field text back to original
         self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
     }
@@ -625,15 +619,21 @@ UITableView *tableView;
 {
     if ([gotoDigit isEqualToString:@""])
     {
-       
         return false;
     }
     if (([gotoDigit intValue] >= 2) && ([gotoDigit intValue] < 30))
     {
+        
         return true;
     }
     else
     {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
+                                                        message:@"You can only learn in groups of 2 to 30 digits. For more group sizes, upgrade to premium."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Okay"
+                                              otherButtonTitles:nil];
+        [alert show];
         return false;
     }
     return false;
