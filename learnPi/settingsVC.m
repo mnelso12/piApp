@@ -143,10 +143,6 @@ UITableView *tableView;
     }
     
     
-    // assuming its not null because it was set in home VC
-    self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
-    
-    
     // if colorsDict is in user defaults then use that copy
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ColorsDict"])
     {
@@ -180,11 +176,17 @@ UITableView *tableView;
     // colors update button stuff, doesnt work yet
     //self.updateColorsButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 250, 100, 100)];
     
-    // colors hard-coded for this
+    
+    // make update color button
+    self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+    [self.saveColorButton setTitle:@"Update Color" forState:UIControlStateNormal];
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
-    self.saveColorButton.titleLabel.text = @"Update Color";
+    [self.saveColorButton.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    self.saveColorButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.saveColorButton addTarget:self action:@selector(saveColorButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     self.saveColorButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.saveColorButton.titleLabel.numberOfLines = 0;
+    
     self.saveColorButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.8f];
     self.saveColorButton.layer.borderColor = [[UIColor darkGrayColor] colorWithAlphaComponent:.8f].CGColor;
     self.saveColorButton.layer.cornerRadius = 8.f;
@@ -258,6 +260,11 @@ UITableView *tableView;
     [self.groupsTextField setKeyboardType:UIKeyboardTypeNumberPad];
     self.groupsTextField.textAlignment = NSTextAlignmentCenter;
     [self.groupsTextField setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    
+    // assuming its not null because it was set in home VC
+    self.groupsTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"LearningGroups"];
+    
+
     [self.view addSubview:self.groupsTextField];
     
     

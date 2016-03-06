@@ -52,26 +52,10 @@
                     <view key="view" contentMode="scaleToFill" id="M7d-ay-XdB">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-CI-VTg">
-                                <rect key="frame" x="178" y="229" width="138" height="114"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="32"/>
-                                <state key="normal" title="Update Color">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveColorButtonPress:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="HOl-re-OzL"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="saveColorButton" destination="bqJ-CI-VTg" id="o7c-a8-CLA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aut-Xi-y4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
