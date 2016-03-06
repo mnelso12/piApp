@@ -79,19 +79,19 @@ UITableView *tableView;
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
-        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     }
     else if (sw == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
     {
         width = 270;
-        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth3*.5-170+40, 90, 100, 100)]; // find better UI spot for this label
         self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
         self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
         self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
-        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     }
     else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // is iPad
     {
@@ -103,7 +103,7 @@ UITableView *tableView;
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
-        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     }
     else if ([[UIScreen mainScreen] scale] >= 2.0) // is retina
     {
@@ -115,7 +115,7 @@ UITableView *tableView;
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
-        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     }
 
     
