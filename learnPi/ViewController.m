@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "practiceVC.h"
 #import "piRealShort.h"
-#import "colors.h"
 #import <QuartzCore/QuartzCore.h>
 #import "learnVC.h"
 

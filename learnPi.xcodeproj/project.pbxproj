@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A4002801BF108F800AC543B /* digitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40027F1BF108F800AC543B /* digitButton.m */; };
-		5A4002821BF1129500AC543B /* colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4002811BF1129500AC543B /* colors.m */; };
 		5A6F7CDF1BF18C0A00337524 /* piReal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F7CDE1BF18C0A00337524 /* piReal.m */; };
 		5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA5E1BEAA42C00004D7F /* main.m */; };
 		5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA611BEAA42D00004D7F /* AppDelegate.m */; };
@@ -18,7 +16,6 @@
 		5ABDAA6D1BEAA42E00004D7F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABDAA6B1BEAA42E00004D7F /* LaunchScreen.xib */; };
 		5ABDAA791BEAA42E00004D7F /* learnPiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA781BEAA42E00004D7F /* learnPiTests.m */; };
 		5ABDAA841BEAAC7900004D7F /* practiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA831BEAAC7900004D7F /* practiceVC.m */; };
-		5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA861BEAAEB700004D7F /* playVC.m */; };
 		5ABDAA8A1BEAAEC600004D7F /* learnVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA891BEAAEC600004D7F /* learnVC.m */; };
 		5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABDAA8C1BEAAED200004D7F /* settingsVC.m */; };
 		5AD39EEF1C7FAF4E00495E11 /* piRealShort.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD39EEE1C7FAF4E00495E11 /* piRealShort.m */; };
@@ -35,10 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A40027E1BF108F800AC543B /* digitButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digitButton.h; sourceTree = "<group>"; };
-		5A40027F1BF108F800AC543B /* digitButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = digitButton.m; sourceTree = "<group>"; };
-		5A4002811BF1129500AC543B /* colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colors.m; sourceTree = "<group>"; };
-		5A4002831BF1130100AC543B /* colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colors.h; sourceTree = "<group>"; };
 		5A6F7CDE1BF18C0A00337524 /* piReal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = piReal.m; path = ../piReal.m; sourceTree = "<group>"; };
 		5A6F7CE01BF18C5000337524 /* piReal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = piReal.h; path = ../piReal.h; sourceTree = "<group>"; };
 		5ABDAA591BEAA42C00004D7F /* learnPi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learnPi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,8 +49,6 @@
 		5ABDAA781BEAA42E00004D7F /* learnPiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = learnPiTests.m; sourceTree = "<group>"; };
 		5ABDAA821BEAAC7900004D7F /* practiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = practiceVC.h; path = ../practiceVC.h; sourceTree = "<group>"; };
 		5ABDAA831BEAAC7900004D7F /* practiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = practiceVC.m; path = ../practiceVC.m; sourceTree = "<group>"; };
-		5ABDAA851BEAAEB700004D7F /* playVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playVC.h; sourceTree = "<group>"; };
-		5ABDAA861BEAAEB700004D7F /* playVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playVC.m; sourceTree = "<group>"; };
 		5ABDAA881BEAAEC600004D7F /* learnVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnVC.h; sourceTree = "<group>"; };
 		5ABDAA891BEAAEC600004D7F /* learnVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnVC.m; sourceTree = "<group>"; };
 		5ABDAA8B1BEAAED200004D7F /* settingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsVC.h; sourceTree = "<group>"; };
@@ -109,18 +100,12 @@
 				5ABDAA611BEAA42D00004D7F /* AppDelegate.m */,
 				5ABDAA631BEAA42D00004D7F /* ViewController.h */,
 				5ABDAA641BEAA42D00004D7F /* ViewController.m */,
-				5ABDAA851BEAAEB700004D7F /* playVC.h */,
-				5ABDAA861BEAAEB700004D7F /* playVC.m */,
 				5ABDAA821BEAAC7900004D7F /* practiceVC.h */,
 				5ABDAA831BEAAC7900004D7F /* practiceVC.m */,
 				5ABDAA881BEAAEC600004D7F /* learnVC.h */,
 				5ABDAA891BEAAEC600004D7F /* learnVC.m */,
 				5ABDAA8B1BEAAED200004D7F /* settingsVC.h */,
 				5ABDAA8C1BEAAED200004D7F /* settingsVC.m */,
-				5A40027E1BF108F800AC543B /* digitButton.h */,
-				5A4002811BF1129500AC543B /* colors.m */,
-				5A4002831BF1130100AC543B /* colors.h */,
-				5A40027F1BF108F800AC543B /* digitButton.m */,
 				5AD39EED1C7FAF4E00495E11 /* piRealShort.h */,
 				5AD39EEE1C7FAF4E00495E11 /* piRealShort.m */,
 				5A6F7CE01BF18C5000337524 /* piReal.h */,
@@ -261,13 +246,10 @@
 			files = (
 				5ABDAA651BEAA42D00004D7F /* ViewController.m in Sources */,
 				5ABDAA621BEAA42D00004D7F /* AppDelegate.m in Sources */,
-				5ABDAA871BEAAEB700004D7F /* playVC.m in Sources */,
 				5ABDAA5F1BEAA42C00004D7F /* main.m in Sources */,
 				5A6F7CDF1BF18C0A00337524 /* piReal.m in Sources */,
 				5AD39EEF1C7FAF4E00495E11 /* piRealShort.m in Sources */,
 				5ABDAA8D1BEAAED200004D7F /* settingsVC.m in Sources */,
-				5A4002801BF108F800AC543B /* digitButton.m in Sources */,
-				5A4002821BF1129500AC543B /* colors.m in Sources */,
 				5ABDAA841BEAAC7900004D7F /* practiceVC.m in Sources */,
 				5ABDAA8A1BEAAEC600004D7F /* learnVC.m in Sources */,
 			);

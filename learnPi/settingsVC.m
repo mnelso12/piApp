@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "settingsVC.h"
-#import "colors.h"
 
 @implementation settingsVC
 
@@ -49,7 +48,7 @@ UITableView *tableView;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 37, 100, 100)]; // find better UI spot for this label
         self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-13, screenHeight3-55, width, 40)];
         self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,-10,130,200)];
-        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 48, 30)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 50, 30)];
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.35,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.35+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.35+160, 38, 30)];
@@ -75,7 +74,7 @@ UITableView *tableView;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
         self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-140, screenHeight3*.6+20, 110, 95)];
         self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
-        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 53, 30)];
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
@@ -629,7 +628,7 @@ UITableView *tableView;
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
-                                                        message:@"You can only learn in groups of 2 to 30 digits. For more group sizes, upgrade to premium."
+                                                        message:@"You can only learn in groups of 2 to 30 digits. For more group sizes, upgrade to premium (coming soon)."
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"
                                               otherButtonTitles:nil];

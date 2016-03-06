@@ -9,7 +9,6 @@
 #import "practiceVC.h"
 #import <CoreText/CoreText.h>
 #import "piReal.h"
-#import "colors.h"
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -20,7 +19,6 @@ int currentDigit = 0;
 CGFloat screenWidth;
 CGFloat screenHeight;
 NSString *piRealString;
-colors *colorInst;
 NSString *highScore;
 BOOL isPlay;
 NSMutableDictionary *colorsDict2;
@@ -114,8 +112,6 @@ NSMutableArray *selectedNums;
     
     
     pi = @"3.";
-    
-    colorInst = [[colors alloc] init];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = screenRect.size.width;
@@ -261,7 +257,7 @@ NSMutableArray *selectedNums;
     
     // high score
     //self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,120+(screenWidth/10-50),200,50)];
-    self.highScoreLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
+    self.highScoreLabel.font = [UIFont fontWithName:@"Verdana" size:20];
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
     self.highScoreLabel.layer.cornerRadius = 10.0f;
     self.highScoreLabel.textColor = self.back3;
@@ -271,7 +267,7 @@ NSMutableArray *selectedNums;
     
     // current digit
     //self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-20,120+(screenWidth/10-50),200,50)];
-    self.currentDigitLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
+    self.currentDigitLabel.font = [UIFont fontWithName:@"Verdana" size:20];
     self.currentDigitLabel.text = @"Current Digit: 0";
     self.currentDigitLabel.layer.cornerRadius = 10.0f;
     self.currentDigitLabel.textColor = self.back3;
@@ -291,23 +287,26 @@ NSMutableArray *selectedNums;
         return YES;
     }
     NSLog(@"no");
-    NSString *message = [NSString stringWithFormat:@"%@%@%@",@"Next digit was actually ", tempStr, @"."];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Digit"
+    if (isPlay)
+    {
+        NSString *message = [NSString stringWithFormat:@"%@%@%@",@"Next digit was actually ", tempStr, @"."];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Digit"
                                                     message:message
                                                    delegate:self
                                           cancelButtonTitle:@"Okay"
                                           otherButtonTitles:nil];
-    [alert show];
-    [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:nil userInfo:nil];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+        [alert show];
+        [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:nil userInfo:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
     return NO;
 }
 
 - (void)loadKeypad
 {
-    colors *colorInst = [[colors alloc] init];
+    //colors *colorInst = [[colors alloc] init];
     CGFloat radius;
     
     //NSLog(@"screen width = %f", screenWidth);
@@ -387,7 +386,7 @@ NSMutableArray *selectedNums;
     
     self.zeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.zeroLabel.text = @"0";
-    self.zeroLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.zeroLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.zeroLabel.textColor = [colorArr2 objectAtIndex:0];
     self.zeroLabel.textAlignment = NSTextAlignmentCenter;
     [self.zeroView addSubview:self.zeroLabel];
@@ -401,7 +400,7 @@ NSMutableArray *selectedNums;
     
     self.oneLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.oneLabel.text = @"1";
-    self.oneLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.oneLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.oneLabel.textColor = [colorArr2 objectAtIndex:1];
     self.oneLabel.textAlignment = NSTextAlignmentCenter;
     [self.oneView addSubview:self.oneLabel];
@@ -416,7 +415,7 @@ NSMutableArray *selectedNums;
     
     self.twoLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.twoLabel.text = @"2";
-    self.twoLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.twoLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.twoLabel.textColor = [colorArr2 objectAtIndex:2];
     self.twoLabel.textAlignment = NSTextAlignmentCenter;
     [self.twoView addSubview:self.twoLabel];
@@ -430,7 +429,7 @@ NSMutableArray *selectedNums;
     
     self.threeLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.threeLabel.text = @"3";
-    self.threeLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.threeLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.threeLabel.textColor = [colorArr2 objectAtIndex:3];
     self.threeLabel.textAlignment = NSTextAlignmentCenter;
     [self.threeView addSubview:self.threeLabel];
@@ -444,7 +443,7 @@ NSMutableArray *selectedNums;
     
     self.fourLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.fourLabel.text = @"4";
-    self.fourLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.fourLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.fourLabel.textColor = [colorArr2 objectAtIndex:4];
     self.fourLabel.textAlignment = NSTextAlignmentCenter;
     [self.fourView addSubview:self.fourLabel];
@@ -460,7 +459,7 @@ NSMutableArray *selectedNums;
     
     self.fiveLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.fiveLabel.text = @"5";
-    self.fiveLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.fiveLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.fiveLabel.textColor = [colorArr2 objectAtIndex:5];
     self.fiveLabel.textAlignment = NSTextAlignmentCenter;
     [self.fiveView addSubview:self.fiveLabel];
@@ -474,7 +473,7 @@ NSMutableArray *selectedNums;
     
     self.sixLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.sixLabel.text = @"6";
-    self.sixLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.sixLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.sixLabel.textColor = [colorArr2 objectAtIndex:6];
     self.sixLabel.textAlignment = NSTextAlignmentCenter;
     [self.sixView addSubview:self.sixLabel];
@@ -488,7 +487,7 @@ NSMutableArray *selectedNums;
     
     self.sevenLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.sevenLabel.text = @"7";
-    self.sevenLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.sevenLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.sevenLabel.textColor = [colorArr2 objectAtIndex:7];
     self.sevenLabel.textAlignment = NSTextAlignmentCenter;
     [self.sevenView addSubview:self.sevenLabel];
@@ -502,7 +501,7 @@ NSMutableArray *selectedNums;
     
     self.eightLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.eightLabel.text = @"8";
-    self.eightLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.eightLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.eightLabel.textColor = [colorArr2 objectAtIndex:8];
     self.eightLabel.textAlignment = NSTextAlignmentCenter;
     [self.eightView addSubview:self.eightLabel];
@@ -516,7 +515,7 @@ NSMutableArray *selectedNums;
     
     self.nineLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.nineLabel.text = @"9";
-    self.nineLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.nineLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.nineLabel.textColor = [colorArr2 objectAtIndex:9];
     self.nineLabel.textAlignment = NSTextAlignmentCenter;
     [self.nineView addSubview:self.nineLabel];
@@ -530,7 +529,7 @@ NSMutableArray *selectedNums;
     
     self.dotLabel = [[UILabel alloc] initWithFrame:CGRectMake(radius/2,radius/2, radius, radius)];
     self.dotLabel.text = @".";
-    self.dotLabel.font = [UIFont fontWithName:colorInst.themeFont size:30];
+    self.dotLabel.font = [UIFont fontWithName:@"Verdana" size:30];
     self.dotLabel.textColor = [colorArr2 objectAtIndex:10];
     self.dotLabel.textAlignment = NSTextAlignmentCenter;
     [self.dotView addSubview:self.dotLabel];
