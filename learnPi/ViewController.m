@@ -27,6 +27,7 @@ NSMutableArray *CGcolorArr4;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScore) name:@"DoUpdateLabel" object:nil];
     
     // make pi label fit screen
     CGRect screenR = [[UIScreen mainScreen] bounds];
@@ -326,6 +327,14 @@ NSMutableArray *CGcolorArr4;
     self.settingsLabel.layer.borderWidth = 1.0;
     //self.highScoreLabel.layer.borderWidth = 1.0;
 
+}
+
+- (void)updateHighScore
+{
+    NSLog(@"back in parent updating high score");
+    NSString *highScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"];
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@",@"High Score: ", highScore];
+    [self.view addSubview:self.highScoreLabel];
 }
 
 -(IBAction)settingsClicked:(UITapGestureRecognizer*)tapGestureRecognizer

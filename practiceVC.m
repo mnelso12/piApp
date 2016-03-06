@@ -283,6 +283,7 @@ NSMutableArray *selectedNums;
 
 - (bool)isDigitCorrect:(NSString *)input
 {
+    NSLog(@"current high score: %@", highScore);
     NSString *tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
     if ([tempStr isEqualToString:input])
     {
@@ -290,6 +291,17 @@ NSMutableArray *selectedNums;
         return YES;
     }
     NSLog(@"no");
+    NSString *message = [NSString stringWithFormat:@"%@%@%@",@"Next digit was actually ", tempStr, @"."];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Digit"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"Okay"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:nil userInfo:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     return NO;
 }
 
@@ -973,14 +985,46 @@ NSMutableArray *selectedNums;
     pi = @"3.";
     
     // loop through pi until you get to the digit you wana go to
-    // TODO: this could be fixed in the future / made super fast by only loading the 20 or so digits that lead up to the digit in question instead of all of the digits before it
-    int i = 0;
-    for (i=0; i<digit; i++)
+    if ((digit-30) > currentDigit)
     {
-        tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
-        NSLog(@"tempStr is %@", tempStr);
-        pi = [pi stringByAppendingString:tempStr];
-        [self updatePiLabel];
+        NSLog(@"sneakily only calculating the 30 digits before the one you want");
+        int lowerBound = digit-30; // only 30 digits will be calculated
+        int j;
+        currentDigit = lowerBound; // jump to 30 digits before the one we want
+        for (j=lowerBound; j<digit; j++)
+        {
+            tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
+            NSLog(@"tempStr is %@", tempStr);
+            pi = [pi stringByAppendingString:tempStr];
+            [self updatePiLabel];
+        }
+    }
+    else if ((digit > currentDigit) && ((digit-30) <= currentDigit))
+    {
+        NSLog(@"actually calculating the next digits, its less than 30 away");
+        int i = 0;
+        for (i=0; i<digit; i++)
+        {
+                tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
+                pi = [pi stringByAppendingString:tempStr];
+                [self updatePiLabel];
+        }
+    }
+    else if (digit <= currentDigit)
+    {
+        NSLog(@"going to a previous digit");
+        currentDigit = 0;
+        int i = 0;
+        for (i=0; i<digit; i++)
+        {
+            tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
+            pi = [pi stringByAppendingString:tempStr];
+            [self updatePiLabel];
+        }
+    }
+    else
+    {
+        NSLog(@"in else of goto digit, what happened!??!");
     }
     
     [self recolorViews];

@@ -32,5 +32,7 @@
 - (IBAction)learnButtonPress:(id)sender;
 - (IBAction)settingsButtonPress:(id)sender;
 
+-(void)updateHighScore;
+
 @end
 

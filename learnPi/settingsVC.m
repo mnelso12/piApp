@@ -62,7 +62,7 @@ UITableView *tableView;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 55, 100, 100)]; // find better UI spot for this label
         self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-120, screenHeight3*.6+25, 100, 90)];
         self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,-10,130,200)];
-        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 48, 30)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 53, 30)];
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.35,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.35+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.35+160, 38, 30)];
