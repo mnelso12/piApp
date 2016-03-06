@@ -207,6 +207,7 @@ NSMutableArray *selectedNums;
 {
     currentDigit++;
     self.currentDigitLabel.text = [NSString stringWithFormat:@"%@%d", @"Current Digit: ", currentDigit];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -220,7 +221,7 @@ NSMutableArray *selectedNums;
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             // make home vc reflect this new high score
-            [self.parentViewController viewDidLoad];
+            [self.parentViewController viewDidLoad]; // I dont think this actually works
         }
     }
 }
@@ -279,7 +280,27 @@ NSMutableArray *selectedNums;
 
 - (bool)isDigitCorrect:(NSString *)input
 {
-    NSLog(@"current high score: %@", highScore);
+    if (currentDigit >= 9999)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
+                                                        message:@"You are a pi master. We only go up to 9,999. For more digits, upgrade to premium (coming soon)."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Thanks! One more time!"
+                                              otherButtonTitles:nil];
+        [alert show];
+        currentDigit = 0;
+        pi = @"3.";
+        self.currentDigitLabel.text = [NSString stringWithFormat:@"%@%d", @"Current Digit: ", currentDigit];
+        self.piLabel.text = pi;
+        [self updatePiColors];
+        if (isPlay)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
+            [[NSUserDefaults standardUserDefaults] synchronize]; // just in case by some miracle someone actually enters 9,999 digits correctly while playing
+        }
+        return false; // we have nothing to compare this digit to, so return false
+    }
+
     NSString *tempStr = [piRealString substringWithRange:NSMakeRange(currentDigit, 1)];
     if ([tempStr isEqualToString:input])
     {
@@ -1052,7 +1073,7 @@ NSMutableArray *selectedNums;
     {
         NSLog(@"has to be smaller than that");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops, sorry!"
-                                                        message:@"That's too big, the max is 9,999. Upgrade to premium for more digits."
+                                                        message:@"That's too big, the max is 9,999. Upgrade to premium for more digits (coming soon)."
                                                        delegate:self
                                               cancelButtonTitle:@"Gotcha, my bad"
                                               otherButtonTitles:nil];
