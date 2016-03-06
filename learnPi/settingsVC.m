@@ -60,10 +60,12 @@ UITableView *tableView;
     }
     else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // is iPad
     {
+        width = 270;
        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     }
     else if ([[UIScreen mainScreen] scale] >= 2.0) // is retina
     {
+        width = 270;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     }
 
@@ -215,10 +217,10 @@ UITableView *tableView;
     [self colorPicker];
     [self grayScale];
     
-    
+    self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Enter"
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:self
                                                                   action:@selector(doneClicked:)];
@@ -226,10 +228,33 @@ UITableView *tableView;
     self.groupsTextField.inputAccessoryView = keyboardDoneButtonView;
     self.groupsTextField.backgroundColor = back1C;
     self.groupsTextField.textColor = back3C;
+    self.groupsTextField.borderStyle = UITextBorderStyleRoundedRect;
+    [self.groupsTextField setKeyboardType:UIKeyboardTypeNumberPad];
+    self.groupsTextField.textAlignment = NSTextAlignmentCenter;
+    [self.groupsTextField setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    [self.view addSubview:self.groupsTextField];
     
-    // make words back3
+    
+    // make left labels
+    self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+    self.learnInGroupsLabel.text = @"Learn in Groups of:";
+    [self.learnInGroupsLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    self.learnInGroupsLabel.textAlignment = NSTextAlignmentLeft;
+    self.learnInGroupsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.learnInGroupsLabel.numberOfLines = 0;
+    
+    
+    self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+    self.backgroundLabel.text = @"Background Color Scheme:";
+    [self.backgroundLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    self.backgroundLabel.textAlignment = NSTextAlignmentLeft;
+    self.backgroundLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.backgroundLabel.numberOfLines = 0;
+    
     self.learnInGroupsLabel.textColor = back3C;
     self.backgroundLabel.textColor = back3C;
+    [self.view addSubview:self.learnInGroupsLabel];
+    [self.view addSubview:self.backgroundLabel];
 }
 
 - (void)colorPicker

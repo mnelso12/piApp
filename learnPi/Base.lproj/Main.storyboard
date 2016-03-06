@@ -64,28 +64,6 @@
                                     <action selector="saveColorButtonPress:" destination="9eb-Ws-Oe2" eventType="touchUpInside" id="HOl-re-OzL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learn in Groups of:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5c-AA-fiJ">
-                                <rect key="frame" x="25" y="41" width="119" height="107"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeL-AZ-7Ld">
-                                <rect key="frame" x="72" y="118" width="48" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="digitTextFieldEdited:" destination="9eb-Ws-Oe2" eventType="editingDidEnd" id="A7o-vz-K3O"/>
-                                    <action selector="doneClicked:" destination="9eb-Ws-Oe2" eventType="editingDidEnd" id="v2c-NJ-KtS"/>
-                                    <action selector="editingDidEndOnExit:" destination="9eb-Ws-Oe2" eventType="editingDidEnd" id="k3x-zb-LFB"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Color Scheme:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-xC-Wnb">
-                                <rect key="frame" x="25" y="168" width="168" height="137"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-2w-M0c">
                                 <rect key="frame" x="25" y="306" width="38" height="30"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="28"/>
@@ -131,9 +109,6 @@
                         <outlet property="back1Button" destination="8UD-2w-M0c" id="fin-Cr-8tn"/>
                         <outlet property="back2Button" destination="Glm-Yr-XHq" id="JLJ-s6-Msj"/>
                         <outlet property="back3Button" destination="L2n-5c-LM1" id="CuG-zy-TD8"/>
-                        <outlet property="backgroundLabel" destination="WgR-xC-Wnb" id="aEI-lJ-565"/>
-                        <outlet property="groupsTextField" destination="GeL-AZ-7Ld" id="OyE-Oe-qag"/>
-                        <outlet property="learnInGroupsLabel" destination="X5c-AA-fiJ" id="oPW-kI-1Xc"/>
                         <outlet property="saveColorButton" destination="bqJ-CI-VTg" id="o7c-a8-CLA"/>
                     </connections>
                 </viewController>
