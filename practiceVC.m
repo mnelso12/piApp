@@ -228,14 +228,12 @@ NSMutableArray *selectedNums;
 
 - (void)updateHighScore
 {
-    NSLog(@"current = %i, high score = %@, isPlay = %i", currentDigit, highScore, isPlay);
     if ((currentDigit > [highScore intValue]) && (isPlay))
     {
         highScore = [NSString stringWithFormat:@"%i",currentDigit];
         NSLog(@"updating high score now");
     }
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
-    NSLog(@"new high score: %@", highScore);
 }
 
 - (void)loadScoreLabels

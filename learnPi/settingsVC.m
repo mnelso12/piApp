@@ -119,31 +119,31 @@ UITableView *tableView;
     
     [self.back1Button setTitle:@"1" forState:UIControlStateNormal];
     self.back1Button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.back1Button.titleLabel.textColor = [UIColor whiteColor];
+    self.back1Button.titleLabel.textColor = back3C;
     [self.back1Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     [self.back1Button addTarget:self action:@selector(back1Pressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.back1Button];
+    
     
     [self.back2Button setTitle:@"2" forState:UIControlStateNormal];
     self.back2Button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.back2Button.titleLabel.textColor = [UIColor whiteColor];
+    self.back2Button.titleLabel.textColor = back3C;
     [self.back2Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     [self.back2Button addTarget:self action:@selector(back2Pressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.back2Button];
+    
     
     [self.back3Button setTitle:@"3" forState:UIControlStateNormal];
     self.back3Button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.back3Button.titleLabel.textColor = [UIColor whiteColor];
+    self.back3Button.titleLabel.textColor = back3C;
     [self.back3Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     [self.back3Button addTarget:self action:@selector(back3Pressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.back3Button];
-    
+   
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     back1C = [[UIColor alloc] init];
     back2C = [[UIColor alloc] init];
     back3C = [[UIColor alloc] init];
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor1"])
     {
-        NSLog(@"something wrong with background color in user defaults");
+        NSLog(@"something wrong with background color in user defaults!!!!!!!!!!!!!");
     }
     else
     {
@@ -154,8 +154,10 @@ UITableView *tableView;
         colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor3"];
         back3C = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     }
+
     if ([back2C isEqual:[UIColor blackColor]])
     {
+        NSLog(@"back2 is black in defaults");
         // is background button 1
         self.back1Button.backgroundColor = [UIColor darkGrayColor];
         self.back2Button.backgroundColor = [UIColor grayColor];
@@ -163,6 +165,7 @@ UITableView *tableView;
     }
     else if ([back2C isEqual:[UIColor darkGrayColor]])
     {
+         NSLog(@"back2 is dark gray in defaults");
         // is background button 2
         self.back2Button.backgroundColor = [UIColor grayColor];
         self.back1Button.backgroundColor = [UIColor lightGrayColor];
@@ -170,6 +173,7 @@ UITableView *tableView;
     }
     else if ([back2C isEqual:[UIColor grayColor]])
     {
+         NSLog(@"back2 is gray in defaults");
         // is background button 3
         self.back3Button.backgroundColor = [UIColor blackColor];
         self.back2Button.backgroundColor = [UIColor darkGrayColor];
@@ -179,6 +183,12 @@ UITableView *tableView;
     {
         NSLog(@"error, couldnt figure out current background color scheme to set button to");
     }
+    [self.view addSubview:self.back1Button];
+    [self.view addSubview:self.back2Button];
+    [self.view addSubview:self.back3Button];
+    
+    
+    
     
     
     // if colorsDict is in user defaults then use that copy
@@ -657,8 +667,8 @@ UITableView *tableView;
 }
 
 - (IBAction)back2Pressed:(id)sender {
-    self.back2Button.backgroundColor = [UIColor grayColor];
     self.back1Button.backgroundColor = [UIColor lightGrayColor];
+    self.back2Button.backgroundColor = [UIColor grayColor];
     self.back3Button.backgroundColor = [UIColor lightGrayColor];
     
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:[UIColor lightGrayColor]]; // back color 1 is pi entry color
@@ -690,8 +700,8 @@ UITableView *tableView;
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"BackgroundColor3"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-    back2C = [UIColor grayColor];
     back1C = [UIColor whiteColor];
+    back2C = [UIColor grayColor];
     back3C = [UIColor blackColor];
     [self recolorNewBackground];
 }

@@ -29,6 +29,18 @@ UIColor *back2L;
     
     NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"BackgroundColor2"];
     back2L = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    if ([back2L isEqual:[UIColor blackColor]])
+    {
+        NSLog(@"back2 is black in defaults");
+    }
+    else if ([back2L isEqual:[UIColor grayColor]])
+    {
+         NSLog(@"back2 is gray in defaults");
+    }
+    else if ([back2L isEqual:[UIColor darkGrayColor]])
+    {
+        NSLog(@"back2 is dark grayin defaults");
+    }
     
     // start with colors from defaults
     // start with colors, coordinate with defaults
