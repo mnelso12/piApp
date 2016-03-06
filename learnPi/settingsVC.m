@@ -36,6 +36,11 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth3 = screenRect.size.width;
+    screenHeight3 = screenRect.size.height;
+    
+    // TODO: get rid of sw because already have screenWidth3
     sw = [[UIScreen mainScreen] bounds].size.width;
     sh = [[UIScreen mainScreen] bounds].size.height;
     if (sw < 568.0) // is iPhone 4 or less
@@ -69,6 +74,31 @@ UITableView *tableView;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     }
 
+    
+    // make background scheme buttons
+    self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+    [self.back1Button setTitle:@"1" forState:UIControlStateNormal];
+    self.back1Button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.back1Button.titleLabel.textColor = [UIColor whiteColor];
+    [self.back1Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    [self.back1Button addTarget:self action:@selector(back1Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.back1Button];
+    
+    self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
+    [self.back2Button setTitle:@"2" forState:UIControlStateNormal];
+    self.back2Button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.back2Button.titleLabel.textColor = [UIColor whiteColor];
+    [self.back2Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    [self.back2Button addTarget:self action:@selector(back2Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.back2Button];
+    
+    self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
+    [self.back3Button setTitle:@"3" forState:UIControlStateNormal];
+    self.back3Button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.back3Button.titleLabel.textColor = [UIColor whiteColor];
+    [self.back3Button.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
+    [self.back3Button addTarget:self action:@selector(back3Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.back3Button];
     
     back1C = [[UIColor alloc] init];
     back2C = [[UIColor alloc] init];
@@ -166,10 +196,6 @@ UITableView *tableView;
     
     
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    screenWidth3 = screenRect.size.width;
-    screenHeight3 = screenRect.size.height;
-    
     //selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
     
     
@@ -255,6 +281,7 @@ UITableView *tableView;
     self.backgroundLabel.textColor = back3C;
     [self.view addSubview:self.learnInGroupsLabel];
     [self.view addSubview:self.backgroundLabel];
+    
 }
 
 - (void)colorPicker
