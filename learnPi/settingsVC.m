@@ -47,36 +47,80 @@ UITableView *tableView;
     {
         width = 170;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.35+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.35+160, 38, 30)];
+         self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+
     }
     else if (sw == 568.0) // is iPhone 5
     {
         width = 200;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 55, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-120, screenHeight3*.6+25, 100, 90)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,-10,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.35,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.35+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.35+160, 38, 30)];
+         self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+
     }
     else if (sw == 667.0) // is iPhone 6
     {
        width = 250;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
     }
     else if (sw == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
     {
         width = 270;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
     }
     else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // is iPad
     {
         width = 270;
        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
     }
     else if ([[UIScreen mainScreen] scale] >= 2.0) // is retina
     {
         width = 270;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+        self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
     }
 
     
     // make background scheme buttons
-    self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.4+160, 38, 30)];
+    
     [self.back1Button setTitle:@"1" forState:UIControlStateNormal];
     self.back1Button.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.back1Button.titleLabel.textColor = [UIColor whiteColor];
@@ -84,7 +128,6 @@ UITableView *tableView;
     [self.back1Button addTarget:self action:@selector(back1Pressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.back1Button];
     
-    self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.4+160, 38, 30)];
     [self.back2Button setTitle:@"2" forState:UIControlStateNormal];
     self.back2Button.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.back2Button.titleLabel.textColor = [UIColor whiteColor];
@@ -92,7 +135,6 @@ UITableView *tableView;
     [self.back2Button addTarget:self action:@selector(back2Pressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.back2Button];
     
-    self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.4+160, 38, 30)];
     [self.back3Button setTitle:@"3" forState:UIControlStateNormal];
     self.back3Button.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.back3Button.titleLabel.textColor = [UIColor whiteColor];
@@ -178,8 +220,7 @@ UITableView *tableView;
     
     
     // make update color button
-    self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
-    [self.saveColorButton setTitle:@"Update Color" forState:UIControlStateNormal];
+    [self.saveColorButton setTitle:@"Save Color" forState:UIControlStateNormal];
     self.saveColorButton.titleLabel.textColor = [UIColor whiteColor];
     [self.saveColorButton.titleLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     self.saveColorButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -245,7 +286,7 @@ UITableView *tableView;
     [self colorPicker];
     [self grayScale];
     
-    self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
+    
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Enter"
@@ -269,7 +310,6 @@ UITableView *tableView;
     
     
     // make left labels
-    self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
     self.learnInGroupsLabel.text = @"Learn in Groups of:";
     [self.learnInGroupsLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     self.learnInGroupsLabel.textAlignment = NSTextAlignmentLeft;
@@ -277,7 +317,6 @@ UITableView *tableView;
     self.learnInGroupsLabel.numberOfLines = 0;
     
     
-    self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
     self.backgroundLabel.text = @"Background Color Scheme:";
     [self.backgroundLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
     self.backgroundLabel.textAlignment = NSTextAlignmentLeft;
