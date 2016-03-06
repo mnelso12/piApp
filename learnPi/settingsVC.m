@@ -47,13 +47,13 @@ UITableView *tableView;
     {
         width = 170;
         selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
-        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-170, screenHeight3*.6, 138, 114)];
-        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0,130,200)];
-        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 122, 48, 30)];
-        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.4,170,200)];
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-120, screenHeight3*.6+25, 100, 90)];
+        self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,-10,130,200)];
+        self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 48, 30)];
+        self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.35,170,200)];
         self.back1Button = [[UIButton alloc] initWithFrame:CGRectMake(20, screenHeight3*.35+160, 38, 30)];
         self.back2Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38, screenHeight3*.35+160, 38, 30)];
-         self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
+        self.back3Button = [[UIButton alloc] initWithFrame:CGRectMake(20+38*2, screenHeight3*.35+160, 38, 30)];
 
     }
     else if (sw == 568.0) // is iPhone 5
