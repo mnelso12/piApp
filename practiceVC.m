@@ -62,18 +62,19 @@ NSMutableArray *selectedNums;
     {
         // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
         colorsDict2 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                      @".1234", @"zeroR", @".213", @"zeroB", @".982", @"zeroG",
-                      @".14", @"oneR", @".99", @"oneB", @".6", @"oneG",
-                      @".5", @"twoR", @".2", @"twoB", @".4", @"twoG",
-                      @"0.", @"threeR", @".1", @"threeB", @".4", @"threeG",
-                      @"0.", @"fourR", @".9", @"fourB", @".312", @"fourG",
-                      @".12", @"fiveR", @".9", @"fiveB", @".23", @"fiveG",
-                      @".2", @"sixR", @".4", @"sixB", @".1", @"sixG",
-                      @".1", @"sevenR", @".1", @"sevenB", @".4", @"sevenG",
-                      @".8", @"eightR", @".1", @"eightB", @".4", @"eightG",
-                      @".2917", @"nineR", @".123", @"nineB", @".13", @"nineG",
-                      @".324", @"dotR", @".2398", @"dotB", @".13", @"dotG",
-                      nil];
+                       @"0.", @"zeroR", @".2", @"zeroB", @"0.", @"zeroG",
+                       @".99", @"oneR", @".99", @"oneB", @".99", @"oneG",
+                       @"0.", @"twoR", @"0.99", @"twoB", @"0.", @"twoG",
+                       @".99", @"threeR", @"0.", @"threeB", @"0.99", @"threeG",
+                       @".99", @"fourR", @".0", @"fourB", @".0", @"fourG",
+                       @"0.", @"fiveR", @"0.", @"fiveB", @".3", @"fiveG",
+                       @".0", @"sixR", @".0", @"sixB", @".99", @"sixG",
+                       @".99", @"sevenR", @".6", @"sevenB", @".2", @"sevenG",
+                       @"0.", @"eightR", @".3", @"eightB", @"0.", @"eightG",
+                       @".2", @"nineR", @"0.", @"nineB", @".2", @"nineG",
+                       @".2", @"dotR", @".99", @"dotB", @".2", @"dotG",
+                       nil];
+
     }
 
     arr2 = [[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", nil];

@@ -28,6 +28,8 @@ NSMutableArray *CGcolorArr4;
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHighScore) name:@"DoUpdateLabel" object:nil];
     
+    
+    
     // make pi label fit screen
     CGRect screenR = [[UIScreen mainScreen] bounds];
     CGFloat screenW = screenR.size.width;
@@ -73,12 +75,18 @@ NSMutableArray *CGcolorArr4;
     //self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
     self.learnPiLabel.adjustsFontSizeToFitWidth = YES;
     
-    [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
+    
     self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, screenW/2, 60)];
     self.highScoreLabel.textColor = [UIColor whiteColor];
     [self.highScoreLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
-    
-    
+    if ((screenW > 667) && (screenW <= 736)) // 6+
+    {
+        [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
+    }
+    else
+    {
+        [self.highScoreLabel setTextAlignment:NSTextAlignmentLeft];
+    }
     
     // the button-ish labels
     self.learnLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-73, (screenH-180)/4, 146, 60)];
@@ -182,17 +190,17 @@ NSMutableArray *CGcolorArr4;
     {
         // colorsDict can ONLY take decimal values for the objects, not "140.0f/255.0f" form because that cannot be typedefed into a float
         colorsDict4 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                       @".1234", @"zeroR", @".213", @"zeroB", @".982", @"zeroG",
-                       @".14", @"oneR", @".99", @"oneB", @".6", @"oneG",
-                       @".5", @"twoR", @".2", @"twoB", @".4", @"twoG",
-                       @"0.", @"threeR", @".1", @"threeB", @".4", @"threeG",
-                       @"0.", @"fourR", @".9", @"fourB", @".312", @"fourG",
-                       @".12", @"fiveR", @".9", @"fiveB", @".23", @"fiveG",
-                       @".2", @"sixR", @".4", @"sixB", @".1", @"sixG",
-                       @".1", @"sevenR", @".1", @"sevenB", @".4", @"sevenG",
-                       @".8", @"eightR", @".1", @"eightB", @".4", @"eightG",
-                       @".2917", @"nineR", @".123", @"nineB", @".13", @"nineG",
-                       @".324", @"dotR", @".2398", @"dotB", @".13", @"dotG",
+                       @"0.", @"zeroR", @".2", @"zeroB", @"0.", @"zeroG",
+                       @".99", @"oneR", @".99", @"oneB", @".99", @"oneG",
+                       @"0.", @"twoR", @"0.99", @"twoB", @"0.", @"twoG",
+                       @".99", @"threeR", @"0.", @"threeB", @"0.99", @"threeG",
+                       @".99", @"fourR", @".0", @"fourB", @".0", @"fourG",
+                       @"0.", @"fiveR", @"0.", @"fiveB", @".3", @"fiveG",
+                       @".0", @"sixR", @".0", @"sixB", @".99", @"sixG",
+                       @".99", @"sevenR", @".6", @"sevenB", @".2", @"sevenG",
+                       @"0.", @"eightR", @".3", @"eightB", @"0.", @"eightG",
+                       @".2", @"nineR", @"0.", @"nineB", @".2", @"nineG",
+                       @".2", @"dotR", @".99", @"dotB", @".2", @"dotG",
                        nil];
     }
     
