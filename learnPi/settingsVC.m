@@ -46,8 +46,8 @@ UITableView *tableView;
     if (sw < 568.0) // is iPhone 4 or less
     {
         width = 170;
-        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
-        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-120, screenHeight3*.6+25, 100, 90)];
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 37, 100, 100)]; // find better UI spot for this label
+        self.saveColorButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth3*.5-13, screenHeight3-55, width, 40)];
         self.learnInGroupsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,-10,130,200)];
         self.groupsTextField = [[UITextField alloc] initWithFrame:CGRectMake(64, 112, 48, 30)];
         self.backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,screenHeight3*.35,170,200)];
@@ -332,13 +332,20 @@ UITableView *tableView;
 
 - (void)colorPicker
 {
+    int offset = 0;
+    int offset2 = 0;
+    if (sw < 568.0) // is iPhone 4 or less
+    {
+        offset = 10;
+        offset2 = 14;
+    }
     int tag = 0;
     for (int count=0; count<num; count++)
     {
         for (int j=0; j<num; j++)
         {
             //UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+count*(width/num)-offset, 60+(j*(width/num))-offset2, width/num, width/num)];
     
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handleSingleTap:)];
@@ -397,11 +404,18 @@ UITableView *tableView;
 
 - (void)grayScale
 {
+    int offset = 0;
+    int offset2 = 0;
+    if (sw < 568.0) // is iPhone 4 or less
+    {
+        offset = 10;
+        offset2 = 14;
+    }
     int tag = num*num; // start where the rainbow box left off
     for (int i=0; i<num; i++)
     {
         //UIView *v = [[UIView alloc] initWithFrame:CGRectMake(335+i*(width/num), 310, width/num, width/num+25)];
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+i*(width/num), width+5+60, width/num, width/num+25)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+i*(width/num)-offset, width+5+60-offset2, width/num, width/num+25)];
         UIColor *thisColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*i brightness:(1./num)*brightness alpha:1.];
         v.backgroundColor = thisColor;
         
