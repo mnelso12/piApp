@@ -25,6 +25,8 @@ UIColor *back1C;
 UIColor *back2C;
 UIColor *back3C;
 
+CGFloat sw;
+CGFloat sh;
 int num = 27; // for color picker, the bigger the slower/smoother the color picker boxes
 int width = 250; // height and width of the rainbow square for color picker
 CGFloat hue, brightness, saturation;
@@ -34,6 +36,37 @@ UITableView *tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    sw = [[UIScreen mainScreen] bounds].size.width;
+    sh = [[UIScreen mainScreen] bounds].size.height;
+    if (sw < 568.0) // is iPhone 4 or less
+    {
+        width = 170;
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    }
+    else if (sw == 568.0) // is iPhone 5
+    {
+        width = 200;
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 55, 100, 100)]; // find better UI spot for this label
+    }
+    else if (sw == 667.0) // is iPhone 6
+    {
+       width = 250;
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    }
+    else if (sw == 736.0) // is iPhone 6+, WHAT ABOUT IPHONE 7??!???!
+    {
+        width = 270;
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    }
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // is iPad
+    {
+       selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    }
+    else if ([[UIScreen mainScreen] scale] >= 2.0) // is retina
+    {
+        selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    }
+
     
     back1C = [[UIColor alloc] init];
     back2C = [[UIColor alloc] init];
@@ -135,11 +168,11 @@ UITableView *tableView;
     screenWidth3 = screenRect.size.width;
     screenHeight3 = screenRect.size.height;
     
-    selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
+    //selectedColorView = [[UIView alloc] initWithFrame:CGRectMake(250,50,30,30)]; // going to get rid of this entire view soon
     
     
     // initiate number label
-    selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
+    //selectedNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 90, 100, 100)]; // find better UI spot for this label
     selectedNumLabel.text = @"";
     selectedNumLabel.textColor = [UIColor whiteColor];
     selectedNumLabel.font = [UIFont fontWithName:@"Verdana" size:120];
@@ -206,7 +239,8 @@ UITableView *tableView;
     {
         for (int j=0; j<num; j++)
         {
-            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
+            //UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(335+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
+            UIView *temp = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+count*(width/num), 60+(j*(width/num)), width/num, width/num)];
     
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(handleSingleTap:)];
@@ -268,7 +302,8 @@ UITableView *tableView;
     int tag = num*num; // start where the rainbow box left off
     for (int i=0; i<num; i++)
     {
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(335+i*(width/num), 310, width/num, width/num+25)];
+        //UIView *v = [[UIView alloc] initWithFrame:CGRectMake(335+i*(width/num), 310, width/num, width/num+25)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(sw*.5+i*(width/num), width+5+60, width/num, width/num+25)];
         UIColor *thisColor = [UIColor colorWithHue:(1./num)*hue saturation:(1./num)*i brightness:(1./num)*brightness alpha:1.];
         v.backgroundColor = thisColor;
         
