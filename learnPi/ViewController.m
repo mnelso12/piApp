@@ -79,7 +79,7 @@ NSMutableArray *CGcolorArr4;
     self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, screenW/2, 60)];
     self.highScoreLabel.textColor = [UIColor whiteColor];
     [self.highScoreLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
-    if ((screenW > 667) && (screenW <= 736)) // 6+
+    if ((screenW > 568) && (screenW <= 736)) // 6 and 6+
     {
         [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
     }
