@@ -148,16 +148,23 @@ NSMutableArray *selectedNums;
 
 - (void)loadGotoDigit
 {
-    // go to label
+        // go to label
     self.gotoDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2 - 60,120+(screenWidth/10-50),150,50)];
     self.gotoDigitLabel.text = @"go to:";
     self.gotoDigitLabel.textColor = self.back3;
     [self.gotoDigitLabel setFont:[UIFont fontWithName:@"Verdana" size:20]];
-    [self.view addSubview:self.gotoDigitLabel];
     
+    
+    if (screenWidth < 568.0) // is iPhone 4 or less
+    {
+        self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+7,130+(screenWidth/10-50),40,32)];
+    }
+    else if (screenWidth >= 568.0) // is iPhone 5
+    {
+        self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+10,130+(screenWidth/10-50),50,32)];
+    }
     
     // text field
-    self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+10,130+(screenWidth/10-50),50,32)];
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Enter"
@@ -172,9 +179,11 @@ NSMutableArray *selectedNums;
     self.digitTextField.layer.cornerRadius = 8.0f;
     self.digitTextField.textAlignment = NSTextAlignmentCenter;
     [self.digitTextField setFont:[UIFont fontWithName:@"Verdana" size:20]];
-    [self.view addSubview:self.digitTextField];
-
     
+
+
+    [self.view addSubview:self.gotoDigitLabel];
+    [self.view addSubview:self.digitTextField];
 }
 
 - (void)initializePiLabel
@@ -234,11 +243,24 @@ NSMutableArray *selectedNums;
 
 - (void)loadScoreLabels
 {
-    // should do this in terms of screen height and width
-
+    if (screenWidth < 568.0) // is iPhone 4 or less
+    {
+        NSLog(@"is 4s, learning labels in practice accordingly");
+        self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(-10,120+(screenWidth/10-50),200,50)];
+        self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200,120+(screenWidth/10-50),200,50)];
+        [self.view addSubview:self.highScoreLabel];
+        [self.view addSubview:self.currentDigitLabel];
+    }
+    else if (screenWidth >= 568.0) // is iPhone 5
+    {
+        self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,120+(screenWidth/10-50),200,50)];
+        self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-20,120+(screenWidth/10-50),200,50)];
+        [self.view addSubview:self.highScoreLabel];
+        [self.view addSubview:self.currentDigitLabel];
+    }
+    
     // high score
-    //self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,120+(screenWidth/10-50),200,50)];
-    self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,120+(screenWidth/10-50),200,50)];
+    //self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,120+(screenWidth/10-50),200,50)];
     self.highScoreLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.highScoreLabel.text = [NSString stringWithFormat:@"%@%@", @"High Score: ", highScore];
     self.highScoreLabel.layer.cornerRadius = 10.0f;
@@ -248,8 +270,7 @@ NSMutableArray *selectedNums;
     [self.view addSubview:self.highScoreLabel];
     
     // current digit
-    //self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-50,120+(screenWidth/10-50),200,50)];
-    self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-20,120+(screenWidth/10-50),200,50)];
+    //self.currentDigitLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-200-20,120+(screenWidth/10-50),200,50)];
     self.currentDigitLabel.font = [UIFont fontWithName:colorInst.themeFont size:20];
     self.currentDigitLabel.text = @"Current Digit: 0";
     self.currentDigitLabel.layer.cornerRadius = 10.0f;
