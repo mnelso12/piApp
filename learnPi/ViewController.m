@@ -64,7 +64,7 @@ NSMutableArray *CGcolorArr4;
     
     // title and high score
     self.learnPiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 60, screenW/2, 70)];
-    self.learnPiLabel.text = @"Learn Pi";
+    self.learnPiLabel.text = @"Pi Dye";
     [self.learnPiLabel setTextAlignment:NSTextAlignmentCenter];
     self.learnPiLabel.textColor = [UIColor grayColor];
     [self.learnPiLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:55]];
@@ -79,7 +79,7 @@ NSMutableArray *CGcolorArr4;
     self.highScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, screenW/2, 60)];
     self.highScoreLabel.textColor = [UIColor whiteColor];
     [self.highScoreLabel setFont:[UIFont fontWithName:@"Verdana" size:28]];
-    if ((screenW > 568) && (screenW <= 736)) // 6 and 6+
+    /*if ((screenW > 568) && (screenW <= 736)) // 6 and 6+
     {
         [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
     }
@@ -87,6 +87,8 @@ NSMutableArray *CGcolorArr4;
     {
         [self.highScoreLabel setTextAlignment:NSTextAlignmentLeft];
     }
+     */
+    [self.highScoreLabel setTextAlignment:NSTextAlignmentCenter];
     
     // the button-ish labels
     self.learnLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenW*3/4-73, (screenH-180)/4, 146, 60)];
