@@ -34,7 +34,14 @@ NSMutableArray *CGcolorArr4;
     CGRect screenR = [[UIScreen mainScreen] bounds];
     CGFloat screenW = screenR.size.width;
     CGFloat screenH = screenR.size.height;
-    self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH+100)];
+    if (screenW <= 568) // is 5 or under
+    {
+        self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, screenW, screenH+100)];
+    }
+    else
+    {
+        self.piDigitsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -10, screenW, screenH+100)];
+    }
     [self.view addSubview:self.piDigitsLabel];
     
     // make labels pretty for all iPhone versions

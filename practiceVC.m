@@ -154,7 +154,7 @@ NSMutableArray *selectedNums;
     
     if (screenWidth < 568.0) // is iPhone 4 or less
     {
-        self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+7,130+(screenWidth/10-50),40,32)];
+        self.digitTextField = [[UITextField alloc] initWithFrame:CGRectMake(screenWidth/2+9,130+(screenWidth/10-50),40,32)];
     }
     else if (screenWidth >= 568.0) // is iPhone 5
     {
@@ -223,7 +223,15 @@ NSMutableArray *selectedNums;
             
             // make home vc reflect this new high score
             [self.parentViewController viewDidLoad]; // I dont think this actually works
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:nil userInfo:nil];
         }
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:highScore forKey:@"HighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self.parentViewController viewDidLoad]; // I dont think this actually works
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:nil userInfo:nil];
     }
 }
 
